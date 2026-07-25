@@ -1,0 +1,13 @@
+# Downloaded authoritative sources and runtime products
+Project/data/external/
+Project/data/output/*.log
+Project/data/output/*.err
+
+# Static-site development products
+Web/node_modules/
+Web/dist/
+Web/tsconfig.tsbuildinfo
+
+# Python caches
+__pycache__/
+*.py[cod]
