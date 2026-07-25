@@ -1,0 +1,19 @@
+{
+  "name": "orbital-home-run-solver",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build --base=./ --sourcemap",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "three": "^0.179.1"
+  },
+  "devDependencies": {
+    "@types/three": "^0.179.0",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.3"
+  }
+}

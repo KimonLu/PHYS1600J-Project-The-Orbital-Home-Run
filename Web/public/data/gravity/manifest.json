@@ -1,0 +1,46 @@
+{
+  "model": "GRAIL GRGM1200B",
+  "degree": 600,
+  "source": "https://pgda.gsfc.nasa.gov/data/MoonRM1/sha.grgm1200b_sigma",
+  "source_sha256": "f08a988b43f3eaa5a2089045a9b7e41e02f16542c7912b87ea34366fafa39bc5",
+  "reference_radius_m": 1737400.0,
+  "gravity_coefficient_reference_radius_m": 1738000.0,
+  "gm_m3_s2": 4902800122445.3,
+  "stores_noncentral_correction": true,
+  "brillouin_radius_m": 1748200.0,
+  "pixels_per_degree": 8,
+  "tile_degrees": 15,
+  "tile_rows": 120,
+  "tile_columns": 120,
+  "altitude_shells_m": [
+    10800.0,
+    12000.0,
+    15000.0,
+    20000.0,
+    30000.0,
+    50000.0,
+    80000.0,
+    120000.0,
+    200000.0,
+    320000.0
+  ],
+  "component_order": [
+    "radial",
+    "theta",
+    "phi"
+  ],
+  "data_type": "little-endian float32, components interleaved",
+  "row_order": "north_to_south",
+  "column_order": "west_to_east",
+  "compressed_encoding": "gzip",
+  "tile_count": 2880,
+  "total_compressed_bytes": 451473291,
+  "validation": {
+    "sample_count": 120,
+    "random_seed": 1600,
+    "rms_acceleration_error_m_s2": 1.072657113096078e-05,
+    "maximum_acceleration_error_m_s2": 3.86768000120181e-05,
+    "rms_relative_acceleration_error": 7.713307862775882e-06,
+    "maximum_relative_acceleration_error": 2.8001823059492097e-05
+  }
+}

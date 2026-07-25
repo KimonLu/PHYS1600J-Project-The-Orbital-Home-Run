@@ -1,0 +1,6500 @@
+{
+  "dataset": "LOLA LDEM64",
+  "source": "https://pds-geosciences.wustl.edu/lro/lro-l-lola-3-rdr-v1/lrolol_1xxx/data/lola_gdr/cylindrical/img/ldem_64.img",
+  "source_sha256": "98f1824b1a999630bf7b1f59575fe4c1d56a24722a968d98bcce07e6d6d44d4b",
+  "reference_radius_m": 1737400.0,
+  "pixels_per_degree": 64.0,
+  "tile_degrees": 10,
+  "tile_rows": 640,
+  "tile_columns": 640,
+  "data_type": "little-endian signed int16",
+  "predictor": "first sample absolute, then horizontal int16 deltas",
+  "row_order": "north_to_south",
+  "column_order": "west_to_east",
+  "scale_m_per_dn": 0.5,
+  "compressed_encoding": "gzip",
+  "total_compressed_bytes": 320920830,
+  "tile_count": 648,
+  "tiles": [
+    {
+      "lat_index": 0,
+      "lon_index": 0,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_00_00.i16.gz",
+      "compressed_bytes": 386922
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 1,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_00_01.i16.gz",
+      "compressed_bytes": 376426
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 2,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_00_02.i16.gz",
+      "compressed_bytes": 369532
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 3,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_00_03.i16.gz",
+      "compressed_bytes": 384326
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 4,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_00_04.i16.gz",
+      "compressed_bytes": 387000
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 5,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_00_05.i16.gz",
+      "compressed_bytes": 384027
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 6,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_00_06.i16.gz",
+      "compressed_bytes": 388117
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 7,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_00_07.i16.gz",
+      "compressed_bytes": 400526
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 8,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_00_08.i16.gz",
+      "compressed_bytes": 394424
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 9,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_00_09.i16.gz",
+      "compressed_bytes": 381897
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 10,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_00_10.i16.gz",
+      "compressed_bytes": 367381
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 11,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_00_11.i16.gz",
+      "compressed_bytes": 370635
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 12,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_00_12.i16.gz",
+      "compressed_bytes": 357920
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 13,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_00_13.i16.gz",
+      "compressed_bytes": 359286
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 14,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_00_14.i16.gz",
+      "compressed_bytes": 360636
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 15,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_00_15.i16.gz",
+      "compressed_bytes": 367142
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 16,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_00_16.i16.gz",
+      "compressed_bytes": 381465
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 17,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_00_17.i16.gz",
+      "compressed_bytes": 377782
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 18,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_00_18.i16.gz",
+      "compressed_bytes": 369532
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 19,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_00_19.i16.gz",
+      "compressed_bytes": 369747
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 20,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_00_20.i16.gz",
+      "compressed_bytes": 374606
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 21,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_00_21.i16.gz",
+      "compressed_bytes": 364572
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 22,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_00_22.i16.gz",
+      "compressed_bytes": 381812
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 23,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_00_23.i16.gz",
+      "compressed_bytes": 383471
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 24,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_00_24.i16.gz",
+      "compressed_bytes": 386265
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 25,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_00_25.i16.gz",
+      "compressed_bytes": 381129
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 26,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_00_26.i16.gz",
+      "compressed_bytes": 382900
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 27,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_00_27.i16.gz",
+      "compressed_bytes": 368759
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 28,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_00_28.i16.gz",
+      "compressed_bytes": 384756
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 29,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_00_29.i16.gz",
+      "compressed_bytes": 378163
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 30,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_00_30.i16.gz",
+      "compressed_bytes": 384031
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 31,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_00_31.i16.gz",
+      "compressed_bytes": 379855
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 32,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_00_32.i16.gz",
+      "compressed_bytes": 379333
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 33,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_00_33.i16.gz",
+      "compressed_bytes": 372263
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 34,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_00_34.i16.gz",
+      "compressed_bytes": 377987
+    },
+    {
+      "lat_index": 0,
+      "lon_index": 35,
+      "south_deg": -90,
+      "north_deg": -80,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_00_35.i16.gz",
+      "compressed_bytes": 385211
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 0,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_01_00.i16.gz",
+      "compressed_bytes": 472059
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 1,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_01_01.i16.gz",
+      "compressed_bytes": 469505
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 2,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_01_02.i16.gz",
+      "compressed_bytes": 465946
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 3,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_01_03.i16.gz",
+      "compressed_bytes": 457917
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 4,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_01_04.i16.gz",
+      "compressed_bytes": 457227
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 5,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_01_05.i16.gz",
+      "compressed_bytes": 464836
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 6,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_01_06.i16.gz",
+      "compressed_bytes": 483769
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 7,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_01_07.i16.gz",
+      "compressed_bytes": 465086
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 8,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_01_08.i16.gz",
+      "compressed_bytes": 469833
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 9,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_01_09.i16.gz",
+      "compressed_bytes": 459923
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 10,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_01_10.i16.gz",
+      "compressed_bytes": 453068
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 11,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_01_11.i16.gz",
+      "compressed_bytes": 469588
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 12,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_01_12.i16.gz",
+      "compressed_bytes": 451083
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 13,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_01_13.i16.gz",
+      "compressed_bytes": 421993
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 14,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_01_14.i16.gz",
+      "compressed_bytes": 459246
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 15,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_01_15.i16.gz",
+      "compressed_bytes": 451988
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 16,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_01_16.i16.gz",
+      "compressed_bytes": 448994
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 17,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_01_17.i16.gz",
+      "compressed_bytes": 468770
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 18,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_01_18.i16.gz",
+      "compressed_bytes": 473026
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 19,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_01_19.i16.gz",
+      "compressed_bytes": 480942
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 20,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_01_20.i16.gz",
+      "compressed_bytes": 476405
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 21,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_01_21.i16.gz",
+      "compressed_bytes": 476510
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 22,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_01_22.i16.gz",
+      "compressed_bytes": 451877
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 23,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_01_23.i16.gz",
+      "compressed_bytes": 465149
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 24,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_01_24.i16.gz",
+      "compressed_bytes": 454462
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 25,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_01_25.i16.gz",
+      "compressed_bytes": 479115
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 26,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_01_26.i16.gz",
+      "compressed_bytes": 488826
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 27,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_01_27.i16.gz",
+      "compressed_bytes": 476269
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 28,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_01_28.i16.gz",
+      "compressed_bytes": 480320
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 29,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_01_29.i16.gz",
+      "compressed_bytes": 471900
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 30,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_01_30.i16.gz",
+      "compressed_bytes": 464698
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 31,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_01_31.i16.gz",
+      "compressed_bytes": 474060
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 32,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_01_32.i16.gz",
+      "compressed_bytes": 473723
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 33,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_01_33.i16.gz",
+      "compressed_bytes": 465429
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 34,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_01_34.i16.gz",
+      "compressed_bytes": 465958
+    },
+    {
+      "lat_index": 1,
+      "lon_index": 35,
+      "south_deg": -80,
+      "north_deg": -70,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_01_35.i16.gz",
+      "compressed_bytes": 466339
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 0,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_02_00.i16.gz",
+      "compressed_bytes": 498722
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 1,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_02_01.i16.gz",
+      "compressed_bytes": 489885
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 2,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_02_02.i16.gz",
+      "compressed_bytes": 481246
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 3,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_02_03.i16.gz",
+      "compressed_bytes": 474738
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 4,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_02_04.i16.gz",
+      "compressed_bytes": 486107
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 5,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_02_05.i16.gz",
+      "compressed_bytes": 493203
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 6,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_02_06.i16.gz",
+      "compressed_bytes": 489334
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 7,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_02_07.i16.gz",
+      "compressed_bytes": 498701
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 8,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_02_08.i16.gz",
+      "compressed_bytes": 483502
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 9,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_02_09.i16.gz",
+      "compressed_bytes": 476573
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 10,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_02_10.i16.gz",
+      "compressed_bytes": 478862
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 11,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_02_11.i16.gz",
+      "compressed_bytes": 463076
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 12,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_02_12.i16.gz",
+      "compressed_bytes": 488051
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 13,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_02_13.i16.gz",
+      "compressed_bytes": 477386
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 14,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_02_14.i16.gz",
+      "compressed_bytes": 477936
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 15,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_02_15.i16.gz",
+      "compressed_bytes": 492063
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 16,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_02_16.i16.gz",
+      "compressed_bytes": 485105
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 17,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_02_17.i16.gz",
+      "compressed_bytes": 497574
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 18,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_02_18.i16.gz",
+      "compressed_bytes": 492168
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 19,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_02_19.i16.gz",
+      "compressed_bytes": 507395
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 20,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_02_20.i16.gz",
+      "compressed_bytes": 508121
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 21,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_02_21.i16.gz",
+      "compressed_bytes": 503755
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 22,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_02_22.i16.gz",
+      "compressed_bytes": 500830
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 23,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_02_23.i16.gz",
+      "compressed_bytes": 503760
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 24,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_02_24.i16.gz",
+      "compressed_bytes": 505965
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 25,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_02_25.i16.gz",
+      "compressed_bytes": 508152
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 26,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_02_26.i16.gz",
+      "compressed_bytes": 511087
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 27,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_02_27.i16.gz",
+      "compressed_bytes": 509019
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 28,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_02_28.i16.gz",
+      "compressed_bytes": 489965
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 29,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_02_29.i16.gz",
+      "compressed_bytes": 489965
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 30,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_02_30.i16.gz",
+      "compressed_bytes": 499442
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 31,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_02_31.i16.gz",
+      "compressed_bytes": 491171
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 32,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_02_32.i16.gz",
+      "compressed_bytes": 480082
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 33,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_02_33.i16.gz",
+      "compressed_bytes": 484135
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 34,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_02_34.i16.gz",
+      "compressed_bytes": 490362
+    },
+    {
+      "lat_index": 2,
+      "lon_index": 35,
+      "south_deg": -70,
+      "north_deg": -60,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_02_35.i16.gz",
+      "compressed_bytes": 491327
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 0,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_03_00.i16.gz",
+      "compressed_bytes": 522570
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 1,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_03_01.i16.gz",
+      "compressed_bytes": 510009
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 2,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_03_02.i16.gz",
+      "compressed_bytes": 503259
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 3,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_03_03.i16.gz",
+      "compressed_bytes": 506452
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 4,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_03_04.i16.gz",
+      "compressed_bytes": 509555
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 5,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_03_05.i16.gz",
+      "compressed_bytes": 507317
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 6,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_03_06.i16.gz",
+      "compressed_bytes": 504293
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 7,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_03_07.i16.gz",
+      "compressed_bytes": 485531
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 8,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_03_08.i16.gz",
+      "compressed_bytes": 498219
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 9,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_03_09.i16.gz",
+      "compressed_bytes": 495929
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 10,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_03_10.i16.gz",
+      "compressed_bytes": 504491
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 11,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_03_11.i16.gz",
+      "compressed_bytes": 528938
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 12,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_03_12.i16.gz",
+      "compressed_bytes": 511041
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 13,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_03_13.i16.gz",
+      "compressed_bytes": 498258
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 14,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_03_14.i16.gz",
+      "compressed_bytes": 504043
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 15,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_03_15.i16.gz",
+      "compressed_bytes": 513050
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 16,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_03_16.i16.gz",
+      "compressed_bytes": 468808
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 17,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_03_17.i16.gz",
+      "compressed_bytes": 507030
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 18,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_03_18.i16.gz",
+      "compressed_bytes": 483411
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 19,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_03_19.i16.gz",
+      "compressed_bytes": 478718
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 20,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_03_20.i16.gz",
+      "compressed_bytes": 493898
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 21,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_03_21.i16.gz",
+      "compressed_bytes": 510409
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 22,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_03_22.i16.gz",
+      "compressed_bytes": 518013
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 23,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_03_23.i16.gz",
+      "compressed_bytes": 523163
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 24,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_03_24.i16.gz",
+      "compressed_bytes": 523837
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 25,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_03_25.i16.gz",
+      "compressed_bytes": 524357
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 26,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_03_26.i16.gz",
+      "compressed_bytes": 501283
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 27,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_03_27.i16.gz",
+      "compressed_bytes": 512072
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 28,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_03_28.i16.gz",
+      "compressed_bytes": 517793
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 29,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_03_29.i16.gz",
+      "compressed_bytes": 503331
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 30,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_03_30.i16.gz",
+      "compressed_bytes": 495751
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 31,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_03_31.i16.gz",
+      "compressed_bytes": 483400
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 32,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_03_32.i16.gz",
+      "compressed_bytes": 505121
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 33,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_03_33.i16.gz",
+      "compressed_bytes": 503048
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 34,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_03_34.i16.gz",
+      "compressed_bytes": 497327
+    },
+    {
+      "lat_index": 3,
+      "lon_index": 35,
+      "south_deg": -60,
+      "north_deg": -50,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_03_35.i16.gz",
+      "compressed_bytes": 512174
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 0,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_04_00.i16.gz",
+      "compressed_bytes": 540779
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 1,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_04_01.i16.gz",
+      "compressed_bytes": 540142
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 2,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_04_02.i16.gz",
+      "compressed_bytes": 526929
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 3,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_04_03.i16.gz",
+      "compressed_bytes": 530070
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 4,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_04_04.i16.gz",
+      "compressed_bytes": 541559
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 5,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_04_05.i16.gz",
+      "compressed_bytes": 535464
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 6,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_04_06.i16.gz",
+      "compressed_bytes": 542699
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 7,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_04_07.i16.gz",
+      "compressed_bytes": 510484
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 8,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_04_08.i16.gz",
+      "compressed_bytes": 513585
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 9,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_04_09.i16.gz",
+      "compressed_bytes": 506201
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 10,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_04_10.i16.gz",
+      "compressed_bytes": 518306
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 11,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_04_11.i16.gz",
+      "compressed_bytes": 541006
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 12,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_04_12.i16.gz",
+      "compressed_bytes": 544177
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 13,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_04_13.i16.gz",
+      "compressed_bytes": 534530
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 14,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_04_14.i16.gz",
+      "compressed_bytes": 539422
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 15,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_04_15.i16.gz",
+      "compressed_bytes": 544940
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 16,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_04_16.i16.gz",
+      "compressed_bytes": 529956
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 17,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_04_17.i16.gz",
+      "compressed_bytes": 513488
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 18,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_04_18.i16.gz",
+      "compressed_bytes": 531677
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 19,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_04_19.i16.gz",
+      "compressed_bytes": 497841
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 20,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_04_20.i16.gz",
+      "compressed_bytes": 493648
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 21,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_04_21.i16.gz",
+      "compressed_bytes": 543512
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 22,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_04_22.i16.gz",
+      "compressed_bytes": 547911
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 23,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_04_23.i16.gz",
+      "compressed_bytes": 551558
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 24,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_04_24.i16.gz",
+      "compressed_bytes": 552119
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 25,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_04_25.i16.gz",
+      "compressed_bytes": 540331
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 26,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_04_26.i16.gz",
+      "compressed_bytes": 537315
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 27,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_04_27.i16.gz",
+      "compressed_bytes": 550406
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 28,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_04_28.i16.gz",
+      "compressed_bytes": 544538
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 29,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_04_29.i16.gz",
+      "compressed_bytes": 499001
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 30,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_04_30.i16.gz",
+      "compressed_bytes": 491733
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 31,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_04_31.i16.gz",
+      "compressed_bytes": 495601
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 32,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_04_32.i16.gz",
+      "compressed_bytes": 521489
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 33,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_04_33.i16.gz",
+      "compressed_bytes": 521397
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 34,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_04_34.i16.gz",
+      "compressed_bytes": 545831
+    },
+    {
+      "lat_index": 4,
+      "lon_index": 35,
+      "south_deg": -50,
+      "north_deg": -40,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_04_35.i16.gz",
+      "compressed_bytes": 540310
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 0,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_05_00.i16.gz",
+      "compressed_bytes": 547168
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 1,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_05_01.i16.gz",
+      "compressed_bytes": 547175
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 2,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_05_02.i16.gz",
+      "compressed_bytes": 549236
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 3,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_05_03.i16.gz",
+      "compressed_bytes": 546013
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 4,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_05_04.i16.gz",
+      "compressed_bytes": 553216
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 5,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_05_05.i16.gz",
+      "compressed_bytes": 547561
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 6,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_05_06.i16.gz",
+      "compressed_bytes": 554767
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 7,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_05_07.i16.gz",
+      "compressed_bytes": 557183
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 8,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_05_08.i16.gz",
+      "compressed_bytes": 545138
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 9,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_05_09.i16.gz",
+      "compressed_bytes": 505110
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 10,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_05_10.i16.gz",
+      "compressed_bytes": 536967
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 11,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_05_11.i16.gz",
+      "compressed_bytes": 554287
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 12,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_05_12.i16.gz",
+      "compressed_bytes": 562239
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 13,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_05_13.i16.gz",
+      "compressed_bytes": 556705
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 14,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_05_14.i16.gz",
+      "compressed_bytes": 551749
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 15,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_05_15.i16.gz",
+      "compressed_bytes": 562348
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 16,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_05_16.i16.gz",
+      "compressed_bytes": 495134
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 17,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_05_17.i16.gz",
+      "compressed_bytes": 541746
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 18,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_05_18.i16.gz",
+      "compressed_bytes": 532205
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 19,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_05_19.i16.gz",
+      "compressed_bytes": 538160
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 20,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_05_20.i16.gz",
+      "compressed_bytes": 514428
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 21,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_05_21.i16.gz",
+      "compressed_bytes": 545258
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 22,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_05_22.i16.gz",
+      "compressed_bytes": 554334
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 23,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_05_23.i16.gz",
+      "compressed_bytes": 562674
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 24,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_05_24.i16.gz",
+      "compressed_bytes": 549933
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 25,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_05_25.i16.gz",
+      "compressed_bytes": 548435
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 26,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_05_26.i16.gz",
+      "compressed_bytes": 561247
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 27,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_05_27.i16.gz",
+      "compressed_bytes": 563795
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 28,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_05_28.i16.gz",
+      "compressed_bytes": 552349
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 29,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_05_29.i16.gz",
+      "compressed_bytes": 512370
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 30,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_05_30.i16.gz",
+      "compressed_bytes": 525866
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 31,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_05_31.i16.gz",
+      "compressed_bytes": 509852
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 32,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_05_32.i16.gz",
+      "compressed_bytes": 534545
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 33,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_05_33.i16.gz",
+      "compressed_bytes": 519032
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 34,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_05_34.i16.gz",
+      "compressed_bytes": 542486
+    },
+    {
+      "lat_index": 5,
+      "lon_index": 35,
+      "south_deg": -40,
+      "north_deg": -30,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_05_35.i16.gz",
+      "compressed_bytes": 544147
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 0,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_06_00.i16.gz",
+      "compressed_bytes": 552149
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 1,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_06_01.i16.gz",
+      "compressed_bytes": 553289
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 2,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_06_02.i16.gz",
+      "compressed_bytes": 552133
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 3,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_06_03.i16.gz",
+      "compressed_bytes": 549432
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 4,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_06_04.i16.gz",
+      "compressed_bytes": 549671
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 5,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_06_05.i16.gz",
+      "compressed_bytes": 533890
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 6,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_06_06.i16.gz",
+      "compressed_bytes": 547383
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 7,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_06_07.i16.gz",
+      "compressed_bytes": 552754
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 8,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_06_08.i16.gz",
+      "compressed_bytes": 560206
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 9,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_06_09.i16.gz",
+      "compressed_bytes": 572006
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 10,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_06_10.i16.gz",
+      "compressed_bytes": 553183
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 11,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_06_11.i16.gz",
+      "compressed_bytes": 554558
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 12,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_06_12.i16.gz",
+      "compressed_bytes": 558460
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 13,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_06_13.i16.gz",
+      "compressed_bytes": 573068
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 14,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_06_14.i16.gz",
+      "compressed_bytes": 572287
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 15,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_06_15.i16.gz",
+      "compressed_bytes": 573569
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 16,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_06_16.i16.gz",
+      "compressed_bytes": 564341
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 17,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_06_17.i16.gz",
+      "compressed_bytes": 560516
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 18,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_06_18.i16.gz",
+      "compressed_bytes": 560336
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 19,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_06_19.i16.gz",
+      "compressed_bytes": 557011
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 20,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_06_20.i16.gz",
+      "compressed_bytes": 562617
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 21,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_06_21.i16.gz",
+      "compressed_bytes": 571340
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 22,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_06_22.i16.gz",
+      "compressed_bytes": 567708
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 23,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_06_23.i16.gz",
+      "compressed_bytes": 563949
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 24,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_06_24.i16.gz",
+      "compressed_bytes": 555114
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 25,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_06_25.i16.gz",
+      "compressed_bytes": 568960
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 26,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_06_26.i16.gz",
+      "compressed_bytes": 524411
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 27,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_06_27.i16.gz",
+      "compressed_bytes": 563976
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 28,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_06_28.i16.gz",
+      "compressed_bytes": 554814
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 29,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_06_29.i16.gz",
+      "compressed_bytes": 534759
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 30,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_06_30.i16.gz",
+      "compressed_bytes": 543408
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 31,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_06_31.i16.gz",
+      "compressed_bytes": 483966
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 32,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_06_32.i16.gz",
+      "compressed_bytes": 438095
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 33,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_06_33.i16.gz",
+      "compressed_bytes": 481213
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 34,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_06_34.i16.gz",
+      "compressed_bytes": 416604
+    },
+    {
+      "lat_index": 6,
+      "lon_index": 35,
+      "south_deg": -30,
+      "north_deg": -20,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_06_35.i16.gz",
+      "compressed_bytes": 514074
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 0,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_07_00.i16.gz",
+      "compressed_bytes": 548446
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 1,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_07_01.i16.gz",
+      "compressed_bytes": 554874
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 2,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_07_02.i16.gz",
+      "compressed_bytes": 562635
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 3,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_07_03.i16.gz",
+      "compressed_bytes": 444242
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 4,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_07_04.i16.gz",
+      "compressed_bytes": 529799
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 5,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_07_05.i16.gz",
+      "compressed_bytes": 481503
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 6,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_07_06.i16.gz",
+      "compressed_bytes": 544880
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 7,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_07_07.i16.gz",
+      "compressed_bytes": 543349
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 8,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_07_08.i16.gz",
+      "compressed_bytes": 557072
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 9,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_07_09.i16.gz",
+      "compressed_bytes": 573553
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 10,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_07_10.i16.gz",
+      "compressed_bytes": 565255
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 11,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_07_11.i16.gz",
+      "compressed_bytes": 572516
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 12,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_07_12.i16.gz",
+      "compressed_bytes": 564983
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 13,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_07_13.i16.gz",
+      "compressed_bytes": 576343
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 14,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_07_14.i16.gz",
+      "compressed_bytes": 573902
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 15,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_07_15.i16.gz",
+      "compressed_bytes": 574100
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 16,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_07_16.i16.gz",
+      "compressed_bytes": 569612
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 17,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_07_17.i16.gz",
+      "compressed_bytes": 570659
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 18,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_07_18.i16.gz",
+      "compressed_bytes": 580564
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 19,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_07_19.i16.gz",
+      "compressed_bytes": 574825
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 20,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_07_20.i16.gz",
+      "compressed_bytes": 576779
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 21,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_07_21.i16.gz",
+      "compressed_bytes": 571731
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 22,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_07_22.i16.gz",
+      "compressed_bytes": 572665
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 23,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_07_23.i16.gz",
+      "compressed_bytes": 573627
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 24,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_07_24.i16.gz",
+      "compressed_bytes": 564873
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 25,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_07_25.i16.gz",
+      "compressed_bytes": 568328
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 26,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_07_26.i16.gz",
+      "compressed_bytes": 513361
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 27,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_07_27.i16.gz",
+      "compressed_bytes": 555850
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 28,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_07_28.i16.gz",
+      "compressed_bytes": 562171
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 29,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_07_29.i16.gz",
+      "compressed_bytes": 536409
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 30,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_07_30.i16.gz",
+      "compressed_bytes": 517137
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 31,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_07_31.i16.gz",
+      "compressed_bytes": 510156
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 32,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_07_32.i16.gz",
+      "compressed_bytes": 433237
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 33,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_07_33.i16.gz",
+      "compressed_bytes": 415828
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 34,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_07_34.i16.gz",
+      "compressed_bytes": 399535
+    },
+    {
+      "lat_index": 7,
+      "lon_index": 35,
+      "south_deg": -20,
+      "north_deg": -10,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_07_35.i16.gz",
+      "compressed_bytes": 510500
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 0,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_08_00.i16.gz",
+      "compressed_bytes": 543041
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 1,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_08_01.i16.gz",
+      "compressed_bytes": 552829
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 2,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_08_02.i16.gz",
+      "compressed_bytes": 513006
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 3,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_08_03.i16.gz",
+      "compressed_bytes": 551619
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 4,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_08_04.i16.gz",
+      "compressed_bytes": 431803
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 5,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_08_05.i16.gz",
+      "compressed_bytes": 465255
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 6,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_08_06.i16.gz",
+      "compressed_bytes": 553703
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 7,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_08_07.i16.gz",
+      "compressed_bytes": 554001
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 8,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_08_08.i16.gz",
+      "compressed_bytes": 506466
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 9,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_08_09.i16.gz",
+      "compressed_bytes": 561714
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 10,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_08_10.i16.gz",
+      "compressed_bytes": 570140
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 11,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_08_11.i16.gz",
+      "compressed_bytes": 564521
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 12,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_08_12.i16.gz",
+      "compressed_bytes": 572914
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 13,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_08_13.i16.gz",
+      "compressed_bytes": 577815
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 14,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_08_14.i16.gz",
+      "compressed_bytes": 575799
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 15,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_08_15.i16.gz",
+      "compressed_bytes": 578011
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 16,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_08_16.i16.gz",
+      "compressed_bytes": 571336
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 17,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_08_17.i16.gz",
+      "compressed_bytes": 575194
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 18,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_08_18.i16.gz",
+      "compressed_bytes": 575789
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 19,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_08_19.i16.gz",
+      "compressed_bytes": 561274
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 20,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_08_20.i16.gz",
+      "compressed_bytes": 554322
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 21,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_08_21.i16.gz",
+      "compressed_bytes": 564378
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 22,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_08_22.i16.gz",
+      "compressed_bytes": 575201
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 23,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_08_23.i16.gz",
+      "compressed_bytes": 571222
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 24,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_08_24.i16.gz",
+      "compressed_bytes": 578103
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 25,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_08_25.i16.gz",
+      "compressed_bytes": 572120
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 26,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_08_26.i16.gz",
+      "compressed_bytes": 570112
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 27,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_08_27.i16.gz",
+      "compressed_bytes": 566391
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 28,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_08_28.i16.gz",
+      "compressed_bytes": 554978
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 29,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_08_29.i16.gz",
+      "compressed_bytes": 512978
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 30,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_08_30.i16.gz",
+      "compressed_bytes": 376222
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 31,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_08_31.i16.gz",
+      "compressed_bytes": 357822
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 32,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_08_32.i16.gz",
+      "compressed_bytes": 351053
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 33,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_08_33.i16.gz",
+      "compressed_bytes": 404166
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 34,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_08_34.i16.gz",
+      "compressed_bytes": 448488
+    },
+    {
+      "lat_index": 8,
+      "lon_index": 35,
+      "south_deg": -10,
+      "north_deg": 0,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_08_35.i16.gz",
+      "compressed_bytes": 504742
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 0,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_09_00.i16.gz",
+      "compressed_bytes": 499490
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 1,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_09_01.i16.gz",
+      "compressed_bytes": 508613
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 2,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_09_02.i16.gz",
+      "compressed_bytes": 401999
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 3,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_09_03.i16.gz",
+      "compressed_bytes": 393901
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 4,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_09_04.i16.gz",
+      "compressed_bytes": 485922
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 5,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_09_05.i16.gz",
+      "compressed_bytes": 503158
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 6,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_09_06.i16.gz",
+      "compressed_bytes": 528907
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 7,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_09_07.i16.gz",
+      "compressed_bytes": 552140
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 8,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_09_08.i16.gz",
+      "compressed_bytes": 519089
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 9,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_09_09.i16.gz",
+      "compressed_bytes": 529861
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 10,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_09_10.i16.gz",
+      "compressed_bytes": 563737
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 11,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_09_11.i16.gz",
+      "compressed_bytes": 563195
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 12,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_09_12.i16.gz",
+      "compressed_bytes": 574444
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 13,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_09_13.i16.gz",
+      "compressed_bytes": 575622
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 14,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_09_14.i16.gz",
+      "compressed_bytes": 565272
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 15,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_09_15.i16.gz",
+      "compressed_bytes": 575904
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 16,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_09_16.i16.gz",
+      "compressed_bytes": 572099
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 17,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_09_17.i16.gz",
+      "compressed_bytes": 567815
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 18,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_09_18.i16.gz",
+      "compressed_bytes": 573692
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 19,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_09_19.i16.gz",
+      "compressed_bytes": 566930
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 20,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_09_20.i16.gz",
+      "compressed_bytes": 566304
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 21,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_09_21.i16.gz",
+      "compressed_bytes": 562224
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 22,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_09_22.i16.gz",
+      "compressed_bytes": 558223
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 23,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_09_23.i16.gz",
+      "compressed_bytes": 559654
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 24,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_09_24.i16.gz",
+      "compressed_bytes": 583163
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 25,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_09_25.i16.gz",
+      "compressed_bytes": 576826
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 26,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_09_26.i16.gz",
+      "compressed_bytes": 577005
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 27,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_09_27.i16.gz",
+      "compressed_bytes": 560638
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 28,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_09_28.i16.gz",
+      "compressed_bytes": 541657
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 29,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_09_29.i16.gz",
+      "compressed_bytes": 469468
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 30,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_09_30.i16.gz",
+      "compressed_bytes": 352779
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 31,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_09_31.i16.gz",
+      "compressed_bytes": 335785
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 32,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_09_32.i16.gz",
+      "compressed_bytes": 417015
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 33,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_09_33.i16.gz",
+      "compressed_bytes": 461906
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 34,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_09_34.i16.gz",
+      "compressed_bytes": 451565
+    },
+    {
+      "lat_index": 9,
+      "lon_index": 35,
+      "south_deg": 0,
+      "north_deg": 10,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_09_35.i16.gz",
+      "compressed_bytes": 482669
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 0,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_10_00.i16.gz",
+      "compressed_bytes": 447045
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 1,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_10_01.i16.gz",
+      "compressed_bytes": 463940
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 2,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_10_02.i16.gz",
+      "compressed_bytes": 431889
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 3,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_10_03.i16.gz",
+      "compressed_bytes": 422696
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 4,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_10_04.i16.gz",
+      "compressed_bytes": 538389
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 5,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_10_05.i16.gz",
+      "compressed_bytes": 415041
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 6,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_10_06.i16.gz",
+      "compressed_bytes": 445148
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 7,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_10_07.i16.gz",
+      "compressed_bytes": 547717
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 8,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_10_08.i16.gz",
+      "compressed_bytes": 485845
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 9,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_10_09.i16.gz",
+      "compressed_bytes": 517993
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 10,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_10_10.i16.gz",
+      "compressed_bytes": 539732
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 11,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_10_11.i16.gz",
+      "compressed_bytes": 547246
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 12,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_10_12.i16.gz",
+      "compressed_bytes": 570134
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 13,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_10_13.i16.gz",
+      "compressed_bytes": 573254
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 14,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_10_14.i16.gz",
+      "compressed_bytes": 572846
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 15,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_10_15.i16.gz",
+      "compressed_bytes": 572276
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 16,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_10_16.i16.gz",
+      "compressed_bytes": 572794
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 17,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_10_17.i16.gz",
+      "compressed_bytes": 563547
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 18,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_10_18.i16.gz",
+      "compressed_bytes": 564781
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 19,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_10_19.i16.gz",
+      "compressed_bytes": 572289
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 20,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_10_20.i16.gz",
+      "compressed_bytes": 569937
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 21,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_10_21.i16.gz",
+      "compressed_bytes": 560443
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 22,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_10_22.i16.gz",
+      "compressed_bytes": 567906
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 23,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_10_23.i16.gz",
+      "compressed_bytes": 574168
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 24,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_10_24.i16.gz",
+      "compressed_bytes": 579134
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 25,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_10_25.i16.gz",
+      "compressed_bytes": 572020
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 26,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_10_26.i16.gz",
+      "compressed_bytes": 566309
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 27,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_10_27.i16.gz",
+      "compressed_bytes": 559926
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 28,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_10_28.i16.gz",
+      "compressed_bytes": 474776
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 29,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_10_29.i16.gz",
+      "compressed_bytes": 337580
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 30,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_10_30.i16.gz",
+      "compressed_bytes": 368869
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 31,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_10_31.i16.gz",
+      "compressed_bytes": 317719
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 32,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_10_32.i16.gz",
+      "compressed_bytes": 381381
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 33,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_10_33.i16.gz",
+      "compressed_bytes": 476890
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 34,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_10_34.i16.gz",
+      "compressed_bytes": 458809
+    },
+    {
+      "lat_index": 10,
+      "lon_index": 35,
+      "south_deg": 10,
+      "north_deg": 20,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_10_35.i16.gz",
+      "compressed_bytes": 492244
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 0,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_11_00.i16.gz",
+      "compressed_bytes": 508450
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 1,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_11_01.i16.gz",
+      "compressed_bytes": 299065
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 2,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_11_02.i16.gz",
+      "compressed_bytes": 339069
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 3,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_11_03.i16.gz",
+      "compressed_bytes": 520626
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 4,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_11_04.i16.gz",
+      "compressed_bytes": 537822
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 5,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_11_05.i16.gz",
+      "compressed_bytes": 516208
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 6,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_11_06.i16.gz",
+      "compressed_bytes": 520720
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 7,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_11_07.i16.gz",
+      "compressed_bytes": 546909
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 8,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_11_08.i16.gz",
+      "compressed_bytes": 546871
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 9,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_11_09.i16.gz",
+      "compressed_bytes": 537540
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 10,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_11_10.i16.gz",
+      "compressed_bytes": 515888
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 11,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_11_11.i16.gz",
+      "compressed_bytes": 555703
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 12,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_11_12.i16.gz",
+      "compressed_bytes": 561798
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 13,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_11_13.i16.gz",
+      "compressed_bytes": 566398
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 14,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_11_14.i16.gz",
+      "compressed_bytes": 535235
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 15,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_11_15.i16.gz",
+      "compressed_bytes": 560107
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 16,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_11_16.i16.gz",
+      "compressed_bytes": 565667
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 17,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_11_17.i16.gz",
+      "compressed_bytes": 560684
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 18,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_11_18.i16.gz",
+      "compressed_bytes": 564471
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 19,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_11_19.i16.gz",
+      "compressed_bytes": 565985
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 20,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_11_20.i16.gz",
+      "compressed_bytes": 567363
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 21,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_11_21.i16.gz",
+      "compressed_bytes": 561627
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 22,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_11_22.i16.gz",
+      "compressed_bytes": 570755
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 23,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_11_23.i16.gz",
+      "compressed_bytes": 570022
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 24,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_11_24.i16.gz",
+      "compressed_bytes": 563569
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 25,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_11_25.i16.gz",
+      "compressed_bytes": 554690
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 26,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_11_26.i16.gz",
+      "compressed_bytes": 550601
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 27,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_11_27.i16.gz",
+      "compressed_bytes": 512433
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 28,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_11_28.i16.gz",
+      "compressed_bytes": 451390
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 29,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_11_29.i16.gz",
+      "compressed_bytes": 324261
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 30,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_11_30.i16.gz",
+      "compressed_bytes": 378780
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 31,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_11_31.i16.gz",
+      "compressed_bytes": 416269
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 32,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_11_32.i16.gz",
+      "compressed_bytes": 339659
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 33,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_11_33.i16.gz",
+      "compressed_bytes": 341533
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 34,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_11_34.i16.gz",
+      "compressed_bytes": 361342
+    },
+    {
+      "lat_index": 11,
+      "lon_index": 35,
+      "south_deg": 20,
+      "north_deg": 30,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_11_35.i16.gz",
+      "compressed_bytes": 462669
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 0,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_12_00.i16.gz",
+      "compressed_bytes": 483440
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 1,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_12_01.i16.gz",
+      "compressed_bytes": 391401
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 2,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_12_02.i16.gz",
+      "compressed_bytes": 419019
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 3,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_12_03.i16.gz",
+      "compressed_bytes": 466760
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 4,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_12_04.i16.gz",
+      "compressed_bytes": 531259
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 5,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_12_05.i16.gz",
+      "compressed_bytes": 532598
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 6,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_12_06.i16.gz",
+      "compressed_bytes": 516515
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 7,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_12_07.i16.gz",
+      "compressed_bytes": 526381
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 8,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_12_08.i16.gz",
+      "compressed_bytes": 540991
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 9,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_12_09.i16.gz",
+      "compressed_bytes": 545131
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 10,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_12_10.i16.gz",
+      "compressed_bytes": 545355
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 11,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_12_11.i16.gz",
+      "compressed_bytes": 550088
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 12,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_12_12.i16.gz",
+      "compressed_bytes": 555833
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 13,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_12_13.i16.gz",
+      "compressed_bytes": 556714
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 14,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_12_14.i16.gz",
+      "compressed_bytes": 554104
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 15,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_12_15.i16.gz",
+      "compressed_bytes": 556471
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 16,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_12_16.i16.gz",
+      "compressed_bytes": 560516
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 17,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_12_17.i16.gz",
+      "compressed_bytes": 557674
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 18,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_12_18.i16.gz",
+      "compressed_bytes": 560430
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 19,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_12_19.i16.gz",
+      "compressed_bytes": 563634
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 20,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_12_20.i16.gz",
+      "compressed_bytes": 550524
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 21,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_12_21.i16.gz",
+      "compressed_bytes": 560732
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 22,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_12_22.i16.gz",
+      "compressed_bytes": 560411
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 23,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_12_23.i16.gz",
+      "compressed_bytes": 541379
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 24,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_12_24.i16.gz",
+      "compressed_bytes": 542036
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 25,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_12_25.i16.gz",
+      "compressed_bytes": 538278
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 26,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_12_26.i16.gz",
+      "compressed_bytes": 534971
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 27,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_12_27.i16.gz",
+      "compressed_bytes": 515723
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 28,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_12_28.i16.gz",
+      "compressed_bytes": 367975
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 29,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_12_29.i16.gz",
+      "compressed_bytes": 310001
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 30,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_12_30.i16.gz",
+      "compressed_bytes": 315420
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 31,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_12_31.i16.gz",
+      "compressed_bytes": 379638
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 32,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_12_32.i16.gz",
+      "compressed_bytes": 372501
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 33,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_12_33.i16.gz",
+      "compressed_bytes": 284444
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 34,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_12_34.i16.gz",
+      "compressed_bytes": 288719
+    },
+    {
+      "lat_index": 12,
+      "lon_index": 35,
+      "south_deg": 30,
+      "north_deg": 40,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_12_35.i16.gz",
+      "compressed_bytes": 379500
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 0,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_13_00.i16.gz",
+      "compressed_bytes": 506783
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 1,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_13_01.i16.gz",
+      "compressed_bytes": 521091
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 2,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_13_02.i16.gz",
+      "compressed_bytes": 482932
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 3,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_13_03.i16.gz",
+      "compressed_bytes": 462722
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 4,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_13_04.i16.gz",
+      "compressed_bytes": 494189
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 5,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_13_05.i16.gz",
+      "compressed_bytes": 467853
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 6,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_13_06.i16.gz",
+      "compressed_bytes": 516129
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 7,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_13_07.i16.gz",
+      "compressed_bytes": 538725
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 8,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_13_08.i16.gz",
+      "compressed_bytes": 544651
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 9,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_13_09.i16.gz",
+      "compressed_bytes": 546978
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 10,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_13_10.i16.gz",
+      "compressed_bytes": 547334
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 11,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_13_11.i16.gz",
+      "compressed_bytes": 555584
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 12,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_13_12.i16.gz",
+      "compressed_bytes": 546798
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 13,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_13_13.i16.gz",
+      "compressed_bytes": 536445
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 14,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_13_14.i16.gz",
+      "compressed_bytes": 545000
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 15,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_13_15.i16.gz",
+      "compressed_bytes": 541127
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 16,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_13_16.i16.gz",
+      "compressed_bytes": 544813
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 17,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_13_17.i16.gz",
+      "compressed_bytes": 553469
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 18,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_13_18.i16.gz",
+      "compressed_bytes": 553359
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 19,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_13_19.i16.gz",
+      "compressed_bytes": 544227
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 20,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_13_20.i16.gz",
+      "compressed_bytes": 540241
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 21,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_13_21.i16.gz",
+      "compressed_bytes": 539472
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 22,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_13_22.i16.gz",
+      "compressed_bytes": 532198
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 23,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_13_23.i16.gz",
+      "compressed_bytes": 532817
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 24,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_13_24.i16.gz",
+      "compressed_bytes": 524398
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 25,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_13_25.i16.gz",
+      "compressed_bytes": 534977
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 26,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_13_26.i16.gz",
+      "compressed_bytes": 533540
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 27,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_13_27.i16.gz",
+      "compressed_bytes": 522485
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 28,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_13_28.i16.gz",
+      "compressed_bytes": 432360
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 29,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_13_29.i16.gz",
+      "compressed_bytes": 320188
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 30,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_13_30.i16.gz",
+      "compressed_bytes": 343475
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 31,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_13_31.i16.gz",
+      "compressed_bytes": 477030
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 32,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_13_32.i16.gz",
+      "compressed_bytes": 458057
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 33,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_13_33.i16.gz",
+      "compressed_bytes": 360763
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 34,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_13_34.i16.gz",
+      "compressed_bytes": 324948
+    },
+    {
+      "lat_index": 13,
+      "lon_index": 35,
+      "south_deg": 40,
+      "north_deg": 50,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_13_35.i16.gz",
+      "compressed_bytes": 381565
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 0,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_14_00.i16.gz",
+      "compressed_bytes": 422697
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 1,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_14_01.i16.gz",
+      "compressed_bytes": 456620
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 2,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_14_02.i16.gz",
+      "compressed_bytes": 388849
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 3,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_14_03.i16.gz",
+      "compressed_bytes": 378377
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 4,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_14_04.i16.gz",
+      "compressed_bytes": 467190
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 5,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_14_05.i16.gz",
+      "compressed_bytes": 489089
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 6,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_14_06.i16.gz",
+      "compressed_bytes": 512696
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 7,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_14_07.i16.gz",
+      "compressed_bytes": 484714
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 8,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_14_08.i16.gz",
+      "compressed_bytes": 484359
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 9,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_14_09.i16.gz",
+      "compressed_bytes": 530008
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 10,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_14_10.i16.gz",
+      "compressed_bytes": 518429
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 11,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_14_11.i16.gz",
+      "compressed_bytes": 528738
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 12,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_14_12.i16.gz",
+      "compressed_bytes": 533287
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 13,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_14_13.i16.gz",
+      "compressed_bytes": 531890
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 14,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_14_14.i16.gz",
+      "compressed_bytes": 532027
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 15,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_14_15.i16.gz",
+      "compressed_bytes": 535371
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 16,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_14_16.i16.gz",
+      "compressed_bytes": 520738
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 17,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_14_17.i16.gz",
+      "compressed_bytes": 534044
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 18,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_14_18.i16.gz",
+      "compressed_bytes": 530647
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 19,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_14_19.i16.gz",
+      "compressed_bytes": 524379
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 20,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_14_20.i16.gz",
+      "compressed_bytes": 527912
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 21,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_14_21.i16.gz",
+      "compressed_bytes": 513755
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 22,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_14_22.i16.gz",
+      "compressed_bytes": 518825
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 23,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_14_23.i16.gz",
+      "compressed_bytes": 506497
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 24,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_14_24.i16.gz",
+      "compressed_bytes": 507372
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 25,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_14_25.i16.gz",
+      "compressed_bytes": 514350
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 26,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_14_26.i16.gz",
+      "compressed_bytes": 514692
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 27,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_14_27.i16.gz",
+      "compressed_bytes": 517773
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 28,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_14_28.i16.gz",
+      "compressed_bytes": 473310
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 29,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_14_29.i16.gz",
+      "compressed_bytes": 439485
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 30,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_14_30.i16.gz",
+      "compressed_bytes": 425973
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 31,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_14_31.i16.gz",
+      "compressed_bytes": 436275
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 32,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_14_32.i16.gz",
+      "compressed_bytes": 430386
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 33,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_14_33.i16.gz",
+      "compressed_bytes": 421565
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 34,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_14_34.i16.gz",
+      "compressed_bytes": 395015
+    },
+    {
+      "lat_index": 14,
+      "lon_index": 35,
+      "south_deg": 50,
+      "north_deg": 60,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_14_35.i16.gz",
+      "compressed_bytes": 431897
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 0,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_15_00.i16.gz",
+      "compressed_bytes": 460298
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 1,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_15_01.i16.gz",
+      "compressed_bytes": 456430
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 2,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_15_02.i16.gz",
+      "compressed_bytes": 437867
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 3,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_15_03.i16.gz",
+      "compressed_bytes": 456684
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 4,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_15_04.i16.gz",
+      "compressed_bytes": 471233
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 5,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_15_05.i16.gz",
+      "compressed_bytes": 494754
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 6,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_15_06.i16.gz",
+      "compressed_bytes": 502119
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 7,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_15_07.i16.gz",
+      "compressed_bytes": 498180
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 8,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_15_08.i16.gz",
+      "compressed_bytes": 504461
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 9,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_15_09.i16.gz",
+      "compressed_bytes": 504165
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 10,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_15_10.i16.gz",
+      "compressed_bytes": 507623
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 11,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_15_11.i16.gz",
+      "compressed_bytes": 507374
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 12,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_15_12.i16.gz",
+      "compressed_bytes": 508416
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 13,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_15_13.i16.gz",
+      "compressed_bytes": 515276
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 14,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_15_14.i16.gz",
+      "compressed_bytes": 508845
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 15,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_15_15.i16.gz",
+      "compressed_bytes": 508477
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 16,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_15_16.i16.gz",
+      "compressed_bytes": 506208
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 17,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_15_17.i16.gz",
+      "compressed_bytes": 509970
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 18,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_15_18.i16.gz",
+      "compressed_bytes": 510645
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 19,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_15_19.i16.gz",
+      "compressed_bytes": 492774
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 20,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_15_20.i16.gz",
+      "compressed_bytes": 506524
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 21,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_15_21.i16.gz",
+      "compressed_bytes": 506680
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 22,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_15_22.i16.gz",
+      "compressed_bytes": 501431
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 23,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_15_23.i16.gz",
+      "compressed_bytes": 512611
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 24,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_15_24.i16.gz",
+      "compressed_bytes": 495992
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 25,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_15_25.i16.gz",
+      "compressed_bytes": 504379
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 26,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_15_26.i16.gz",
+      "compressed_bytes": 511854
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 27,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_15_27.i16.gz",
+      "compressed_bytes": 508231
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 28,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_15_28.i16.gz",
+      "compressed_bytes": 492554
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 29,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_15_29.i16.gz",
+      "compressed_bytes": 485534
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 30,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_15_30.i16.gz",
+      "compressed_bytes": 479985
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 31,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_15_31.i16.gz",
+      "compressed_bytes": 463099
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 32,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_15_32.i16.gz",
+      "compressed_bytes": 461175
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 33,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_15_33.i16.gz",
+      "compressed_bytes": 444452
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 34,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_15_34.i16.gz",
+      "compressed_bytes": 418972
+    },
+    {
+      "lat_index": 15,
+      "lon_index": 35,
+      "south_deg": 60,
+      "north_deg": 70,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_15_35.i16.gz",
+      "compressed_bytes": 459167
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 0,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_16_00.i16.gz",
+      "compressed_bytes": 449703
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 1,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_16_01.i16.gz",
+      "compressed_bytes": 447654
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 2,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_16_02.i16.gz",
+      "compressed_bytes": 436389
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 3,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_16_03.i16.gz",
+      "compressed_bytes": 452961
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 4,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_16_04.i16.gz",
+      "compressed_bytes": 482802
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 5,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_16_05.i16.gz",
+      "compressed_bytes": 483489
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 6,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_16_06.i16.gz",
+      "compressed_bytes": 492261
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 7,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_16_07.i16.gz",
+      "compressed_bytes": 504394
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 8,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_16_08.i16.gz",
+      "compressed_bytes": 504449
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 9,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_16_09.i16.gz",
+      "compressed_bytes": 509960
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 10,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_16_10.i16.gz",
+      "compressed_bytes": 496836
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 11,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_16_11.i16.gz",
+      "compressed_bytes": 491765
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 12,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_16_12.i16.gz",
+      "compressed_bytes": 487051
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 13,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_16_13.i16.gz",
+      "compressed_bytes": 486902
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 14,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_16_14.i16.gz",
+      "compressed_bytes": 486859
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 15,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_16_15.i16.gz",
+      "compressed_bytes": 485027
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 16,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_16_16.i16.gz",
+      "compressed_bytes": 484711
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 17,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_16_17.i16.gz",
+      "compressed_bytes": 489502
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 18,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_16_18.i16.gz",
+      "compressed_bytes": 489119
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 19,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_16_19.i16.gz",
+      "compressed_bytes": 477392
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 20,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_16_20.i16.gz",
+      "compressed_bytes": 476629
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 21,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_16_21.i16.gz",
+      "compressed_bytes": 478445
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 22,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_16_22.i16.gz",
+      "compressed_bytes": 486206
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 23,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_16_23.i16.gz",
+      "compressed_bytes": 475684
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 24,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_16_24.i16.gz",
+      "compressed_bytes": 498333
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 25,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_16_25.i16.gz",
+      "compressed_bytes": 486051
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 26,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_16_26.i16.gz",
+      "compressed_bytes": 494187
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 27,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_16_27.i16.gz",
+      "compressed_bytes": 493609
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 28,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_16_28.i16.gz",
+      "compressed_bytes": 497240
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 29,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_16_29.i16.gz",
+      "compressed_bytes": 485668
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 30,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_16_30.i16.gz",
+      "compressed_bytes": 465214
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 31,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_16_31.i16.gz",
+      "compressed_bytes": 458797
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 32,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_16_32.i16.gz",
+      "compressed_bytes": 465489
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 33,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_16_33.i16.gz",
+      "compressed_bytes": 463908
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 34,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_16_34.i16.gz",
+      "compressed_bytes": 456551
+    },
+    {
+      "lat_index": 16,
+      "lon_index": 35,
+      "south_deg": 70,
+      "north_deg": 80,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_16_35.i16.gz",
+      "compressed_bytes": 437329
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 0,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 0,
+      "east_deg": 10,
+      "file": "t_17_00.i16.gz",
+      "compressed_bytes": 402508
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 1,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 10,
+      "east_deg": 20,
+      "file": "t_17_01.i16.gz",
+      "compressed_bytes": 399191
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 2,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 20,
+      "east_deg": 30,
+      "file": "t_17_02.i16.gz",
+      "compressed_bytes": 422612
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 3,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 30,
+      "east_deg": 40,
+      "file": "t_17_03.i16.gz",
+      "compressed_bytes": 421432
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 4,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 40,
+      "east_deg": 50,
+      "file": "t_17_04.i16.gz",
+      "compressed_bytes": 431861
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 5,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 50,
+      "east_deg": 60,
+      "file": "t_17_05.i16.gz",
+      "compressed_bytes": 434068
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 6,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 60,
+      "east_deg": 70,
+      "file": "t_17_06.i16.gz",
+      "compressed_bytes": 439148
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 7,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 70,
+      "east_deg": 80,
+      "file": "t_17_07.i16.gz",
+      "compressed_bytes": 445309
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 8,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 80,
+      "east_deg": 90,
+      "file": "t_17_08.i16.gz",
+      "compressed_bytes": 442166
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 9,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 90,
+      "east_deg": 100,
+      "file": "t_17_09.i16.gz",
+      "compressed_bytes": 434551
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 10,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 100,
+      "east_deg": 110,
+      "file": "t_17_10.i16.gz",
+      "compressed_bytes": 440058
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 11,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 110,
+      "east_deg": 120,
+      "file": "t_17_11.i16.gz",
+      "compressed_bytes": 442470
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 12,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 120,
+      "east_deg": 130,
+      "file": "t_17_12.i16.gz",
+      "compressed_bytes": 430330
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 13,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 130,
+      "east_deg": 140,
+      "file": "t_17_13.i16.gz",
+      "compressed_bytes": 415595
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 14,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 140,
+      "east_deg": 150,
+      "file": "t_17_14.i16.gz",
+      "compressed_bytes": 422892
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 15,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 150,
+      "east_deg": 160,
+      "file": "t_17_15.i16.gz",
+      "compressed_bytes": 428401
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 16,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 160,
+      "east_deg": 170,
+      "file": "t_17_16.i16.gz",
+      "compressed_bytes": 441014
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 17,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 170,
+      "east_deg": 180,
+      "file": "t_17_17.i16.gz",
+      "compressed_bytes": 439497
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 18,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 180,
+      "east_deg": 190,
+      "file": "t_17_18.i16.gz",
+      "compressed_bytes": 436030
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 19,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 190,
+      "east_deg": 200,
+      "file": "t_17_19.i16.gz",
+      "compressed_bytes": 419845
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 20,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 200,
+      "east_deg": 210,
+      "file": "t_17_20.i16.gz",
+      "compressed_bytes": 420553
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 21,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 210,
+      "east_deg": 220,
+      "file": "t_17_21.i16.gz",
+      "compressed_bytes": 428101
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 22,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 220,
+      "east_deg": 230,
+      "file": "t_17_22.i16.gz",
+      "compressed_bytes": 441599
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 23,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 230,
+      "east_deg": 240,
+      "file": "t_17_23.i16.gz",
+      "compressed_bytes": 442669
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 24,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 240,
+      "east_deg": 250,
+      "file": "t_17_24.i16.gz",
+      "compressed_bytes": 441909
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 25,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 250,
+      "east_deg": 260,
+      "file": "t_17_25.i16.gz",
+      "compressed_bytes": 440064
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 26,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 260,
+      "east_deg": 270,
+      "file": "t_17_26.i16.gz",
+      "compressed_bytes": 429018
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 27,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 270,
+      "east_deg": 280,
+      "file": "t_17_27.i16.gz",
+      "compressed_bytes": 429629
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 28,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 280,
+      "east_deg": 290,
+      "file": "t_17_28.i16.gz",
+      "compressed_bytes": 429314
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 29,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 290,
+      "east_deg": 300,
+      "file": "t_17_29.i16.gz",
+      "compressed_bytes": 424948
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 30,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 300,
+      "east_deg": 310,
+      "file": "t_17_30.i16.gz",
+      "compressed_bytes": 417846
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 31,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 310,
+      "east_deg": 320,
+      "file": "t_17_31.i16.gz",
+      "compressed_bytes": 416675
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 32,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 320,
+      "east_deg": 330,
+      "file": "t_17_32.i16.gz",
+      "compressed_bytes": 409971
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 33,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 330,
+      "east_deg": 340,
+      "file": "t_17_33.i16.gz",
+      "compressed_bytes": 399814
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 34,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 340,
+      "east_deg": 350,
+      "file": "t_17_34.i16.gz",
+      "compressed_bytes": 404135
+    },
+    {
+      "lat_index": 17,
+      "lon_index": 35,
+      "south_deg": 80,
+      "north_deg": 90,
+      "west_deg": 350,
+      "east_deg": 360,
+      "file": "t_17_35.i16.gz",
+      "compressed_bytes": 400290
+    }
+  ]
+}
