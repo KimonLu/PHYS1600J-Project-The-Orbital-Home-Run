@@ -1,0 +1,39 @@
+{
+  "status": "RETURN",
+  "message": "The complete model-uncertainty interval lies inside the requested 10 m return tolerance.",
+  "launch": {
+    "latitude_deg": 5.4296875,
+    "longitude_deg_east": 201.3671875,
+    "height_above_terrain_m": 19243.0,
+    "speed_m_s": 1661.4559112105885,
+    "elevation_deg": 0.5316030898825165,
+    "azimuth_deg_clockwise_from_north": 88.38306681897323
+  },
+  "model": {
+    "gravity_model": "grail",
+    "gravity_degree": 600,
+    "include_earth_tide": true,
+    "include_solar_tide": true,
+    "duration_s": 6686.339806268061,
+    "return_tolerance_m": 10.0,
+    "model_uncertainty_m": 0.0,
+    "minimum_return_time_s": 1000.0,
+    "max_step_s": 10.0,
+    "output_samples": 2001,
+    "epoch_utc": "2026-01-01T00:00:00Z"
+  },
+  "launch_terrain_elevation_m": 10757.0,
+  "launch_radius_m": 1767400.0,
+  "closest_return_time_s": 6686.339806268061,
+  "closest_return_distance_m": 0.00665611016354173,
+  "closest_return_relative_speed_m_s": 1661.455674521891,
+  "impact_time_s": null,
+  "impact_latitude_deg": null,
+  "impact_longitude_deg_east": null,
+  "impact_speed_m_s": null,
+  "minimum_clearance_m": 10279.55800535587,
+  "maximum_altitude_above_reference_m": 46327.78381941863,
+  "final_specific_energy_j_kg": -1386012.0053242403,
+  "minimum_radius_m": 1751518.329382868,
+  "outside_harmonic_brillouin_sphere": true
+}

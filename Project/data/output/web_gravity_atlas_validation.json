@@ -1,0 +1,8 @@
+{
+  "sample_count": 120,
+  "random_seed": 1600,
+  "rms_acceleration_error_m_s2": 1.072657113096078e-05,
+  "maximum_acceleration_error_m_s2": 3.86768000120181e-05,
+  "rms_relative_acceleration_error": 7.713307862775882e-06,
+  "maximum_relative_acceleration_error": 2.8001823059492097e-05
+}

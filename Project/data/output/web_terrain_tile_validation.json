@@ -1,0 +1,8 @@
+{
+  "sample_count": 562,
+  "random_seed": 1600,
+  "maximum_absolute_difference_m": 0.0,
+  "rms_difference_m": 0.0,
+  "tile_count": 648,
+  "interpretation": "Lossless tile decode and bilinear interpolation reproduce direct LDEM64 queries, including 10-degree seams and 0/360 wrapping."
+}

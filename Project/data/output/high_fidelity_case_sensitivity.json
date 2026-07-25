@@ -1,0 +1,16 @@
+{
+  "gravity_degree_for_jacobian": 300,
+  "base_solution_gravity_degree": 600,
+  "finite_difference_velocity_step_m_s": 0.02,
+  "closest_miss_gain_m_per_m_s_speed": 22.016544365128297,
+  "closest_miss_gain_m_per_rad_elevation": 31807.09570372632,
+  "closest_miss_gain_m_per_rad_azimuth": 41320.439142018746,
+  "one_m_tolerance_speed_m_s": 0.04542038856851152,
+  "one_m_tolerance_elevation_deg": 0.0018013521274238787,
+  "one_m_tolerance_azimuth_deg": 0.0013866207790327733,
+  "projected_jacobian_singular_values_s": [
+    35.35010555285948,
+    14.838001849221044,
+    1.261579849634407e-12
+  ]
+}

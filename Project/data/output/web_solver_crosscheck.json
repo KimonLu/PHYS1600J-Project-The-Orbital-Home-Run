@@ -1,0 +1,26 @@
+[
+  {
+    "case_altitude_m": 12000.0,
+    "degree": 600,
+    "position_difference_atlas_vs_direct_m": 23.99364654822046,
+    "velocity_difference_atlas_vs_direct_m_s": 0.016935076217260793,
+    "atlas_function_evaluations": 27278,
+    "gravity_tiles_loaded": 102
+  },
+  {
+    "case_altitude_m": 15000.0,
+    "degree": 600,
+    "position_difference_atlas_vs_direct_m": 6.056331513567531,
+    "velocity_difference_atlas_vs_direct_m_s": 0.006027333945489948,
+    "atlas_function_evaluations": 23570,
+    "gravity_tiles_loaded": 102
+  },
+  {
+    "case_altitude_m": 30000.0,
+    "degree": 600,
+    "position_difference_atlas_vs_direct_m": 4.035163722008394,
+    "velocity_difference_atlas_vs_direct_m_s": 0.0031422775340666995,
+    "atlas_function_evaluations": 15158,
+    "gravity_tiles_loaded": 100
+  }
+]
