@@ -1,0 +1,25 @@
+{
+  "moon": {
+    "mu_m3_s2": 4.902800118e12,
+    "mean_radius_m": 1737400.0,
+    "problem_gravity_m_s2": 1.62,
+    "sidereal_rotation_period_s": 2360591.5104,
+    "global_highest_elevation_m": 10786.0,
+    "ldem4_max_elevation_m": 10504.0,
+    "ldem4_min_elevation_m": -8879.0
+  },
+  "baseball": {
+    "representative_mass_kg": 0.145,
+    "representative_circumference_m": 0.231775,
+    "representative_radius_m": 0.036888,
+    "statcast_record_exit_speed_m_s": 54.94
+  },
+  "baseline": {
+    "launch_height_m": 1.0,
+    "speed_ratio": 1.2,
+    "latitude_deg": 0.0,
+    "longitude_deg": 0.0,
+    "azimuth_deg": 90.0,
+    "elevation_angle_deg": 0.0
+  }
+}

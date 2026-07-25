@@ -1,0 +1,13 @@
+PASS: mu/R^2 surface gravity
+PASS: escape speed equals sqrt(2) circular speed
+PASS: closed-form semimajor axis at u=1.001
+PASS: closed-form apoapsis at u=1.001
+PASS: closed-form semimajor axis at u=1.05
+PASS: closed-form apoapsis at u=1.05
+PASS: closed-form semimajor axis at u=1.2
+PASS: closed-form apoapsis at u=1.2
+PASS: closed-form semimajor axis at u=1.35
+PASS: closed-form apoapsis at u=1.35
+PASS: small-angle surface-shortfall asymptotic relation
+PASS: finite-height boundary gives periapsis at reference sphere
+PASS: central numerical orbit closes to better than 10 micrometres in state norm
