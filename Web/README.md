@@ -4,11 +4,25 @@ An English, static, client-side solver for the PHYS1600J “The Orbital Home
 Run” project. It accepts a body-fixed lunar launch site and a surface-relative
 velocity vector, then returns:
 
-- a rotating-frame 3D trajectory;
+- an inertial-frame 3D trajectory reconstructed from the rotating-frame solution;
 - an equirectangular ground track;
 - LDEM64 terrain clearance and first impact coordinates;
 - the closest post-launch approach to the moving launch site;
 - a return / uncertain return / impact / escape / no-return classification.
+
+## Interface
+
+- Switch between English and Chinese without rerunning or clearing a result.
+- Select verified examples for all five physical trajectory classifications.
+- Focus the 3D canvas and use WASD to pan; drag to orbit and scroll to zoom.
+- Play the ball and lunar rotation on one physical simulation clock from 1× to
+  1000× real time. The inertial trajectory and the Moon use the same sidereal
+  rotation rate; the marker sizes are visual aids rather than physical scale.
+- Scroll and drag the equirectangular ground-track map to inspect close passes
+  and terrain intersections. Double-click, or press 0 while focused, to reset
+  the map.
+- Open the model badges for the LOLA LDEM64 archive, the GRAIL GRGM source, and
+  RK4 step-doubling documentation.
 
 ## Scientific model
 
