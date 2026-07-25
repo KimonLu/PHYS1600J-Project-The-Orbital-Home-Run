@@ -44,7 +44,7 @@ def main() -> None:
         ax.loglog(heights, angles, label=fr"$u_0={u}$")
     ax.axvline(C.ball_radius, linewidth=0.8, linestyle="--")
     ax.axvline(1.0, linewidth=0.8, linestyle=":")
-    ax.set_xlabel("Ball-centre launch height above reference sphere (m)")
+    ax.set_xlabel("Launch height above reference sphere (m)")
     ax.set_ylabel(r"Maximum safe $|\gamma|$ (deg)")
     ax.set_title("Finite height opens a narrow safe wedge")
     ax.legend(ncol=2)
@@ -84,12 +84,39 @@ def main() -> None:
     # Scatter a reproducible subset for legibility.
     idx = rng.choice(n, 5000, replace=False)
     fig, ax = plt.subplots(figsize=(3.45, 2.8))
-    ax.scatter(mc.loc[idx, "gamma_deg"], mc.loc[idx, "periapsis_altitude_m"], s=3, alpha=0.25)
+    subset = mc.loc[idx]
+    ax.scatter(
+        subset.loc[~subset["safe"], "gamma_deg"],
+        subset.loc[~subset["safe"], "periapsis_altitude_m"],
+        s=3,
+        alpha=0.20,
+        color="C3",
+        label="intersects sphere",
+    )
+    ax.scatter(
+        subset.loc[subset["safe"], "gamma_deg"],
+        subset.loc[subset["safe"], "periapsis_altitude_m"],
+        s=5,
+        alpha=0.55,
+        color="C2",
+        label="survives",
+    )
     ax.axhline(0, linewidth=1.0)
+    gamma_limit = math.degrees(
+        maximum_safe_angle(
+            r0,
+            u_nom * math.sqrt(C.mu / r0),
+            C.radius,
+        )
+    )
+    ax.axvline(-gamma_limit, linewidth=0.8, linestyle="--", color="0.25")
+    ax.axvline(gamma_limit, linewidth=0.8, linestyle="--", color="0.25")
     ax.set_xlabel("Elevation error (deg)")
     ax.set_ylabel("Osculating periapsis altitude (m)")
     ax.set_title("Monte Carlo launch dispersion at 1 m height")
+    ax.set_yscale("symlog", linthresh=1.0)
     ax.set_ylim(-3000, 10)
+    ax.legend(fontsize=6.3, loc="lower center")
     save(fig, "fig06_monte_carlo_periapsis")
 
 

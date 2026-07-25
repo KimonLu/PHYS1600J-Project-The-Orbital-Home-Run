@@ -12,6 +12,7 @@ SCRIPTS = [
     "04_realistic_perturbations.py",
     "05_terrain_analysis.py",
     "06_validation.py",
+    "07_targeted_return.py",
     "validate_results.py",
 ]
 

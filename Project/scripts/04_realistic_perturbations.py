@@ -59,25 +59,38 @@ def main() -> None:
     ])
     out.to_csv(OUT / "perturbation_model_comparison.csv", index=False)
 
+    central_radius = np.linalg.norm(
+        trajectories["M0 central"]["state"][:, :3], axis=1
+    )
     fig, ax = plt.subplots(figsize=(3.45, 2.8))
-    for name, tr in trajectories.items():
-        altitude_series = (np.linalg.norm(tr["state"][:, :3], axis=1)-C.radius)/1e3
-        ax.plot(tr["t"]/60, altitude_series, label=name)
+    for name, tr in list(trajectories.items())[1:]:
+        radial_residual = (
+            np.linalg.norm(tr["state"][:, :3], axis=1) - central_radius
+        )
+        ax.plot(tr["t"]/60, radial_residual, label=name)
     ax.set_xlabel("Time (min)")
-    ax.set_ylabel("Radius above mean sphere (km)")
-    ax.set_title("One-orbit perturbation hierarchy")
+    ax.set_ylabel("Altitude residual from central model (m)")
+    ax.set_title("Perturbations change the radial history")
     ax.legend(fontsize=6.5)
     save(fig, "fig09_perturbation_altitude")
 
     central = trajectories["M0 central"]["state"][:, :3]
+    degree2_state = trajectories["M1 degree-2"]["state"][:, :3]
+    earth_state = trajectories["M2 degree-2 + Earth"]["state"][:, :3]
+    full_state = trajectories["M3 degree-2 + Earth + Sun"]["state"][:, :3]
     fig, ax = plt.subplots(figsize=(3.45, 2.8))
-    for name, tr in list(trajectories.items())[1:]:
-        sep = np.linalg.norm(tr["state"][:, :3]-central, axis=1)
-        ax.plot(tr["t"]/60, sep, label=name)
+    incremental = [
+        ("degree-2 minus central", degree2_state-central),
+        ("Earth increment", earth_state-degree2_state),
+        ("Sun increment", full_state-earth_state),
+    ]
+    for name, delta in incremental:
+        sep = np.linalg.norm(delta, axis=1)
+        ax.plot(trajectories["M0 central"]["t"]/60, sep, label=name)
     ax.set_yscale("log")
     ax.set_xlabel("Time (min)")
-    ax.set_ylabel("Separation from central model (m)")
-    ax.set_title("Small accelerations accumulate into large misses")
+    ax.set_ylabel("Incremental position change (m)")
+    ax.set_title("Each added force shown on its own scale")
     ax.legend(fontsize=6.5)
     save(fig, "fig10_perturbation_separation")
 

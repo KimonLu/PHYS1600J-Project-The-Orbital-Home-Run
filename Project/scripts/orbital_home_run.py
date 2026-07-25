@@ -8,6 +8,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import csv
 import json
 import math
 from typing import Callable
@@ -66,6 +67,26 @@ def load_constants(path: Path | None = None) -> Constants:
 
 
 C = load_constants()
+
+
+def load_degree2_coefficients(
+    path: Path | None = None,
+) -> tuple[float, float]:
+    """Load the unnormalised degree-2 coefficients used by the propagator."""
+    if path is None:
+        path = ROOT / "data" / "input" / "gravity_degree2.csv"
+    values: dict[str, float] = {}
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            if row["normalization"].strip().lower() != "unnormalized":
+                raise ValueError("Degree-2 propagator requires unnormalised coefficients")
+            values[row["coefficient"].strip()] = float(row["value"])
+    if "J2" not in values or "C22" not in values:
+        raise ValueError("gravity_degree2.csv must define J2 and C22")
+    return values["J2"], values["C22"]
+
+
+J2_DEGREE2, C22_DEGREE2 = load_degree2_coefficients()
 
 
 def orbit_elements(r0: float, v: float, gamma: float, mu: float = C.mu) -> dict[str, float]:
@@ -247,8 +268,8 @@ def acceleration_degree2(
     mu: float = C.mu,
     radius: float = C.radius,
     omega: float = C.omega,
-    j2: float = 2.033e-4,
-    c22: float = 2.24e-5,
+    j2: float = J2_DEGREE2,
+    c22: float = C22_DEGREE2,
 ) -> np.ndarray:
     """Central + unnormalised J2/C22 acceleration in a rotating PA frame."""
     body_from_inertial = rot_z(-omega * t)
@@ -265,6 +286,32 @@ def acceleration_degree2(
         2.0 * coeffs * r_b / r**5 - 5.0 * q * r_b / r**7
     )
     return body_from_inertial.T @ a_b
+
+
+def potential_degree2(
+    t: float,
+    r_i: np.ndarray,
+    mu: float = C.mu,
+    radius: float = C.radius,
+    omega: float = C.omega,
+    j2: float = J2_DEGREE2,
+    c22: float = C22_DEGREE2,
+) -> float:
+    """Positive gravitational potential U whose inertial gradient is acceleration.
+
+    Mechanical specific energy is 0.5*v^2-U.  Since the tesseral field rotates,
+    energy alone is not conserved, but E-Omega*h_z is conserved for this
+    uniformly rotating degree-2 model.
+    """
+    r_b = rot_z(-omega * t) @ np.asarray(r_i, dtype=float)
+    x, y, z = r_b
+    r = float(np.linalg.norm(r_b))
+    q = (
+        (0.5 * j2 + 3.0 * c22) * x * x
+        + (0.5 * j2 - 3.0 * c22) * y * y
+        - j2 * z * z
+    )
+    return mu / r + mu * radius**2 * q / r**5
 
 
 def propagate(

@@ -49,6 +49,9 @@ def main() -> None:
 
     ldem = ROOT/"data"/"input"/"ldem_4_float.img"
     if ldem.exists():
+        status = OUT/"ldem4_status.txt"
+        if status.exists():
+            status.unlink()
         z = load_ldem4(ldem)
         stats = pd.DataFrame([
             ["minimum_km", float(np.nanmin(z))],
