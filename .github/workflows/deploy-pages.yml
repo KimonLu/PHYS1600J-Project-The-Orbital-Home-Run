@@ -17,11 +17,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Set up Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: 22
           cache: npm
@@ -32,10 +33,14 @@ jobs:
       - name: Build static site
         working-directory: Web
         run: npm run build
+      # One-time repository prerequisite:
+      # Settings > Pages > Build and deployment > Source: GitHub Actions.
+      # `GITHUB_TOKEN` cannot create the initial Pages site; configure-pages
+      # can only read/configure it after an administrator enables Pages.
       - name: Configure Pages
         uses: actions/configure-pages@v5
       - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
           path: Web/dist
 
@@ -44,6 +49,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     needs: build
     steps:
       - name: Deploy to GitHub Pages

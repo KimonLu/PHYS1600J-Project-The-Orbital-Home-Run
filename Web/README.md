@@ -52,6 +52,19 @@ npm run build
 The Vite base is relative, so `dist/` works both locally and under a GitHub
 Pages repository subpath.
 
+## GitHub Pages deployment
+
+The repository workflow builds `Web/` and deploys `Web/dist`. Before its first
+run, a repository administrator must enable the Pages site once:
+
+```text
+Settings > Pages > Build and deployment > Source > GitHub Actions
+```
+
+This cannot be bootstrapped by the workflow's default `GITHUB_TOKEN`.
+Subsequent pushes to `main`, or a manual `workflow_dispatch`, use the normal
+`configure-pages`, `upload-pages-artifact`, and `deploy-pages` pipeline.
+
 ## Data provenance and limitations
 
 The lunar color and display-height textures are from the
