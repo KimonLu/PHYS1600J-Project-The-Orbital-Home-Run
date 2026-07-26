@@ -39,6 +39,7 @@ export class MoonView {
   private launchMarker?: THREE.Mesh;
   private eventMarker?: THREE.Mesh;
   private ballMarker?: THREE.Mesh;
+  private axisLabels: THREE.Sprite[] = [];
   private trajectory: TrajectoryPoint[] = [];
   private inertialPoints: THREE.Vector3[] = [];
   private simulationTimeS = 0;
@@ -105,6 +106,20 @@ export class MoonView {
     this.emitPlayback();
   }
 
+  setAxisLabels(north: string, south: string, rotation: string): void {
+    for (const label of this.axisLabels) {
+      label.removeFromParent();
+      label.material.map?.dispose();
+      label.material.dispose();
+    }
+    this.axisLabels = [
+      this.createAxisLabel(north, new THREE.Vector3(0.32, 1.57, 0), 0.16),
+      this.createAxisLabel(south, new THREE.Vector3(0.32, -1.57, 0), 0.16),
+      this.createAxisLabel(rotation, new THREE.Vector3(0.5, 1.23, 0), 0.13),
+    ];
+    this.scene.add(...this.axisLabels);
+  }
+
   togglePlayback(): void {
     if (this.trajectory.length === 0) return;
     if (this.simulationTimeS >= this.durationS) this.simulationTimeS = 0;
@@ -134,29 +149,104 @@ export class MoonView {
       gapSize: 0.03,
       transparent: true,
       opacity: 0.88,
-      depthTest: false,
+      depthTest: true,
     });
     const line = new THREE.Line(geometry, material);
     line.computeLineDistances();
-    line.renderOrder = 10;
     this.scene.add(line);
 
     const coneGeometry = new THREE.ConeGeometry(0.035, 0.11, 16);
     const coneMaterial = new THREE.MeshBasicMaterial({
       color: 0xffd36a,
-      depthTest: false,
+      depthTest: true,
       transparent: true,
       opacity: 0.9,
     });
     const north = new THREE.Mesh(coneGeometry, coneMaterial);
     north.position.y = 1.46;
-    north.renderOrder = 10;
     this.scene.add(north);
     const south = new THREE.Mesh(coneGeometry, coneMaterial.clone());
     south.rotation.z = Math.PI;
     south.position.y = -1.46;
-    south.renderOrder = 10;
     this.scene.add(south);
+
+    const rotationPoints: THREE.Vector3[] = [];
+    const arrowRadius = 0.28;
+    const arrowHeight = 1.2;
+    const arrowEnd = Math.PI * 1.72;
+    for (let index = 0; index <= 64; index += 1) {
+      const angle = (arrowEnd * index) / 64;
+      rotationPoints.push(
+        new THREE.Vector3(
+          arrowRadius * Math.cos(angle),
+          arrowHeight,
+          -arrowRadius * Math.sin(angle),
+        ),
+      );
+    }
+    const rotationMaterial = new THREE.LineBasicMaterial({
+      color: 0x79e4f5,
+      transparent: true,
+      opacity: 0.9,
+      depthTest: true,
+    });
+    this.scene.add(
+      new THREE.Line(
+        new THREE.BufferGeometry().setFromPoints(rotationPoints),
+        rotationMaterial,
+      ),
+    );
+    const arrow = new THREE.Mesh(
+      new THREE.ConeGeometry(0.028, 0.1, 16),
+      new THREE.MeshBasicMaterial({
+        color: 0x79e4f5,
+        transparent: true,
+        opacity: 0.95,
+        depthTest: true,
+      }),
+    );
+    arrow.position.copy(rotationPoints.at(-1)!);
+    const tangent = new THREE.Vector3(
+      -Math.sin(arrowEnd),
+      0,
+      -Math.cos(arrowEnd),
+    ).normalize();
+    arrow.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), tangent);
+    this.scene.add(arrow);
+  }
+
+  private createAxisLabel(
+    label: string,
+    position: THREE.Vector3,
+    height: number,
+  ): THREE.Sprite {
+    const canvas = document.createElement("canvas");
+    canvas.width = 512;
+    canvas.height = 128;
+    const context = canvas.getContext("2d")!;
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.font =
+      '600 48px "Cascadia Mono", "Microsoft YaHei UI", monospace';
+    context.textAlign = "center";
+    context.textBaseline = "middle";
+    context.lineWidth = 8;
+    context.strokeStyle = "rgba(4, 9, 12, 0.92)";
+    context.strokeText(label, canvas.width / 2, canvas.height / 2);
+    context.fillStyle = "#ffd36a";
+    context.fillText(label, canvas.width / 2, canvas.height / 2);
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.colorSpace = THREE.SRGBColorSpace;
+    const sprite = new THREE.Sprite(
+      new THREE.SpriteMaterial({
+        map: texture,
+        transparent: true,
+        depthTest: false,
+      }),
+    );
+    sprite.position.copy(position);
+    sprite.scale.set(height * 4, height, 1);
+    sprite.renderOrder = 20;
+    return sprite;
   }
 
   private bindKeyboardPan(): void {
