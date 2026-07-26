@@ -21,8 +21,8 @@ velocity vector, then returns:
 - Scroll and drag the equirectangular ground-track map to inspect close passes
   and terrain intersections. Double-click, or press 0 while focused, to reset
   the map.
-- Open the model badges for the LOLA LDEM64 archive, the GRAIL GRGM source, and
-  RK4 step-doubling documentation.
+- Open the model badges for the LOLA LDEM64 archive, the GRAIL GRGM source,
+  RK4 step-doubling documentation, and the NASA SVS Moon Kit texture source.
 
 ## Scientific model
 
