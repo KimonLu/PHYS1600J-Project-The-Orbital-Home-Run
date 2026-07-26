@@ -14,6 +14,7 @@ import json
 import math
 from pathlib import Path
 from typing import Callable, Literal
+import warnings
 
 import numpy as np
 import pandas as pd
@@ -65,11 +66,10 @@ class ModelConfig:
     include_solar_tide: bool = True
     duration_s: float = 8_000.0
     return_tolerance_m: float = 1.0
-    model_uncertainty_m: float = 100.0
+    assumed_total_position_error_bound_m: float = 100.0
     minimum_return_time_s: float = 1_000.0
     max_step_s: float = 10.0
     output_samples: int = 2_001
-    epoch_utc: str = "2026-01-01T00:00:00Z"
 
 
 @dataclass
@@ -173,6 +173,8 @@ def solve_trajectory(
         raise ValueError("speed must be non-negative")
     if config.duration_s <= 0.0 or config.output_samples < 2:
         raise ValueError("duration and output_samples must be positive")
+    if config.assumed_total_position_error_bound_m < 0.0:
+        raise ValueError("assumed position-error bound must be non-negative")
     if config.minimum_return_time_s >= config.duration_s:
         raise ValueError("minimum_return_time_s must be below duration_s")
 
@@ -338,25 +340,28 @@ def solve_trajectory(
     final_energy = 0.5 * float(np.dot(final_state[3:], final_state[3:])) - C.mu / final_radius
     if (
         closest_distance is not None
-        and closest_distance + config.model_uncertainty_m
+        and closest_distance + config.assumed_total_position_error_bound_m
         <= config.return_tolerance_m
         and (impact_time is None or closest_time <= impact_time)
     ):
         status: Status = "RETURN"
         message = (
-            "The complete model-uncertainty interval lies inside the requested "
-            f"{config.return_tolerance_m:g} m return tolerance."
+            "Conditional return: the miss plus the externally assumed total "
+            "position-error bound lies inside the requested "
+            f"{config.return_tolerance_m:g} m return tolerance. The solver "
+            "does not derive that bound."
         )
     elif (
         closest_distance is not None
-        and closest_distance - config.model_uncertainty_m
+        and closest_distance - config.assumed_total_position_error_bound_m
         <= config.return_tolerance_m
         and (impact_time is None or closest_time <= impact_time)
     ):
         status = "RETURN_UNCERTAIN"
         message = (
-            "Nominal miss is inside the tolerance plus model-uncertainty band; "
-            "the physical return classification is not robust."
+            "The interval implied by the externally assumed total position-error "
+            "bound crosses the return boundary; no physically robust "
+            "classification follows from this deterministic propagation."
         )
     elif impacted:
         status = "IMPACT"
@@ -435,13 +440,49 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--degree", type=int, default=600)
     parser.add_argument("--duration", type=float, default=8_000.0)
     parser.add_argument("--return-tolerance", type=float, default=1.0)
-    parser.add_argument("--model-uncertainty", type=float, default=100.0)
+    parser.add_argument(
+        "--assumed-position-error-bound",
+        type=float,
+        default=None,
+        help=(
+            "Externally assumed total position-error bound in metres. "
+            "The solver does not calculate or certify this value."
+        ),
+    )
+    parser.add_argument(
+        "--model-uncertainty",
+        type=float,
+        default=None,
+        help=argparse.SUPPRESS,
+    )
     parser.add_argument("--output", type=Path, default=ROOT / "data" / "output")
     return parser.parse_args()
 
 
 def main() -> None:
     args = parse_args()
+    if (
+        args.assumed_position_error_bound is not None
+        and args.model_uncertainty is not None
+    ):
+        raise ValueError(
+            "Use only --assumed-position-error-bound; "
+            "--model-uncertainty is a deprecated alias"
+        )
+    if args.model_uncertainty is not None:
+        warnings.warn(
+            "--model-uncertainty is deprecated; use "
+            "--assumed-position-error-bound",
+            DeprecationWarning,
+            stacklevel=2,
+        )
+    assumed_bound = (
+        args.assumed_position_error_bound
+        if args.assumed_position_error_bound is not None
+        else args.model_uncertainty
+    )
+    if assumed_bound is None:
+        assumed_bound = 100.0
     launch = LaunchInput(
         args.latitude,
         args.longitude,
@@ -455,7 +496,7 @@ def main() -> None:
         gravity_degree=args.degree,
         duration_s=args.duration,
         return_tolerance_m=args.return_tolerance,
-        model_uncertainty_m=args.model_uncertainty,
+        assumed_total_position_error_bound_m=assumed_bound,
     )
     result = solve_trajectory(launch, config)
     result.save(args.output)

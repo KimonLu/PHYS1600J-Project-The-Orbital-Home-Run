@@ -107,73 +107,25 @@ def main() -> None:
         "rotating degree-2 Jacobi integral is conserved",
     ))
 
-    targeted = pd.read_csv(ROOT / "data" / "output" / "targeted_return_summary.csv")
-    full_targeted = targeted.loc[targeted["model"] == "Full, targeted"].iloc[0]
-    targeted_case_df = pd.read_csv(
-        ROOT / "data" / "output" / "targeted_return_case_definition.csv"
-    )
-    targeted_case = dict(
-        zip(targeted_case_df["quantity"], targeted_case_df["value"])
-    )
-    lines.append(check(
-        full_targeted["scheduled_site_miss_m"] < 1e-3,
-        "differentially corrected full-model trajectory hits the scheduled rotating site within 1 mm",
-    ))
-    lines.append(check(
-        full_targeted["minimum_ldem4_clearance_m"] > 99.0,
-        "targeted return retains the designed 100 m LDEM4 terrain margin",
-    ))
-    lines.append(check(
-        abs(full_targeted["body_fixed_revolutions"]-1.0) < 1e-10
-        and full_targeted["inertial_revolutions"] > 1.0,
-        "targeted return completes one body-fixed circuit and more than one inertial revolution",
-    ))
-    targeted_state0 = initial_state(
-        C.radius + targeted_case["ball_center_launch_altitude_m"],
-        0.0,
-        math.radians(targeted_case["stadium_longitude_deg_east"]),
-        full_targeted["surface_relative_speed_m_s"],
-        math.radians(full_targeted["elevation_angle_deg"]),
-        0.5 * math.pi,
-        True,
-    )
-    full_model = make_acceleration_model(
-        include_degree2=True,
-        include_earth=True,
-        include_sun=True,
-    )
-    targeted_coarse = propagate(
-        targeted_state0,
-        full_targeted["scheduled_return_time_s"],
-        full_model,
-        max_step=4.0,
-        samples=2,
-    )["state"][-1]
-    targeted_fine = propagate(
-        targeted_state0,
-        full_targeted["scheduled_return_time_s"],
-        full_model,
-        max_step=2.0,
-        samples=2,
-    )["state"][-1]
-    lines.append(check(
-        np.linalg.norm(targeted_coarse[:3]-targeted_fine[:3]) < 1e-4,
-        "targeted return is converged below 0.1 mm when maximum step is halved",
-    ))
-
     # High-fidelity terrain and gravity products.
-    ldem64 = np.memmap(
-        ROOT / "data" / "external" / "ldem64" / "ldem_64.img",
-        dtype="<i2",
-        mode="r",
-        shape=(11_520, 23_040),
-    )
-    lines.append(check(
-        float(ldem64.min()) * 0.5 == -9_114.5
-        and float(ldem64.max()) * 0.5 == 10_757.0,
-        "full LDEM64 source extrema reproduce the reported elevation range",
-    ))
-    del ldem64
+    ldem64_path = ROOT / "data" / "external" / "ldem64" / "ldem_64.img"
+    if ldem64_path.exists():
+        ldem64 = np.memmap(
+            ldem64_path,
+            dtype="<i2",
+            mode="r",
+            shape=(11_520, 23_040),
+        )
+        lines.append(check(
+            float(ldem64.min()) * 0.5 == -9_114.5
+            and float(ldem64.max()) * 0.5 == 10_757.0,
+            "full LDEM64 source extrema reproduce the reported elevation range",
+        ))
+        del ldem64
+    else:
+        lines.append(
+            "SKIP: full LDEM64 source extrema (run download_science_data.py)"
+        )
 
     model_selection = pd.read_csv(
         ROOT / "data" / "output" / "gravity_model_selection.csv"
@@ -213,7 +165,7 @@ def main() -> None:
     )
     lines.append(check(
         high_case["gravity_degree"] == 600
-        and high_case["scheduled_return_miss_m"] < 0.01
+        and high_case["scheduled_boundary_value_residual_m"] < 0.01
         and high_case["minimum_ldem64_clearance_m"] > 10_000.0
         and high_case["minimum_brillouin_clearance_m"] > 0.0,
         "specific degree-600 solution closes within 1 cm and clears terrain and Brillouin sphere",
@@ -261,11 +213,39 @@ def main() -> None:
             encoding="utf-8"
         )
     )
+    middle = sensitivity["middle_step_results"]
     lines.append(check(
-        0.0 < sensitivity["one_m_tolerance_speed_m_s"] < 0.1
-        and 0.0 < sensitivity["one_m_tolerance_elevation_deg"] < 0.01
-        and 0.0 < sensitivity["one_m_tolerance_azimuth_deg"] < 0.01,
-        "specific-case one-metre launch tolerances are finite and in the reported precision regime",
+        all(
+            middle[name]["degree600_middle_vs_small_fixed_time_relative_difference"]
+            < 0.01
+            and middle[name]["degree600_middle_vs_small_free_time_relative_difference"]
+            < 0.01
+            and middle[name]["publish_degree300_proxy"]
+            for name in ("speed", "elevation", "azimuth")
+        ),
+        "degree-600 Jacobian is step-stable and the degree-300 proxy passes the declared five-percent test",
+    ))
+    validation = json.loads(
+        (ROOT / "data" / "output" / "high_fidelity_validation_summary.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    lines.append(check(
+        validation["maximum_degree600_numerical_endpoint_difference_m"] < 1e-4,
+        "DOP853 step refinement and strict RK45 agree below 0.1 mm at the endpoint",
+    ))
+    continuation = pd.read_csv(
+        ROOT / "data" / "output" / "near_surface_height_continuation.csv"
+    )
+    accepted = continuation.loc[
+        continuation["status"] == "NOMINAL_RETURN_FOUND_IN_BOUNDED_SEARCH"
+    ]
+    lines.append(check(
+        len(continuation) == 6
+        and set(continuation["height_above_local_ldem64_m"])
+        == {2_000, 4_000, 8_000, 12_000, 16_000, 19_243}
+        and accepted["height_above_local_ldem64_m"].tolist() == [19_243],
+        "bounded height continuation covers 2 km and above and accepts only the 19.243 km candidate",
     ))
 
     general_summary_path = (

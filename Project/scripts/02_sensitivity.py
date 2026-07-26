@@ -70,7 +70,6 @@ def main() -> None:
         period[i] = e["period"]
     safe = rp >= C.radius
     mc = pd.DataFrame({"u_local": us, "gamma_deg": np.degrees(gammas), "periapsis_altitude_m": rp-C.radius, "period_s": period, "safe": safe})
-    mc.to_csv(OUT / "monte_carlo_launches.csv", index=False)
     summary = pd.DataFrame([
         ["sample_size", n],
         ["nominal_u", u_nom],

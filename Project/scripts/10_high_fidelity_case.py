@@ -31,10 +31,12 @@ from plotting import save, setup
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_OUT = ROOT / "data" / "output"
-EPOCH_UTC = "2026-01-01T00:00:00Z"
+SCENARIO_LABEL = "fixed_short_arc_third_body_geometry"
 LATITUDE_DEG = 5.4296875
 LONGITUDE_DEG = 201.3671875
 REFERENCE_ALTITUDE_M = 30_000.0
+POSITION_RESIDUAL_TARGET_M = 0.01
+JACOBIAN_COMPONENT_STEP_M_S = 0.02
 
 
 def initial_state(velocity_local_neu: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -72,25 +74,56 @@ def propagate(
     duration_s: float,
     model,
     samples: int = 2,
+    *,
+    method: str = "DOP853",
+    max_step_s: float = 10.0,
+    rtol: float = 2e-10,
+    atol: np.ndarray | None = None,
+    dense_output: bool = False,
 ) -> dict[str, np.ndarray]:
     state0, _ = initial_state(velocity_local_neu)
 
     def rhs(time_s: float, state: np.ndarray) -> np.ndarray:
         return np.concatenate([state[3:], model(time_s, state[:3])])
 
+    if atol is None:
+        atol = np.array([2e-4, 2e-4, 2e-4, 2e-7, 2e-7, 2e-7])
     solution = solve_ivp(
         rhs,
         (0.0, duration_s),
         state0,
-        method="DOP853",
+        method=method,
         t_eval=np.linspace(0.0, duration_s, samples),
-        max_step=10.0,
-        rtol=2e-10,
-        atol=np.array([2e-4, 2e-4, 2e-4, 2e-7, 2e-7, 2e-7]),
+        max_step=max_step_s,
+        rtol=rtol,
+        atol=atol,
+        dense_output=dense_output,
     )
     if not solution.success:
         raise RuntimeError(solution.message)
-    return {"time_s": solution.t, "state": solution.y.T, "nfev": solution.nfev}
+    result = {"time_s": solution.t, "state": solution.y.T, "nfev": solution.nfev}
+    if dense_output:
+        result["dense_solution"] = solution.sol
+    return result
+
+
+def terminal_position_jacobian(
+    velocity_local_neu: np.ndarray,
+    duration_s: float,
+    model,
+    step_m_s: float = JACOBIAN_COMPONENT_STEP_M_S,
+) -> np.ndarray:
+    """Central finite-difference terminal-position Jacobian in NEU components."""
+    jacobian = np.empty((3, 3))
+    for column in range(3):
+        plus = velocity_local_neu.copy()
+        minus = velocity_local_neu.copy()
+        plus[column] += step_m_s
+        minus[column] -= step_m_s
+        plus_final = propagate(plus, duration_s, model, samples=2)["state"][-1, :3]
+        minus_final = propagate(minus, duration_s, model, samples=2)["state"][-1, :3]
+        jacobian[:, column] = (plus_final - minus_final) / (2.0 * step_m_s)
+    return jacobian
 
 
 def main() -> None:
@@ -136,40 +169,64 @@ def main() -> None:
             f"Degree-300 correction failed: {correction.message}; {correction.fun}"
         )
     velocity = correction.x.copy()
+    degree300_residual_m = 1000.0 * np.asarray(correction.fun, dtype=float)
 
     print("Loading selected degree-600 model", flush=True)
     gravity600 = GRAILGravity(maximum_degree=600)
     model600 = acceleration(gravity600)
     started = time.perf_counter()
-    direct = propagate(velocity, duration, model600, samples=2)
-    residual600 = direct["state"][-1, :3] - target_inertial
-    initial_degree600_miss = float(np.linalg.norm(residual600))
-    print(f"Initial degree-600 miss: {initial_degree600_miss:.6f} m", flush=True)
+    correction_history: list[dict[str, object]] = []
+    initial_degree600_miss = math.nan
+    for iteration in range(4):
+        direct = propagate(velocity, duration, model600, samples=2)
+        residual600 = direct["state"][-1, :3] - target_inertial
+        residual_norm = float(np.linalg.norm(residual600))
+        if iteration == 0:
+            initial_degree600_miss = residual_norm
+        print(
+            f"Degree-600 iteration {iteration}: residual={residual_norm:.9f} m",
+            flush=True,
+        )
+        entry: dict[str, object] = {
+            "iteration": iteration,
+            "velocity_neu_m_s_before": velocity.tolist(),
+            "residual_vector_m_before": residual600.tolist(),
+            "residual_norm_m_before": residual_norm,
+        }
+        if residual_norm <= POSITION_RESIDUAL_TARGET_M:
+            entry["converged_without_update"] = True
+            correction_history.append(entry)
+            break
+        jacobian600 = terminal_position_jacobian(
+            velocity,
+            duration,
+            model600,
+            step_m_s=JACOBIAN_COMPONENT_STEP_M_S,
+        )
+        velocity_update = np.linalg.solve(jacobian600, -residual600)
+        entry.update(
+            {
+                "jacobian_degree": 600,
+                "jacobian_component_step_m_s": JACOBIAN_COMPONENT_STEP_M_S,
+                "terminal_position_jacobian_s": jacobian600.tolist(),
+                "velocity_update_neu_m_s": velocity_update.tolist(),
+                "velocity_update_norm_m_s": float(np.linalg.norm(velocity_update)),
+            }
+        )
+        correction_history.append(entry)
+        velocity += velocity_update
+    else:
+        raise RuntimeError("Degree-600 Newton correction exceeded four iterations")
 
-    # Reuse a finite-difference Jacobian from the inexpensive degree-300 map to
-    # remove the small model increment at degree 600.
-    delta_v = 0.02
-    jacobian = np.empty((3, 3))
-    for column in range(3):
-        plus = velocity.copy()
-        minus = velocity.copy()
-        plus[column] += delta_v
-        minus[column] -= delta_v
-        final_plus = propagate(plus, duration, model300, samples=2)["state"][-1, :3]
-        final_minus = propagate(minus, duration, model300, samples=2)["state"][-1, :3]
-        jacobian[:, column] = (final_plus - final_minus) / (2.0 * delta_v)
-    velocity += np.linalg.solve(jacobian, -residual600)
     final_trajectory = propagate(velocity, duration, model600, samples=2001)
     final_state = final_trajectory["state"][-1]
-    final_miss = float(np.linalg.norm(final_state[:3] - target_inertial))
-    if final_miss > 1.0:
-        # One quasi-Newton update is normally enough; retain an explicit second
-        # update so the published <1 m claim is verified, not assumed.
-        residual600 = final_state[:3] - target_inertial
-        velocity += np.linalg.solve(jacobian, -residual600)
-        final_trajectory = propagate(velocity, duration, model600, samples=2001)
-        final_state = final_trajectory["state"][-1]
-        final_miss = float(np.linalg.norm(final_state[:3] - target_inertial))
+    final_residual_vector = final_state[:3] - target_inertial
+    final_miss = float(np.linalg.norm(final_residual_vector))
+    if final_miss > POSITION_RESIDUAL_TARGET_M:
+        raise RuntimeError(
+            f"Degree-600 residual {final_miss:.6g} m exceeds "
+            f"{POSITION_RESIDUAL_TARGET_M:g} m target"
+        )
     runtime = time.perf_counter() - started
 
     times = final_trajectory["time_s"]
@@ -217,8 +274,32 @@ def main() -> None:
         }
     )
     table.to_csv(DATA_OUT / "high_fidelity_case_trajectory.csv", index=False)
+    diagnostics = {
+        "scenario_label": SCENARIO_LABEL,
+        "degree300_initialization": {
+            "optimizer": "scipy.optimize.least_squares",
+            "finite_difference_relative_step": 2e-5,
+            "velocity_neu_m_s": correction.x.tolist(),
+            "residual_vector_m": degree300_residual_m.tolist(),
+            "residual_norm_m": float(np.linalg.norm(degree300_residual_m)),
+            "function_evaluations": int(correction.nfev),
+            "termination_message": correction.message,
+        },
+        "degree600_newton": {
+            "residual_target_m": POSITION_RESIDUAL_TARGET_M,
+            "maximum_iterations": 4,
+            "history": correction_history,
+            "final_velocity_neu_m_s": velocity.tolist(),
+            "final_residual_vector_m": final_residual_vector.tolist(),
+            "final_residual_norm_m": final_miss,
+        },
+    }
+    (DATA_OUT / "high_fidelity_correction_diagnostics.json").write_text(
+        json.dumps(diagnostics, indent=2) + "\n", encoding="utf-8"
+    )
+
     summary = {
-        "epoch_utc": EPOCH_UTC,
+        "scenario_label": SCENARIO_LABEL,
         "frame_treatment": (
             "uniformly rotating aligned PA/ME frames; Earth and Sun fixed in "
             "the Moon-centred inertial frame over the short arc"
@@ -236,7 +317,8 @@ def main() -> None:
         "speed_m_s": speed,
         "elevation_deg": elevation_angle,
         "azimuth_deg_clockwise_from_north": azimuth,
-        "scheduled_return_miss_m": final_miss,
+        "scheduled_boundary_value_residual_m": final_miss,
+        "scheduled_boundary_value_residual_vector_m": final_residual_vector.tolist(),
         "minimum_ldem64_clearance_m": minimum_clearance,
         "minimum_brillouin_clearance_m": minimum_brillouin_clearance,
         "return_relative_speed_m_s": return_speed,
@@ -244,7 +326,7 @@ def main() -> None:
         "initial_degree600_miss_before_update_m": initial_degree600_miss,
         "degree600_refinement_runtime_s": runtime,
         "status": (
-            "RETURN"
+            "NOMINAL_MODEL_RETURN"
             if final_miss <= 1.0
             and minimum_clearance > 0
             and minimum_brillouin_clearance >= 0
