@@ -2,6 +2,8 @@
 Project/data/external/
 Project/data/output/*.log
 Project/data/output/*.err
+Project/data/output/solver_smoke/
+Project/data/output/_scratch/
 
 # Static-site development products
 Web/node_modules/

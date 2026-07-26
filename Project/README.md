@@ -1,88 +1,85 @@
-# PHYS1600J Problem B — The Orbital Home Run
+# PHYS1600J Problem B: The Orbital Home Run
 
-This archive is a complete, reproducible research-paper project using the supplied **PHYS1600J Project Template** (RevTeX 4.2, two-column layout). The UPC material was used only as a quality benchmark; its submission-format rules were not applied.
+This directory contains the numerical models, derived data, figures, and an
+archived paper build for the PHYS1600J group project. The current scientific
+workflow uses LOLA LDEM64 terrain and GRAIL GRGM1200B gravity. The earlier
+LDEM4 and degree-2 targeted-return demonstrations have been removed because
+they are superseded by the high-fidelity workflow.
 
-## Paper
+## Reproduction profiles
 
-- Source: `docs/main.tex`
-- Compiled paper: `docs/main.pdf`
-- Bibliography: `docs/references.bib`
-- Course-template settings: `docs/setting.cls`
+Install the Python dependencies from the project directory:
 
-The manuscript develops the problem in the requested order:
-
-1. pure ideal two-body model;
-2. sensitivity and physical reasonableness of the ideal solution;
-3. finite height, lunar rotation, terrain, non-spherical gravity, and third-body tides;
-4. analysis and error budget for the realistic model;
-5. open question: rules and ballpark design for baseball on the Moon.
-
-The central analytic result is the surface-launch theorem: for a ball centre launched exactly from a smooth spherical surface, a collision-free bound revolution requires a tangential launch and `1 <= v/v_c < sqrt(2)`. Finite launch height opens a narrow nonzero feasible wedge.
-
-## Quick reproduction
-
-From the project root:
-
-```bash
+```text
 python -m pip install -r scripts/requirements.txt
-python scripts/generate_all.py
-cd docs
-latexmk -pdf -interaction=nonstopmode -halt-on-error main.tex
 ```
 
-Or run the complete build:
+The lightweight analytic and degree-2 figures require no large downloads:
 
-```bash
-bash docs/build.sh
+```text
+python scripts/generate_all.py --profile core
 ```
 
-`docs/build.sh` automatically uses the system `bibtex`; in the preparation environment it falls back to `/usr/bin/bibtex.original` because the generic symlink is broken.
+Download the authoritative LDEM64 and GRGM1200B sources before running the
+high-fidelity or web-data profiles:
 
-## Reproducibility and verification
-
-`python scripts/validate_results.py` checks:
-
-- lunar surface-gravity and escape-speed identities;
-- closed-form orbital elements against the general element calculation;
-- the small-angle early-impact asymptotic formula;
-- the arbitrary-height periapsis boundary;
-- numerical closure of a central Kepler orbit.
-
-The report is written to `data/output/validation_report.txt`. The default DOP853 propagation closes the analytic test orbit to substantially better than a micrometre in position, so kilometre-scale perturbation results are not numerical drift.
-
-## Optional NASA data
-
-The default paper and all numbered figures are reproducible without large external data. Official optional products are listed in `data/input/external_data_manifest.csv` and can be downloaded with:
-
-```bash
-python scripts/download_optional_data.py LOLA_LDEM4 LOLA_LDEM4_LABEL
-python scripts/download_optional_data.py GRGM1200A GRGM1200A_LABEL
+```text
+python scripts/download_science_data.py
+python scripts/generate_all.py --profile science
+python scripts/generate_all.py --profile web
 ```
 
-- **LOLA LDEM4** is about 4.15 MB and enables the optional global map and body-fixed ground-track clearance output in `05_terrain_analysis.py`.
-- **GRGM1200A** is much larger. It is supplied as an authoritative source for extending the packaged degree-2 model; a full degree/order-1200 propagator is intentionally not claimed in the present paper.
+`--profile full` runs every generator. The bounded height continuation can be
+slow; it intentionally tests only 2 km and higher release heights.
 
-Large products are not duplicated in this ZIP. The manifest contains direct NASA PDS download URLs, filenames, purposes, and provenance.
+To validate the packaged derived results without regenerating them:
 
-## Files that require editing before submission
+```text
+python scripts/generate_all.py --profile validate
+```
 
-In `docs/main.tex`, replace:
+The full LDEM64 extrema check is reported as skipped when the untracked NASA
+source file is absent. All checks based on committed derived outputs still run.
 
-- `Student I`, `Student II`, and `Student III`;
-- the three placeholder email addresses.
+## Script layout
 
-All other content is ready to compile. The title, abstract, notation, assumptions, derivations, results, discussion, limitations, appendices, and references are included.
+Numbered scripts are ordered by model development:
 
-## Recommended project tree
+1. `01_ideal_models.py` -- analytic two-body orbit family and speed scale.
+2. `02_sensitivity.py` -- ideal launch-angle, height, and Monte Carlo tests.
+3. `03_rotation_and_resonance.py` -- lunar rotation and return resonance.
+4. `04_realistic_perturbations.py` -- degree-2 and fixed third-body hierarchy.
+5. `05_terrain_envelope.py` -- conservative analytic LDEM64 elevation envelope.
+6. `06_validation.py` -- central-model integration convergence.
+7. `07_gravity_convergence.py` -- GRGM1200B truncation study.
+8. `08_prepare_web_data.py` -- browser terrain and gravity products.
+9. `09_validate_web_solver.py` -- browser-atlas trajectory cross-check.
+10. `10_high_fidelity_case.py` -- direct degree-600 boundary-value correction.
+11. `11_case_sensitivity.py` -- fixed-time and free-time Jacobian convergence.
+12. `12_validate_web_terrain.py` -- lossless terrain-tile checks.
+13. `13_terrain_visualizations.py` -- LDEM64 map and trajectory corridor.
+14. `14_surface_feasibility.py` -- bounded great-circle terrain sampling.
+15. `15_high_fidelity_validation.py` -- integrator and gravity-order checks.
+16. `16_height_continuation.py` -- bounded continuation at 2 km and above.
 
-See `PROJECT_TREE.txt` for a compact tree. The design principle is:
+Shared modules use descriptive names: `orbital_home_run.py`,
+`lunar_gravity.py`, `lunar_terrain.py`, `general_solver.py`, and `plotting.py`.
+`validate_results.py` checks the packaged cross-script results.
 
-- `docs/`: paper source and PDF;
-- `scripts/`: mechanics, numerical propagation, plotting, validation, and optional downloads;
-- `figures/`: vector PDF figures for LaTeX plus PNG previews;
-- `data/input/`: small source constants, gravity coefficients, and external-data manifest;
-- `data/output/`: all numerical tables and validation results generated by the scripts.
+## Data layout
 
-## Model boundaries
+- `data/input/` contains small versioned constants and the external-data
+  manifest.
+- `data/external/` contains downloaded NASA products and is ignored by Git.
+- `data/output/` contains versioned, machine-readable derived results.
+- `Web/public/data/` contains browser-ready tiles and gravity-atlas files.
 
-The default realistic propagation uses central gravity, rotating degree-2 lunar gravity, and fixed-direction Earth/Sun differential tides over one short orbit. This hierarchy is deliberately transparent and independently reproducible. A mission-grade targeted return should replace it with epoch-dependent SPICE ephemerides, lunar attitude/libration, a converged high-degree GRAIL field, and full-resolution LOLA collision events.
+All high-fidelity case products start with `high_fidelity_`; bounded
+near-surface products start with `near_surface_`; browser cross-check products
+start with `web_`. Temporary logs, errors, caches, and smoke-test trajectories
+are ignored or excluded from the repository.
+
+The nominal return is a deterministic model result released 30.000 km above
+the reference sphere and 19.243 km above the local bilinearly interpolated
+LDEM64 surface. Millimetre-scale endpoint values are boundary-value solver
+residuals, not physical trajectory accuracy.
