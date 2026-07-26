@@ -1,0 +1,16 @@
+{
+  "source_product": "LOLA LDEM64",
+  "source_grid_rows": 11520,
+  "source_grid_columns": 23040,
+  "source_pixels_per_degree": 64.0,
+  "source_scale_m_per_dn": 0.5,
+  "reference_radius_m": 1737400.0,
+  "display_aggregation": "16 x 16 arithmetic block mean",
+  "display_grid_rows": 720,
+  "display_grid_columns": 1440,
+  "exact_source_minimum_m": -9114.5,
+  "exact_source_maximum_m": 10757.0,
+  "display_minimum_km": -8.67351245880127,
+  "display_maximum_km": 10.477922439575195,
+  "collision_queries_use_full_resolution": true
+}

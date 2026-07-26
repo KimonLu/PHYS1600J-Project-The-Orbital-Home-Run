@@ -1,6 +1,6 @@
 {
   "status": "RETURN",
-  "message": "The complete model-uncertainty interval lies inside the requested 10 m return tolerance.",
+  "message": "Conditional return: the miss plus the externally assumed total position-error bound lies inside the requested 10 m return tolerance.",
   "launch": {
     "latitude_deg": 5.4296875,
     "longitude_deg_east": 201.3671875,
@@ -16,11 +16,10 @@
     "include_solar_tide": true,
     "duration_s": 6686.339806268061,
     "return_tolerance_m": 10.0,
-    "model_uncertainty_m": 0.0,
+    "assumed_total_position_error_bound_m": 0.0,
     "minimum_return_time_s": 1000.0,
     "max_step_s": 10.0,
-    "output_samples": 2001,
-    "epoch_utc": "2026-01-01T00:00:00Z"
+    "output_samples": 2001
   },
   "launch_terrain_elevation_m": 10757.0,
   "launch_radius_m": 1767400.0,

@@ -1,0 +1,6 @@
+{
+  "interpretation": "Numerical differences and truncation-model discrepancies are reported separately; neither is a physical trajectory-error bound.",
+  "maximum_degree600_numerical_endpoint_difference_m": 7.302917301062833e-06,
+  "degree600_vs_degree1200_endpoint_discrepancy_m": 0.28347200925021665,
+  "degree900_vs_degree1200_endpoint_discrepancy_m": 0.017403740193940125
+}

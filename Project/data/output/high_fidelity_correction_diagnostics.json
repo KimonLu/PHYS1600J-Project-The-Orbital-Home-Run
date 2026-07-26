@@ -1,0 +1,91 @@
+{
+  "scenario_label": "fixed_short_arc_third_body_geometry",
+  "degree300_initialization": {
+    "optimizer": "scipy.optimize.least_squares",
+    "finite_difference_relative_step": 2e-05,
+    "velocity_neu_m_s": [
+      46.90456655944926,
+      1660.7222367677577,
+      15.403321112887973
+    ],
+    "residual_vector_m": [
+      -5.75091689825058e-08,
+      -7.660128176212311e-08,
+      8.294591680169106e-09
+    ],
+    "residual_norm_m": 9.614500057620943e-08,
+    "function_evaluations": 9,
+    "termination_message": "`xtol` termination condition is satisfied."
+  },
+  "degree600_newton": {
+    "residual_target_m": 0.01,
+    "maximum_iterations": 4,
+    "history": [
+      {
+        "iteration": 0,
+        "velocity_neu_m_s_before": [
+          46.90456655944926,
+          1660.7222367677577,
+          15.403321112887973
+        ],
+        "residual_vector_m_before": [
+          0.8978154601063579,
+          -0.8242298621917143,
+          0.6743575591826811
+        ],
+        "residual_norm_m_before": 1.3929054468130229,
+        "jacobian_degree": 600,
+        "jacobian_component_step_m_s": 0.02,
+        "terminal_position_jacobian_s": [
+          [
+            -191.54887326876633,
+            -7493.776077765506,
+            -84.2164431582205
+          ],
+          [
+            507.94196626811754,
+            18530.482863928773,
+            163.74101485707797
+          ],
+          [
+            7.404559482529294,
+            -513.2462737004971,
+            -13.924633170972811
+          ]
+        ],
+        "velocity_update_neu_m_s": [
+          -0.02507255951106304,
+          0.000625272911326939,
+          0.012049675352964752
+        ],
+        "velocity_update_norm_m_s": 0.027824788997605772
+      },
+      {
+        "iteration": 1,
+        "velocity_neu_m_s_before": [
+          46.87949399993819,
+          1660.722862040669,
+          15.415370788240937
+        ],
+        "residual_vector_m_before": [
+          -0.001731817377731204,
+          0.004358800477348268,
+          -3.845954779535532e-06
+        ],
+        "residual_norm_m_before": 0.004690239633804593,
+        "converged_without_update": true
+      }
+    ],
+    "final_velocity_neu_m_s": [
+      46.87949399993819,
+      1660.722862040669,
+      15.415370788240937
+    ],
+    "final_residual_vector_m": [
+      -0.001731817377731204,
+      0.004358800477348268,
+      -3.845954779535532e-06
+    ],
+    "final_residual_norm_m": 0.004690239633804593
+  }
+}

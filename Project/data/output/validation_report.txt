@@ -13,11 +13,7 @@ PASS: finite-height boundary gives periapsis at reference sphere
 PASS: central numerical orbit closes to better than 10 micrometres in state norm
 PASS: degree-2 acceleration matches an independent potential-gradient check
 PASS: rotating degree-2 Jacobi integral is conserved
-PASS: differentially corrected full-model trajectory hits the scheduled rotating site within 1 mm
-PASS: targeted return retains the designed 100 m LDEM4 terrain margin
-PASS: targeted return completes one body-fixed circuit and more than one inertial revolution
-PASS: targeted return is converged below 0.1 mm when maximum step is halved
-PASS: full LDEM64 source extrema reproduce the reported elevation range
+SKIP: full LDEM64 source extrema (run download_science_data.py)
 PASS: degree 600 is the lowest tested truncation selected against degree 1200
 PASS: degree-600 comparison is within 10 m and formally exterior at 15 km
 PASS: degree-600 comparison is within 10 m and formally exterior at 30 km
@@ -27,5 +23,7 @@ PASS: specific return carries approximately 200 kJ of kinetic energy
 PASS: browser gravity atlas remains within 10 m of direct degree-600 trajectories at valid test altitudes
 PASS: browser 12 km cross-check exposes rather than hides the near-surface error increase
 PASS: browser LDEM64 tiles reproduce direct terrain queries across tile seams
-PASS: specific-case one-metre launch tolerances are finite and in the reported precision regime
+PASS: degree-600 Jacobian is step-stable and the degree-300 proxy passes the declared five-percent test
+PASS: DOP853 step refinement and strict RK45 agree below 0.1 mm at the endpoint
+PASS: bounded height continuation covers 2 km and above and accepts only the 19.243 km candidate
 PASS: public general-solver entry point reproduces the degree-600 return without impact

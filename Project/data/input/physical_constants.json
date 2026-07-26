@@ -4,9 +4,7 @@
     "mean_radius_m": 1737400.0,
     "problem_gravity_m_s2": 1.62,
     "sidereal_rotation_period_s": 2360591.5104,
-    "global_highest_elevation_m": 10786.0,
-    "ldem4_max_elevation_m": 10504.0,
-    "ldem4_min_elevation_m": -8879.0
+    "global_highest_elevation_m": 10757.0
   },
   "baseball": {
     "representative_mass_kg": 0.145,

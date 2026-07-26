@@ -1,16 +1,81 @@
 {
-  "gravity_degree_for_jacobian": 300,
-  "base_solution_gravity_degree": 600,
-  "finite_difference_velocity_step_m_s": 0.02,
-  "closest_miss_gain_m_per_m_s_speed": 22.016544365128297,
-  "closest_miss_gain_m_per_rad_elevation": 31807.09570372632,
-  "closest_miss_gain_m_per_rad_azimuth": 41320.439142018746,
-  "one_m_tolerance_speed_m_s": 0.04542038856851152,
-  "one_m_tolerance_elevation_deg": 0.0018013521274238787,
-  "one_m_tolerance_azimuth_deg": 0.0013866207790327733,
-  "projected_jacobian_singular_values_s": [
-    35.35010555285948,
-    14.838001849221044,
-    1.261579849634407e-12
-  ]
+  "common_projection_direction": "degree-600 terminal velocity relative to the rotating site",
+  "degree600_terminal_relative_speed_m_s": 1661.4556722280845,
+  "one_m_sphere_one_sided_crossing_time_s": 0.0006018818417580509,
+  "two_m_diameter_crossing_time_s": 0.0012037636835161018,
+  "middle_step_results": {
+    "speed": {
+      "degree600_fixed_time_gain_m_per_unit": 20003.091961753405,
+      "degree600_free_time_gain_m_per_unit": 22.137643086275283,
+      "degree300_vs_600_fixed_time_relative_difference": 2.382533026257051e-06,
+      "degree300_vs_600_free_time_relative_difference": 0.004865715407726257,
+      "degree600_middle_vs_small_fixed_time_relative_difference": 9.092854429424251e-09,
+      "degree600_middle_vs_small_free_time_relative_difference": 2.564914421271983e-07,
+      "publish_degree300_proxy": true
+    },
+    "elevation": {
+      "degree600_fixed_time_gain_m_per_unit": 31815.893156617964,
+      "degree600_free_time_gain_m_per_unit": 31682.524264654567,
+      "degree300_vs_600_fixed_time_relative_difference": 0.003389028262143382,
+      "degree300_vs_600_free_time_relative_difference": 0.003935173064641624,
+      "degree600_middle_vs_small_fixed_time_relative_difference": 1.6592589575317989e-07,
+      "degree600_middle_vs_small_free_time_relative_difference": 2.6816517664335183e-07,
+      "publish_degree300_proxy": true
+    },
+    "azimuth": {
+      "degree600_fixed_time_gain_m_per_unit": 55599.29208227975,
+      "degree600_free_time_gain_m_per_unit": 41314.03874302952,
+      "degree300_vs_600_fixed_time_relative_difference": 0.0021564795732291705,
+      "degree300_vs_600_free_time_relative_difference": 0.0001540499976972907,
+      "degree600_middle_vs_small_fixed_time_relative_difference": 6.523866705815847e-07,
+      "degree600_middle_vs_small_free_time_relative_difference": 6.832158862418123e-08,
+      "publish_degree300_proxy": true
+    }
+  },
+  "degree600_middle_step_jacobian": {
+    "fixed_time_matrix": [
+      [
+        -7496.444928430719,
+        -24470.114405266937,
+        -33371.44108954817
+      ],
+      [
+        18538.18168034486,
+        -13474.294473417101,
+        25606.016296660524
+      ],
+      [
+        -512.6611472456716,
+        -15228.524117264895,
+        -36358.76963089686
+      ]
+    ],
+    "projected_matrix": [
+      [
+        -0.45697554934021845,
+        -25560.652237774088,
+        -19428.071224256655
+      ],
+      [
+        0.4535877125178678,
+        -10777.372607904323,
+        -8876.216183238448
+      ],
+      [
+        22.12827767698324,
+        -15306.326817051615,
+        -35364.00192334247
+      ]
+    ],
+    "fixed_time_singular_values": [
+      60413.16276516507,
+      28188.33068621319,
+      7702.194704674347
+    ],
+    "projected_singular_values": [
+      50419.4713695364,
+      12981.122367989212,
+      1.4111598357736544e-12
+    ]
+  }
 }

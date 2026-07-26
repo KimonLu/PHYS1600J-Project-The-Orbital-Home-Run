@@ -1,5 +1,5 @@
 {
-  "epoch_utc": "2026-01-01T00:00:00Z",
+  "scenario_label": "fixed_short_arc_third_body_geometry",
   "frame_treatment": "uniformly rotating aligned PA/ME frames; Earth and Sun fixed in the Moon-centred inertial frame over the short arc",
   "latitude_deg": 5.4296875,
   "longitude_deg_east": 201.3671875,
@@ -8,18 +8,23 @@
   "ball_center_altitude_above_reference_m": 30000.0,
   "duration_s": 6686.339806268061,
   "gravity_degree": 600,
-  "velocity_north_m_s": 46.879386626444735,
-  "velocity_east_m_s": 1660.722867153263,
-  "velocity_up_m_s": 15.415139324092207,
-  "speed_m_s": 1661.4559112105885,
-  "elevation_deg": 0.5316030898825165,
-  "azimuth_deg_clockwise_from_north": 88.38306681897323,
-  "scheduled_return_miss_m": 0.006656088618199652,
-  "minimum_ldem64_clearance_m": 10279.558005351953,
-  "minimum_brillouin_clearance_m": 3318.32938286406,
-  "return_relative_speed_m_s": 1661.4556745285713,
-  "kinetic_energy_at_return_j": 200131.53448568124,
+  "velocity_north_m_s": 46.87949399993819,
+  "velocity_east_m_s": 1660.722862040669,
+  "velocity_up_m_s": 15.415370788240937,
+  "speed_m_s": 1661.4559112774496,
+  "elevation_deg": 0.5316110723116947,
+  "azimuth_deg_clockwise_from_north": 88.3830631125077,
+  "scheduled_boundary_value_residual_m": 0.004690239633804593,
+  "scheduled_boundary_value_residual_vector_m": [
+    -0.001731817377731204,
+    0.004358800477348268,
+    -3.845954779535532e-06
+  ],
+  "minimum_ldem64_clearance_m": 10279.35149357716,
+  "minimum_brillouin_clearance_m": 3318.083771724254,
+  "return_relative_speed_m_s": 1661.4556722281573,
+  "kinetic_energy_at_return_j": 200131.53393148605,
   "initial_degree600_miss_before_update_m": 1.3929054468130229,
-  "degree600_refinement_runtime_s": 130.6963078000117,
-  "status": "RETURN"
+  "degree600_refinement_runtime_s": 433.1716226999415,
+  "status": "NOMINAL_MODEL_RETURN"
 }

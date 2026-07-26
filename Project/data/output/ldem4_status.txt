@@ -1,1 +1,0 @@
-LDEM4 was not bundled. Run scripts/download_optional_data.py LOLA_LDEM4 LOLA_LDEM4_LABEL, then rerun this script.

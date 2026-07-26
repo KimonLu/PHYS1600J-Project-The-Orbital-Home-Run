@@ -1,0 +1,31 @@
+{
+  "search_domain": {
+    "site_latitude_deg": 5.4296875,
+    "site_longitude_deg_east": 201.3671875,
+    "site_ldem64_elevation_m": 10757.0,
+    "platform_heights_m": [
+      2000,
+      4000,
+      8000,
+      12000,
+      16000,
+      19243
+    ],
+    "return_window_s": [
+      6200.0,
+      7200.0
+    ],
+    "time_candidates_per_height": 1,
+    "time_candidate_definition": "central-gravity synodic time",
+    "degree300_role": "velocity solve and proxy Jacobian",
+    "degree600_role": "direct propagation before and after one proxy update",
+    "return_residual_limit_m": 1.0
+  },
+  "interpretation": "Failure means only that this specified one-time-per-height continuation did not find a terrain-safe, Brillouin-valid degree-600 return.",
+  "status_counts": {
+    "IMPACT": 2,
+    "NO_RETURN_FOUND_IN_BOUNDED_SEARCH": 2,
+    "BELOW_BRILLOUIN_DOMAIN": 1,
+    "NOMINAL_RETURN_FOUND_IN_BOUNDED_SEARCH": 1
+  }
+}

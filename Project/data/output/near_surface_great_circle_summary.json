@@ -1,0 +1,24 @@
+{
+  "interpretation": "Central-gravity circular great-circle terrain requirement relative to the bilinearly interpolated LDEM64 surface; not a high-fidelity return search.",
+  "random_seed": 1600,
+  "random_sample_count": 2000,
+  "along_track_spacing_deg": 0.015625,
+  "random_required_height_m": {
+    "minimum": 44.78409785085199,
+    "median": 7111.956042705484,
+    "p95": 11077.708759503757,
+    "maximum": 15061.247426247617,
+    "fraction_at_or_below_1m": 0.0,
+    "fraction_at_or_below_100m": 0.0005
+  },
+  "ldem64_maximum_site_scan": {
+    "azimuth_count": 360,
+    "minimum_required_height_m": 0.0369,
+    "maximum_required_height_m": 0.0369
+  },
+  "high_fidelity_height_continuation": {
+    "status": "performed_separately_by_16_height_continuation.py",
+    "output": "near_surface_height_continuation.csv",
+    "scope": "2 km and above at the LDEM64 summit site"
+  }
+}
