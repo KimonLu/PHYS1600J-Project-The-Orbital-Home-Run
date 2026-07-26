@@ -19,7 +19,7 @@ export interface SolverConfig {
   durationS: number;
   stepS: number;
   returnToleranceM: number;
-  modelUncertaintyM: number;
+  assumedTotalPositionErrorBoundM: number;
   minimumReturnTimeS: number;
   includeEarthTide: boolean;
   includeSolarTide: boolean;

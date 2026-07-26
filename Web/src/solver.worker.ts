@@ -432,22 +432,26 @@ const solve = async (
   );
   let status: SolverResult["status"];
   let message: string;
+  const effectivePositionErrorBound = Math.max(
+    config.assumedTotalPositionErrorBoundM,
+    numericalError,
+  );
   if (
     closest &&
-    closest.distanceM + config.modelUncertaintyM + numericalError <=
+    closest.distanceM + effectivePositionErrorBound <=
       config.returnToleranceM
   ) {
     status = "RETURN";
     message =
-      "The complete numerical and model-uncertainty interval lies inside the requested return sphere.";
+      "Conditional return: the miss plus the larger of the supplied assumed total position-error bound and the RK4 numerical diagnostic lies inside the requested return sphere. The solver does not derive a physical uncertainty bound.";
   } else if (
     closest &&
-    closest.distanceM - config.modelUncertaintyM - numericalError <=
+    closest.distanceM - effectivePositionErrorBound <=
       config.returnToleranceM
   ) {
     status = "RETURN_UNCERTAIN";
     message =
-      "The miss lies inside the combined tolerance and uncertainty band; the physical classification is not robust.";
+      "The conditional interval crosses the return boundary. The supplied position-error bound is an assumption, and the RK4 quantity is a numerical diagnostic rather than a certified bound.";
   } else if (impact) {
     status = "IMPACT";
     message = "The ball intersects the LDEM64 surface before a qualified return.";

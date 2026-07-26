@@ -9,12 +9,12 @@ export interface TrajectoryExample {
 const config = (
   durationS: number,
   returnToleranceM = 10,
-  modelUncertaintyM = 10,
+  assumedTotalPositionErrorBoundM = 10,
 ): SolverConfig => ({
   durationS,
   stepS: 4,
   returnToleranceM,
-  modelUncertaintyM,
+  assumedTotalPositionErrorBoundM,
   minimumReturnTimeS: 1000,
   includeEarthTide: true,
   includeSolarTide: true,

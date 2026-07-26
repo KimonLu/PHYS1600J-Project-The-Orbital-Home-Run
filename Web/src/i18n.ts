@@ -40,9 +40,11 @@ const translations = {
     duration: "Time window",
     step: "Integrator step",
     tolerance: "Return radius",
-    uncertainty: "Model band",
+    uncertainty: "Assumed total position-error bound (not calculated)",
     earthTide: "Earth tide",
     solarTide: "Solar tide",
+    thirdBodyNote:
+      "Controlled short-arc geometry: Earth starts on +x and the Sun on +y, with fixed distances and inertial directions. These switches do not load a dated ephemeris.",
     run: "Run trajectory",
     runDetail: "stream tiles · propagate · classify",
     preparing: "Preparing model",
@@ -55,7 +57,7 @@ const translations = {
     minimumClearance: "Minimum clearance",
     maximumAltitude: "Maximum altitude",
     impactLocation: "Impact location",
-    numericalBound: "Numerical bound",
+    numericalBound: "Numerical diagnostic",
     domainTitle: "Harmonic-domain warning",
     domainMessage: "Part of this arc lies below the conservative Brillouin sphere. Collision remains LDEM64-based, but high-degree gravity is a flagged downward continuation.",
     modelChain: "MODEL CHAIN",
@@ -110,9 +112,11 @@ const translations = {
     duration: "计算时间窗",
     step: "积分步长",
     tolerance: "返回半径",
-    uncertainty: "模型误差带",
+    uncertainty: "假定的总位置误差上界（非求解器计算值）",
     earthTide: "地球潮汐",
     solarTide: "太阳潮汐",
+    thirdBodyNote:
+      "受控短弧几何：地球初始位于 +x、太阳初始位于 +y，距离与惯性方向固定；这些开关不会载入指定历元星历。",
     run: "计算轨迹",
     runDetail: "载入数据 · 积分 · 分类",
     preparing: "准备模型",
@@ -125,7 +129,7 @@ const translations = {
     minimumClearance: "最小地形净空",
     maximumAltitude: "最大高度",
     impactLocation: "撞击位置",
-    numericalBound: "数值误差界",
+    numericalBound: "数值诊断量",
     domainTitle: "球谐模型适用域警告",
     domainMessage: "部分轨迹低于保守 Brillouin 球。碰撞仍按 LDEM64 判断，但高阶重力在此处属于已明确标注的向下延拓。",
     modelChain: "模型链",
@@ -169,12 +173,12 @@ export const statusMessage = (
 ): string => {
   const values: Record<SolverStatus, [string, string]> = {
     RETURN: [
-      "The complete numerical and model-uncertainty interval lies inside the requested return sphere.",
-      "包含数值误差与模型误差的完整区间均位于设定的返回球内。",
+      "Conditional return under the supplied assumed total position-error bound and the RK4 numerical diagnostic; neither is a physical certification.",
+      "在输入的假定总位置误差上界与 RK4 数值诊断量下条件返回；两者都不构成现实物理认证。",
     ],
     RETURN_UNCERTAIN: [
-      "The miss lies inside the combined tolerance and uncertainty band; the physical classification is not robust.",
-      "最近距离落入返回容差与不确定度的联合边界带，当前物理分类不稳健。",
+      "The conditional interval crosses the return boundary; no physically robust classification follows.",
+      "条件区间跨越返回边界，因而不能据此作出现实物理上的稳健分类。",
     ],
     IMPACT: [
       "The ball intersects the LDEM64 surface before a qualified return.",

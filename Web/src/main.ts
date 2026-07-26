@@ -161,6 +161,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
               <label class="switch"><input name="earth" type="checkbox" checked><span></span><span class="switch-text" data-i18n="earthTide"></span></label>
               <label class="switch"><input name="sun" type="checkbox" checked><span></span><span class="switch-text" data-i18n="solarTide"></span></label>
             </div>
+            <p class="field-note" data-i18n="thirdBodyNote"></p>
           </fieldset>
 
           <button class="run-button" type="submit">
@@ -448,7 +449,10 @@ const applyExample = (status: string): void => {
   setNamedValue("duration", example.config.durationS);
   setNamedValue("step", example.config.stepS);
   setNamedValue("tolerance", example.config.returnToleranceM);
-  setNamedValue("uncertainty", example.config.modelUncertaintyM);
+  setNamedValue(
+    "uncertainty",
+    example.config.assumedTotalPositionErrorBoundM,
+  );
   (form.elements.namedItem("earth") as HTMLInputElement).checked =
     example.config.includeEarthTide;
   (form.elements.namedItem("sun") as HTMLInputElement).checked =
@@ -491,7 +495,7 @@ form.addEventListener("submit", (event) => {
     durationS: readNumber(data, "duration"),
     stepS: readNumber(data, "step"),
     returnToleranceM: readNumber(data, "tolerance"),
-    modelUncertaintyM: readNumber(data, "uncertainty"),
+    assumedTotalPositionErrorBoundM: readNumber(data, "uncertainty"),
     minimumReturnTimeS: 1000,
     includeEarthTide: data.get("earth") === "on",
     includeSolarTide: data.get("sun") === "on",
