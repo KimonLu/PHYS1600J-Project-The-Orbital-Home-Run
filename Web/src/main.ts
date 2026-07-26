@@ -55,6 +55,9 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
           <a href="https://www.gnu.org/software/gsl/doc/html/ode-initval.html" target="_blank" rel="noreferrer">
             <span data-i18n="integrator"></span><strong>RK4 step-doubling ↗</strong>
           </a>
+          <a href="https://svs.gsfc.nasa.gov/4720" target="_blank" rel="noreferrer">
+            <span data-i18n="surfaceTexture"></span><strong>NASA SVS Moon Kit ↗</strong>
+          </a>
         </div>
       </div>
     </header>
@@ -194,14 +197,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 
     <section class="method-strip">
       <div><span data-i18n="modelChain"></span><strong data-i18n="modelChainText"></strong></div>
-      <div><span data-i18n="interpretation"></span><strong data-i18n="interpretationText"></strong></div>
-      <a href="https://svs.gsfc.nasa.gov/4720" target="_blank" rel="noreferrer" data-i18n="textureCredit"></a>
+      <a href="https://github.com/KimonLu/PHYS1600J-Project-The-Orbital-Home-Run" target="_blank" rel="noreferrer" data-i18n="githubRepository"></a>
     </section>
-
-    <footer>
-      <p data-i18n="footerModel"></p>
-      <p data-i18n="footerWarning"></p>
-    </footer>
   </main>
 `;
 
@@ -423,6 +420,11 @@ const applyLanguage = (nextLanguage: Language): void => {
   populateExamples();
   updateSpeedReference();
   groundTrackView.setAxisLabel(language === "en" ? "longitude / latitude" : "经度 / 纬度");
+  moonView.setAxisLabels(
+    text(language, "northPole"),
+    text(language, "southPole"),
+    text(language, "rotationDirection"),
+  );
   if (latestResult) {
     renderResultSummary(latestResult);
     drawClearance(latestResult);

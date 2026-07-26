@@ -700,7 +700,7 @@ input[type="number"]:focus {
 
 .method-strip {
   display: grid;
-  grid-template-columns: 1.2fr 1.2fr auto;
+  grid-template-columns: minmax(0, 1fr) auto;
   gap: 1px;
   margin-top: 15px;
   border: 1px solid var(--line);
@@ -729,22 +729,9 @@ input[type="number"]:focus {
 .method-strip a {
   display: grid;
   place-items: center;
-  min-width: 150px;
+  min-width: 210px;
   color: var(--cyan);
   font-family: "IBM Plex Mono", monospace;
-}
-
-footer {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 17px 2px 0;
-  color: #52656e;
-  font: 10px/1.5 "IBM Plex Mono", monospace;
-}
-
-footer p {
-  margin: 0;
 }
 
 @media (max-width: 1120px) {
@@ -804,9 +791,6 @@ footer p {
     grid-template-columns: 1fr;
   }
 
-  footer {
-    flex-direction: column;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
