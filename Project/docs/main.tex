@@ -1,0 +1,1215 @@
+\input{setting.cls}
+
+\begin{document}
+
+\title{Problem B: The Orbital Home Run --- From a Measure-Zero Ideal Orbit to a Terrain-Aware Lunar Return}
+
+\author{Kemeng Lu}
+% \email{lkm070810@sjtu.edu.cn}
+\author{Jiahao Yin}
+% \email{jayden04@sjtu.edu.cn}
+\author{Yuxin Wu}
+% \email{chosen1@sjtu.edu.cn}
+\affiliation{Global College, Shanghai Jiao Tong University, Shanghai 200240, China}
+
+\begin{abstract}
+Could a baseball launched on the Moon orbit it and return from behind? We separate four questions: mathematical existence, survival above terrain, encounter with a rotating launch site, and physical certification. On a smooth nonrotating sphere, the circular and escape speeds are \SI{1.680}{\kilo\metre\per\second} and \SI{2.376}{\kilo\metre\per\second}. A bound point-mass launch from the reference surface is non-penetrating if and only if \(\gamma=0\) and \(1\leq v/v_c<\sqrt2\). For \(1<v/v_c<\sqrt2\), the orbit is exterior only between its launch and return contacts, so the admissible speed--angle set has Lebesgue measure zero. Lunar rotation changes the encounter time rather than forbidding return: an equatorial prograde circular orbit revisits the moving field after the synodic time \(2\pi/(n-\Omega)\). We then use the PDS LOLA LDEM64 raster, GRGM1200B truncated at convergence-tested degree 600, uniform lunar rotation, and fixed short-arc Earth and solar differential tides. A direct degree-600 finite-difference Jacobian correction yields a scheduled \SI{111.439}{min} return from \SI{30.000}{km} above the reference sphere (\SI{19.243}{km} above local LDEM64 terrain) at \SI{1661.4559}{\metre\per\second}. The fixed-time residual is \SI{4.690}{mm} and the minimum raster clearance is \SI{10.279}{km}; these are deterministic-model diagnostics, not millimeter physical accuracy. A bilingual static web solver (\url{https://kimonlu.github.io/PHYS1600J-Project-The-Orbital-Home-Run/}) uses lossless LDEM64 tiles and a validated degree-600 acceleration atlas to classify user-specified launches within the implemented terrain, altitude, and propagation domain and visualize the 3-D trajectory, ground track, impact, closest return, and clearance. The results rule out an unaided human hit, while engineering feasibility and real-world certification remain outside the present model.
+
+\textit{Keywords:} lunar orbit, two-body dynamics, sensitivity analysis, lunar gravity, terrain clearance
+\end{abstract}
+
+\maketitle
+
+\clearpage
+\tableofcontents
+\newpage
+\section{Introduction}
+
+\subsection{Background and motivation}
+
+On Earth, a home run is a short atmospheric flight whose outcome is governed by the ball--bat collision, aerodynamic drag, lift, spin, and the geometry of a local field \cite{Nathan2000,Adair2002}. The lunar version changes the hierarchy of effects. With no appreciable atmosphere, aerodynamic forces disappear to leading order, while the curvature of the Moon and the inverse-square variation of gravity become essential. A sufficiently fast baseball is therefore not a projectile in a uniform gravitational field; it is a satellite.
+
+The question appears at first to require only the lunar ``first cosmic velocity.'' That calculation is necessary but not sufficient. A meaningful self-hitting home run must satisfy four distinct conditions:
+\begin{enumerate}
+    \item the trajectory must be bound to the Moon;
+    \item it must not intersect the lunar surface or terrain before completing a revolution;
+    \item it must return to the moving ballpark, not merely to the original point in an inertial frame;
+    \item the result must remain valid under realistic uncertainties and gravitational perturbations.
+\end{enumerate}
+These distinctions motivate a model hierarchy rather than a single calculation.
+
+\subsection{Problem restatement}
+
+We model a baseball launched from radius $r_0=R+h$ with surface-relative speed $v_s$, flight-path angle $\gamma$ measured above the local horizontal, azimuth $A$ measured clockwise from north, and launch latitude $\phi$. We seek combinations of speed, angle, and altitude that permit at least one complete lunar revolution and a return to the batter. We then quantify sensitivity to the initial state; add altitude, lunar rotation, terrain, non-spherical lunar gravity, and third-body differential perturbations; and use the results to discuss a fair and safe lunar baseball rule set.
+
+The phrase ``return to the batter'' is used carefully. In a static central field, every collision-free bound Kepler orbit returns exactly to its initial phase-space state after one period. In a rotating and irregular lunar environment, the relevant quantity is instead the distance between the ball and the rotating launch site at the candidate return time.
+
+\subsection{Main contributions}
+
+The analysis is organized around four results.
+\begin{enumerate}
+    \item We prove the complete non-penetrating surface-launch condition in the spherical two-body model and quantify its structural fragility.
+    \item We derive finite-height clearance conditions and separate inertial orbital closure from encounter with a rotating field.
+    \item We formulate a terrain-aware three-dimensional propagation model, select the GRGM1200B truncation degree by trajectory convergence, and solve one explicit degree-600 boundary-value problem with fixed short-arc Earth and solar tides.
+    \item We provide a reproducible Python reference workflow and a bilingual \href{https://kimonlu.github.io/PHYS1600J-Project-The-Orbital-Home-Run/}{browser solver}, and use the model hierarchy to define precisely which conclusions are mathematical, numerical, or physical.
+\end{enumerate}
+
+\section{Notation, data, and dimensionless parameters}
+
+\subsection{Notation}
+\FloatBarrier
+
+\begin{table}[!ht]
+\caption{Principal notation. Angles are in radians unless stated otherwise.}
+\label{tab:notation}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{ll}
+Symbol & Meaning \\
+\hline
+$\mu$ & \parbox[t]{0.70\columnwidth}{lunar gravitational parameter in the analytic model} \\
+$R$ & mean lunar topographic reference radius \\
+$r_0=R+h$ & ball-center launch radius \\
+$R_t$ & spherical obstacle-envelope radius \\
+$v,\ v_s$ & inertial and surface-relative launch speeds \\
+$v_c,\ v_{\rm esc}$ & circular and escape speeds at $R$ \\
+$u,\ u_0$ & \parbox[t]{0.70\columnwidth}{$v/v_c$ and $v/\sqrt{\mu/r_0}$} \\
+$\gamma,\ A$ & \parbox[t]{0.70\columnwidth}{elevation above the local horizontal and azimuth clockwise from north} \\
+$a,e,p$ & semimajor axis, eccentricity, semilatus rectum \\
+$T,\Omega$ & orbital period and lunar sidereal rotation rate \\
+$\phi,\lambda$ & body-fixed latitude and east longitude \\
+$H(\phi,\lambda)$ & bilinearly interpolated LDEM64 elevation \\
+$N$ & maximum spherical-harmonic degree and order
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+\FloatBarrier
+
+\subsection{Physical constants and data provenance}
+
+For reproducibility, all calculations use SI units internally. The analytic sections use \(\mu=\SI{4.902800118e12}{\metre^3\per\square\second}\) and \(R=\SI{1737.4}{km}\), consistent with JPL lunar parameters and DE440 \cite{Park2021,JPLParameters}. The resulting surface acceleration is \SI{1.6242}{\metre\per\square\second}, close to the rounded value supplied in the problem. The lunar sidereal rotation period is \SI{27.321661}{day} \cite{Archinal2018,NASAMoonRotation}.
+
+The terrain source is the exact PDS product \texttt{ldem\_64.img}: a \(11520\times23040\), pixel-registered, signed little-endian 16-bit raster at 64 pixels per degree and \SI{0.5}{m} per digital number, referenced to the \SI{1737.4}{km} sphere \cite{Smith2010,PDSLOLA}. Its equatorial pixel spacing is \SI{473.8}{m}. A direct scan of the downloaded file gives \(-\SI{9.1255}{km}\) to \(+\SI{10.7730}{km}\), so we define \(H_{\max}=\SI{10.757}{km}\). The raster is global, but not every pixel is an independent laser measurement; interpolation and unresolved sub-pixel hazards remain limitations. The launch site used later is the maximum sample in this specific file, not an independently surveyed summit.
+
+The gravity source is NASA GSFC's \texttt{sha.grgm1200b\_sigma}, the Kaula-constrained GRGM1200B coefficient set through degree and order 1200 \cite{Goossens2020,PGDAGRGM1200B}. The high-degree evaluator retains the file-header values \(GM=\SI{4.9028001224453e12}{\metre^3\per\square\second}\) and \(R_g=\SI{1738.0}{km}\), with 4\(\pi\) geodesy normalization. The terrain product is expressed in a mean-Earth/polar-axis frame and the gravity field in lunar principal axes; the present deterministic model aligns these frames and rotates them uniformly. Exact source URLs, byte counts, and SHA-256 hashes are recorded and checked by the public downloader.
+
+We use a representative baseball mass \(m_b=\SI{0.145}{kg}\) and radius \(R_{\rm ball}=\SI{0.0369}{m}\), both within the ranges specified by Official Baseball Rule 3.01 \cite{MLBRules2026}. The empirical human-scale benchmark is Oneil Cruz's \SI{122.9}{mph} (\SI{54.94}{\metre\per\second}) Statcast home run of 25 May 2025 \cite{MLBCruz2025}.
+
+\begin{table*}[tbp]
+\caption{Reference constants and derived ideal quantities. The number of significant figures shown is greater than needed for physical prediction but is useful for code verification}
+\label{tab:constants}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Quantity & Symbol & Value & Source or definition \\
+\hline
+Lunar gravitational parameter & $\mu$ & \SI{4.902800118e12}{\metre^3\per\square\second} & JPL/DE440 \\
+Mean lunar radius & $R$ & \SI{1.737400e6}{m} & LOLA/JPL reference \\
+Surface gravity & $\mu/R^2$ & \SI{1.624219}{\metre\per\square\second} & derived \\
+Surface circular speed & $v_c$ & \SI{1679.857}{\metre\per\second} & $\sqrt{\mu/R}$ \\
+Surface escape speed & $v_{\rm esc}$ & \SI{2375.676}{\metre\per\second} & $\sqrt{2\mu/R}$ \\
+Surface circular period & $T_c$ & \SI{6498.416}{s} & $2\pi\sqrt{R^3/\mu}$ \\
+Sidereal rotation period & $P_M$ & \SI{2360591.5}{s} & IAU/NASA \\
+Equatorial rotation speed & $\Omega R$ & \SI{4.6244}{\metre\per\second} & derived \\
+Maximum LDEM64 elevation & $H_{\max}$ & \SI{10.757}{km} & direct LDEM64 scan
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+\subsection{Dimensionless control parameters}
+
+The problem is organized by a small set of dimensionless quantities:
+\begin{align}
+ u&=\frac{v}{v_c}, \qquad \eta=\frac{h}{R},\\
+ \tau&=\frac{H_{\max}}{R}, \qquad \rho=\frac{\Omega R}{v_c}.
+\label{eq:dimensionless}
+\end{align}
+For the Moon, $\tau\simeq6.19\times10^{-3}$ and $\rho\simeq2.75\times10^{-3}$. The first controls the energetic orbit family, $\eta$ controls the angular opening of the feasible set, $\tau$ measures terrain importance using the scanned LDEM64 maximum, and $\rho$ measures the difference between inertial and surface-relative launch speeds. Perturbation strengths are represented by $J_2\simeq2.03\times10^{-4}$, $C_{22}\simeq2.24\times10^{-5}$, and the local ratios of third-body tidal acceleration to central lunar gravity.
+
+\section{Assumptions and model hierarchy}
+
+The assumptions are introduced in stages so that every additional physical effect has a measurable purpose.
+
+\begin{table*}[tbp]
+\caption{Model hierarchy. ``Return'' in M0 means inertial phase-space closure; in M1--M6 it means proximity to the rotating launch site.}
+\label{tab:models}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{llll}
+Model & Added physics & Main question & Validation \\
+\hline
+M0 & \parbox[t]{0.22\textwidth}{static sphere; central gravity} & \parbox[t]{0.25\textwidth}{does a non-penetrating closed orbit exist?} & analytic Kepler solution \\
+M1 & \parbox[t]{0.22\textwidth}{finite height, 3-D site, uniform rotation} & \parbox[t]{0.25\textwidth}{can the ball meet the moving field?} & synodic return; resonances \\
+M2 & global LOLA LDEM64 raster & \parbox[t]{0.25\textwidth}{does the trajectory clear the adopted terrain?} & refined collision event \\
+M3 & GRGM1200B through degree $N$ & \parbox[t]{0.25\textwidth}{what truncation is adequate?} & $N=2\ldots1200$ comparison \\
+M4 & fixed Earth and solar tides & \parbox[t]{0.25\textwidth}{what is the short-arc force ordering?} & controlled hierarchy \\
+M5 & three-component correction & \parbox[t]{0.25\textwidth}{does a scheduled 3-D return exist?} & residual; clearance; cross-checks \\
+M6 & tiled browser approximation & \parbox[t]{0.25\textwidth}{can arbitrary launches be explored?} & atlas--direct; tile tests
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+The ideal model treats the ball as a point mass after being struck, neglects air resistance, and neglects the ball's spin. These approximations are unusually strong on Earth but appropriate on the Moon: without an atmosphere, spin produces no Magnus force. The lunar exosphere is so tenuous that drag is negligible on a roughly two-hour arc \cite{NASALunarAtmosphere}. We also neglect solar radiation pressure in the default propagation. For a standard baseball the geometric area-to-mass ratio is $A/m\approx\SI{0.03}{\metre^2\per\kilogram}$; even with a conservative radiation-pressure coefficient ($C_R\approx 1.0$) the resulting acceleration is only of order $10^{-7}\,\si{\metre\per\square\second}$, below the dominant low-degree lunar anomaly but capable of accumulating meter-to-tens-of-meters displacement. It cannot be neglected in a certified sub-meter claim.
+
+The realistic solver still treats the Moon as a rigid uniformly rotating body and aligns its principal-axis gravity and mean-Earth topographic frames at the initial epoch. Physical libration and exact frame transformations are omitted; DE440-compatible SPICE kernels are the required extension \cite{Acton1996,NAIFLunarFrames}. Earth and Sun directions are held fixed in the controlled two-hour case. This preserves a reproducible perturbation hierarchy but is not an ephemeris-grade dated trajectory.
+
+\section{Pure ideal case: the spherical nonrotating Moon}
+
+\subsection{Governing equations}
+
+In a Moon-centerd inertial frame the point-mass equation is
+\begin{equation}
+ \ddot{\vect r}=-\frac{\mu}{r^3}\vect r.
+\label{eq:twobody}
+\end{equation}
+The conserved specific energy and angular momentum are
+\begin{equation}
+ \mathcal E=\frac{v^2}{2}-\frac{\mu}{r},\qquad
+ \vect H=\vect r\times\vect v.
+\label{eq:invariants}
+\end{equation}
+Bound motion requires $\mathcal E<0$. Standard two-body relations give \cite{Bate1971,Curtis2020,Vallado2013}
+\begin{equation}
+ a=-\frac{\mu}{2\mathcal E},\qquad
+ p=\frac{H^2}{\mu},\qquad
+ r(f)=\frac{p}{1+e\cos f}.
+\label{eq:conic}
+\end{equation}
+
+\subsection{Surface-launch theorem}
+
+\textbf{Theorem.} Consider a point ball launched from \(r=R\) in the static spherical model. It completes a bound revolution without entering \(r<R\) if and only if
+\begin{equation}
+ \boxed{\gamma=0,\qquad 1\leq u<\sqrt{2}.}
+\label{eq:surface_theorem}
+\end{equation}
+
+\emph{Proof.} Because the initial radius is the minimum admissible radius, a non-penetrating trajectory must begin at a radial turning point: \(\dot r(0)=v\sin\gamma=0\). The inward branch is excluded, hence \(\gamma=0\). A horizontal launch at \(R\) is a periapsis only when \(v\geq v_c\), and bound motion requires \(v<v_{\rm esc}=\sqrt2v_c\). Conversely, these conditions give a bound conic with \(r_p=R\), so \(r(t)\geq R\) for one full period. \hfill$\square$
+
+The admissible set is a line segment in the two-dimensional \((u,\gamma)\) plane and therefore has Lebesgue measure zero. The case \(u=1\) lies on the reference sphere at all times. For \(1<u<\sqrt2\), the ball satisfies \(r(t)>R\) only for \(0<t<T\) and touches \(r=R\) at release and return. Thus ``strictly exterior'' always refers to the open flight interval, not to the endpoints. Terrain, finite ball size, and model error make the circular boundary physically unusable.
+
+\subsection{Closed-form orbit family}
+
+For a horizontal launch from $R$ with $1\leq u<\sqrt{2}$,
+\begin{align}
+ a&=\frac{R}{2-u^2}, \qquad e=u^2-1,\label{eq:ae}\\
+ r_p&=R, \qquad r_a=R\frac{u^2}{2-u^2},\label{eq:rpra}\\
+ T&=T_c(2-u^2)^{-3/2}.\label{eq:period_u}
+\end{align}
+The required speed rises only from $v_c$ to $\sqrt{2}v_c$, but the apoapsis and period diverge as escape is approached. Figure~\ref{fig:family} shows this singular behavior, and Table~\ref{tab:ideal_cases} gives benchmark cases used to verify the scripts.
+
+\begin{figure*}[tbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{fig01_orbit_family_altitude.png}\\[-0.5ex]
+\small (a) Apoapsis altitude.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{fig02_orbit_family_period.png}\\[-0.5ex]
+\small (b) Orbital period.
+\end{minipage}
+\caption{The ideal horizontal surface-orbit family. Close to $u=1$ the orbit is low and fast; close to $\sqrt 2$, its scale becomes incompatible with a Moon-only two-body approximation.}
+\label{fig:family}
+\end{figure*}
+
+\begin{table}[tbp]
+\caption{Ideal horizontal reference cases}
+\label{tab:ideal_cases}
+\begin{ruledtabular}
+\begin{tabular}{cccc}
+$u$ & $v$ (\si{\kilo\metre\per\second}) & $h_a$ (km) & $T$ (min) \\
+\hline
+1.001 & 1.6815 & 6.97 & 108.63 \\
+1.010 & 1.6967 & 71.3 & 111.66 \\
+1.050 & 1.7638 & 396.8 & 127.38 \\
+1.100 & 1.8478 & 923.7 & 154.25 \\
+1.200 & 2.0158 & 2730 & 258.45 \\
+1.300 & 2.1838 & 7734 & 627.50
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The label ``low lunar orbit'' should therefore not be applied to the whole interval. Near escape, the apoapsis reaches many lunar radii and Earth perturbations can no longer be treated as small. Later realistic comparisons deliberately use a much lower orbit.
+
+\subsection{Horizontal-launch orbit from arbitrary height}
+
+The surface-launch theorem assumes \(r_0=R\). For a horizontal launch
+(\(\gamma=0\)) from any radius \(r_0\geq R\), define the local circular-speed
+ratio
+\begin{equation}
+ u_0=\frac{v}{\sqrt{\mu/r_0}}.
+ \label{eq:local_speed_ratio}
+\end{equation}
+Every \(0<u_0<\sqrt2\) launch is a bound two-body ellipse. For \(u_0<1\)
+the launch point is apoapsis, \(u_0=1\) gives a circular orbit, and \(u_0>1\)
+places the launch point at periapsis. The branch that moves outward
+immediately from the launch sphere is therefore
+\begin{equation}
+ 1\leq u_0<\sqrt2.
+\end{equation}
+Its orbital elements are
+\begin{align}
+ a&=\frac{r_0}{2-u_0^2},&
+ e&=u_0^2-1,&
+ p&=r_0u_0^2.
+ \label{eq:gen_elements}
+\end{align}
+Taking \(f=0\) at launch, the complete orbit is
+\begin{equation}
+ r(f)=\frac{r_0u_0^2}
+ {1+(u_0^2-1)\cos f}.
+ \label{eq:gen_polar}
+\end{equation}
+Thus \(r_p=r_0\), while
+\begin{equation}
+ r_a=\frac{r_0u_0^2}{2-u_0^2},\qquad
+ r_a-r_0=
+ \frac{2r_0(u_0^2-1)}{2-u_0^2}.
+ \label{eq:gen_apoapsis}
+\end{equation}
+The period is
+\begin{equation}
+ T=2\pi\sqrt{\frac{r_0^3}{\mu}}\,
+ (2-u_0^2)^{-3/2}.
+ \label{eq:gen_T}
+\end{equation}
+After this period the state returns exactly to the launch state in the
+inertial two-body model; encounter with the rotating launch site is a
+separate condition. The \(u_0<1\) branch is not discarded mathematically:
+it starts at apoapsis and may remain clear when \(r_0>R\), but it must be
+tested using the general periapsis-clearance inequality in
+Sec.~\ref{sec:finite_height}.
+
+\subsection{Energetic plausibility of a human hit}
+
+The fastest recorded MLB home-run exit speed, \SI{54.94}{\metre\per\second}, is only
+\begin{equation}
+ \frac{v_{\rm MLB}}{v_c}=0.0327,
+\end{equation}
+so lunar circular speed is larger by a factor of 30.6. Because kinetic energy
+scales as \(v^2\), a \SI{0.145}{kg} ball at \(v_c\) carries about
+\SI{205}{kJ}, compared with \SI{219}{J} at the Statcast benchmark: a factor
+of approximately 935.
+
+Momentum transfer gives a model-independent scale check. In the deliberately
+unphysical best case of a head-on, perfectly elastic collision between a
+stationary ball and a bat of mass \(m_{\rm bat}\) moving at \(V_b\),
+\begin{equation}
+ v_{\rm ball}=\frac{2m_{\rm bat}}{m_{\rm bat}+m_b}V_b<2V_b .
+\end{equation}
+Even an infinite-mass ideal bat would therefore require
+\(V_b>v_c/2\approx\SI{840}{\metre\per\second}\). Real collision losses only increase
+that requirement \cite{Nathan2000,Adair2002}. Reduced lunar traction and a
+pressurized suit further hinder a swing, but we do not assign unsupported
+numerical limits to those effects. The measured exit-speed scale and the ideal elastic-collision upper bound are already sufficient to rule out an unaided bat. We therefore leave traction, spacesuit motion, and detailed bat deformation unquantified. From this point on, the hit is interpreted as an idealized automated release, and the question becomes one of orbital geometry rather than human performance.
+
+\section{Sensitivity and reasonableness of the ideal solution}
+
+\subsection{Exact early-impact relation for a surface launch}
+
+The zero-measure result can be made quantitative. At $r=R$, let the launch flight-path angle be a small positive $\gamma$. The eccentricity-vector relations give
+\begin{align}
+ e\cos f_0&=u^2\cos^2\gamma-1,\label{eq:ecos}\\
+ e\sin f_0&=u^2\sin\gamma\cos\gamma,\label{eq:esin}
+\end{align}
+where $f_0$ is the launch true anomaly measured from periapsis. Hence
+\begin{equation}
+ \tan f_0=\frac{u^2\sin\gamma\cos\gamma}
+ {u^2\cos^2\gamma-1}.
+\label{eq:f0}
+\end{equation}
+The second intersection with the same sphere occurs at  $2\pi-f_0$, so the trajectory falls short of a full revolution by $2f_0$. The corresponding surface-arc shortfall is
+\begin{equation}
+ s=2Rf_0\simeq2R\frac{u^2}{u^2-1}\gamma,
+ \qquad 0<\gamma\ll1.
+\label{eq:shortfall}
+\end{equation}
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.47\textwidth]{fig03_surface_intersection_geometry.png}
+\caption{A non-tangential launch from the reference sphere intersects the sphere again before completing $2\pi$. The angular shortfall is $2f_0$}
+\label{fig:geometry}
+\end{figure}
+
+Figure~\ref{fig:angle_sensitivity} compares Eq.~\eqref{eq:shortfall} with the exact relation. At $u=1.2$, the proportionality factor is about \SI{1.14e7}{m.rad^{-1}}. In the strict $h=0$ model, every positive angular error causes a later premature intersection, whereas $\gamma<0$ points immediately into the Moon. The plotted distance therefore locates the second intersection for $\gamma>0$; it is not a finite safe tolerance.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.47\textwidth]{fig04_angle_sensitivity.png}
+\caption{Exact surface shortfall as a function of upward launch-angle error. Near $u=1$, a fixed angular error is especially damaging because the ellipse has very small radial clearance}
+\label{fig:angle_sensitivity}
+\end{figure}
+
+\subsection{Finite launch height}\label{sec:finite_height}
+
+A real ball center is above the ground, a batter may strike from a platform, and a mountaintop has $r_0>R$. Let $R_t$ denote the radius of the obstacle envelope to be cleared. For a launch at $r_0$ with speed $v$ and angle $\gamma$, the specific angular momentum is
+\begin{equation}
+ H=r_0v\cos\gamma.
+\end{equation}
+At the boundary of safety, the osculating periapsis is exactly $R_t$. Equating the energy at launch and periapsis gives
+\begin{equation}
+ v^2\left(r_0^2\cos^2\gamma-R_t^2\right)
+ =2\mu R_t\left(1-\frac{R_t}{r_0}\right).
+\label{eq:height_boundary}
+\end{equation}
+Thus a bound collision-free orbit requires
+\begin{equation}
+ v^2\left(r_0^2\cos^2\gamma-R_t^2\right)
+ \geq2\mu R_t\left(1-\frac{R_t}{r_0}\right),
+\label{eq:height_inequality}
+\end{equation}
+plus $v<\sqrt{2\mu/r_0}$. Provided that \(r_0^2\cos^2\gamma>R_t^2\), the minimum speed for a selected angle is
+\begin{equation}
+ v_{\min}=\left[
+ \frac{2\mu R_t(1-R_t/r_0)}
+ {r_0^2\cos^2\gamma-R_t^2}
+ \right]^{1/2}.
+\label{eq:vmin}
+\end{equation}
+If the denominator is non-positive, no finite speed can supply enough angular momentum to clear the envelope. For $R_t=R$, $r_0=R+h$, $v=u_0\sqrt{\mu/r_0}$, $h/R\ll1$, and $u_0>1$, a small-height expansion gives
+\begin{equation}
+ |\gamma|_{\max}\simeq
+ \left[\frac{2h}{R}\left(1-\frac{1}{u_0^2}\right)\right]^{1/2}.
+\label{eq:gamma_height}
+\end{equation}
+The square-root dependence is important: increasing the launch height by a factor of 100 improves angular tolerance by only a factor of 10.
+
+At $h=\SI{1}{m}$ and $u_0=1.2$, the exact tolerance is \SI{0.03398}{deg}. If only the ball radius $h=R_{\rm ball}=\SI{0.0369}{m}$ is credited, it drops to about \SI{0.0065}{deg}. Figure~\ref{fig:height_tolerance} maps the tolerance over seven orders of magnitude in height.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.47\textwidth]{fig05_finite_height_tolerance.png}
+\caption{Maximum angle magnitude that keeps the osculating periapsis above the mean sphere. The dashed marker is one ball radius; the dotted marker is a \SI{1}{m} launch height}
+\label{fig:height_tolerance}
+\end{figure}
+
+\subsection{Speed sensitivity}
+
+For $u=1+\delta$ with $\delta\ll1$, Eq.~\eqref{eq:rpra} gives
+\begin{equation}
+ h_a=r_a-R\simeq4R\delta
+ =4R\frac{\Delta v}{v_c}.
+\label{eq:ha_sensitivity}
+\end{equation}
+Near circular speed, an additional \SI{1}{\metre\per\second} therefore raises the ideal apoapsis by approximately \SI{4.14}{km}. The period sensitivity follows from Eq.~\eqref{eq:period_u}:
+\begin{equation}
+ \frac{\dd\ln T}{\dd u}=\frac{3u}{2-u^2}.
+\label{eq:period_sensitivity}
+\end{equation}
+At $u=1.2$, a fractional speed error $\Delta v/v=10^{-3}$ changes the period by roughly $0.77\%$, which becomes a significant longitude error when the Moon rotates beneath the orbit.
+
+The sensitivities separate naturally:
+\begin{itemize}
+    \item $\gamma$ controls whether a low-clearance trajectory intersects the surface;
+    \item $v$ controls radial scale and period;
+    \item in the exact central model, neither changes the one-period inertial return point for a surviving bound orbit;
+    \item after rotation or perturbations are added, period and orbital-plane errors become return-position errors.
+\end{itemize}
+This last point prevents a common misinterpretation of Monte Carlo results: a wide inertial return cloud in the ideal two-body model would indicate a numerical or event-definition error, not physical sensitivity.
+
+\subsection{Monte Carlo mean-sphere non-impact test}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=0.43\textwidth]{fig06_monte_carlo_periapsis.png}
+\caption{A subset of the Monte Carlo trials. Negative periapsis altitude means the osculating ellipse intersects the mean sphere.}
+\label{fig:montecarlo}
+\end{figure}
+
+We sampled \(10^5\) launches from a \SI{1}{m} platform with nominal \(u_0=1.2\), Gaussian \(\sigma_u=5\times10^{-4}\), and \(\sigma_\gamma=\SI{0.05}{deg}\). A launch is labelled non-impacting only if its osculating periapsis is at or above \(R\). If the small speed spread is neglected, Eq.~\eqref{eq:gamma_height} predicts the Gaussian mean-sphere non-impact fraction
+\begin{equation}
+ P_{\rm nonimpact}\simeq
+ \operatorname{erf}\!\left(
+ \frac{\gamma_{\max}}{\sqrt{2}\sigma_\gamma}
+ \right)=0.503,
+\end{equation}
+which matches the simulated fraction \(0.503\). Figure~\ref{fig:montecarlo} shows the sharp periapsis boundary. The chosen dispersions are illustrative rather than a measured model of a particular player's biomechanics; the calculation demonstrates how a specified launch distribution maps into a two-body mean-sphere failure fraction. It is not a measured probability for a person or launcher.
+
+
+
+
+\section{Terrain-aware rotating lunar model}
+
+\subsection{From a baseball hit to a controlled release}
+
+The ideal calculation fixes the physical scale: a low orbital release requires approximately \SI{1.7}{\kilo\metre\per\second}, lasts roughly \SI{1.8}{hours} per circuit, and returns with about \SI{2e5}{J} of kinetic energy. The realistic part of the project therefore asks the following restricted question:
+\begin{quote}
+Given an idealized body-fixed release point and a surface-relative velocity vector, does the ball clear the adopted lunar terrain surface and later re-enter a prescribed neighbourhood of the rotating release point?
+\end{quote}
+
+Let \(\vect r_{\rm site}^{\rm BF}\) be the fixed body-frame launch position. To exclude the trivial zero-distance launch event, the user supplies a minimum return-search time \(t_{\min}>0\) (\SI{1000}{s} by default). We define
+\begin{align}
+ d_{\rm ret}&=\min_{t_{\min}\leq t\leq t_f}
+ \left\lVert \vect r_{\rm ball}^{\rm BF}(t)-\vect r_{\rm site}^{\rm BF}\right\rVert,
+ \label{eq:dmin}\\
+ C(t)&=r(t)-R-H[\phi(t),\lambda(t)]-R_{\rm ball}.
+ \label{eq:clearance_v2}
+\end{align}
+The numerical implementation refines local minima of the return distance and the first zero of \(C(t)\) between output samples. A nominal return has \(d_{\rm ret}\leq\epsilon_r\), and a terrain-safe arc has \(C(t)>0\) throughout the propagated interval.
+
+The solver does not infer a total physical uncertainty. It accepts an external position-error bound \(B_{\rm assumed}\). Only when that input genuinely bounds every relevant position error does
+\begin{equation}
+ d_{\rm ret}+B_{\rm assumed}\leq\epsilon_r
+\label{eq:conditional_return}
+\end{equation}
+constitute a conditional robust-return test; otherwise the result is reported as nominal or uncertain rather than certified.
+
+\subsection{Launch position}
+
+The launch point affects the trajectory in four different ways. First, the
+local elevation changes the initial radius and hence both circular speed and
+energy. Second, latitude sets the surface velocity
+\(\Omega r_0\cos\phi\). Third, longitude and latitude locate the shot relative
+to fixed tesseral gravity anomalies. Fourth, the complete ground track
+determines collision risk; a high launch mountain says nothing about terrain
+on the far side.
+
+For this reason, ``launch from the highest mountain'' is not a solution
+criterion. The correct corridor objective is
+\begin{equation}
+ \max_{\phi_0,\lambda_0,h_0,A,v_s,\gamma}
+ \left\{\min_{0<t<t_f}C(t)\right\},
+\label{eq:corridor_v2}
+\end{equation}
+subject to a return constraint and launcher bounds. Figure~\ref{fig:terrain}
+shows why height mainly buys clearance rather than a meaningful reduction in
+orbital speed.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.47\textwidth]{fig11_terrain_envelope_speed.png}
+\caption{Surface-relative circular speed at the radius of a conservative global terrain envelope. The full topographic range changes the required speed only slightly; elevation is much more valuable as collision clearance.}
+\label{fig:terrain}
+\end{figure}
+
+Collision is evaluated against the full \texttt{ldem\_64.img} raster described in Sec.~II, with periodic longitude and bilinear interpolation between pixel centers. LDEM128, LDEM256, SLDEM2015, regional polar grids, and local stereo DEMs can provide finer topography, but substituting a finer global raster would not remove gravity, frame, launch-state, or rock-scale uncertainty. LDEM64 is therefore an explicit course-project surface model, not a claim that every local obstacle has been resolved.
+
+\subsection{Near-surface limitation}
+
+The analytic zero-measure result already shows why an exactly surface-tangent
+orbit is structurally fragile. We also test the terrain consequence directly.
+With random seed 1600, we draw 2000 positions uniformly on the sphere and an
+independent uniform azimuth at each position. For every resulting ideal
+circular great circle, we query the bilinearly interpolated LDEM64 surface at
+\(1/64^\circ\) along-track spacing and calculate the minimum constant radial
+platform height that clears the sampled profile.
+
+The required height has a median of \SI{7.112}{km}, a 95th percentile of
+\SI{11.078}{km}, and a sampled minimum of \SI{44.8}{m}; only \(0.05\%\) of
+the trials require at most \SI{100}{m}, and none require at most \SI{1}{m}.
+At the LDEM64 global maximum, all 360 integer-degree azimuths are
+terrain-clear in the central circular model with only the ball radius because
+no sampled terrain can be higher than the launch pixel. That special result
+does not establish a real near-surface return: it lies at the edge of the
+Brillouin domain, and non-spherical gravity destroys the central-model
+great-circle degeneracy. Figure~\ref{fig:surface_feasibility} therefore
+quantifies a terrain limitation, not a high-fidelity existence theorem.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.47\textwidth]{fig22_surface_height_feasibility.png}
+\caption{Minimum constant platform height required by 2000 randomly sampled
+central-gravity great circles relative to the bilinearly interpolated LDEM64
+surface. The summit scan is a terrain-only limiting case}
+\label{fig:surface_feasibility}
+\end{figure}
+
+For context, we also performed a bounded degree-300/600 continuation at
+the summit site for one synodic-time branch, with platform heights from
+\SI{2}{km} to \SI{19.243}{km}. Within this tested branch, only the existing
+\SI{19.243}{km} platform simultaneously satisfies the scheduled-return,
+LDEM64-clearance, and Brillouin-domain conditions. The lower cases fail for
+different reasons: some intersect the raster terrain, while others enter a
+region where the external spherical-harmonic field is not certified.
+
+This result does not prove that every lower-height initial state is
+impossible. It establishes the narrower and reproducible conclusion that an
+ordinary field-scale release is unsupported by the zero-measure ideal
+geometry, the kilometer-scale terrain statistics, and the bounded
+high-degree continuation performed here. The machine-readable continuation
+table records the exact search domain and outcomes.
+
+\subsection{Velocity vector: magnitude and direction}
+
+We specify surface-relative speed \(v_s\), elevation \(\gamma\), and
+azimuth \(A\), measured clockwise from north. The inertial initial velocity is
+\begin{equation}
+ \vect v_i=\vect v_s+\vect\Omega\times\vect r_0.
+\label{eq:rotation_velocity_v2}
+\end{equation}
+Speed primarily controls orbital energy and period. Elevation controls radial
+velocity and is especially dangerous near the surface because it can drive the
+osculating periapsis into the Moon. Azimuth selects the orbital plane and, in
+the real field, changes which mascons and terrain bands are encountered.
+Consequently, two launches with identical speed and elevation but different
+azimuths are no longer dynamically equivalent.
+
+Rotation provides only \SI{4.62}{\metre\per\second} at the equator, but it changes the
+encounter clock. For a circular equatorial prograde orbit,
+\begin{align}
+ n&=\sqrt{\frac{\mu}{r_0^3}},&
+ T_{\rm syn}&=\frac{2\pi}{n-\Omega},&
+ v_s&=\sqrt{\frac{\mu}{r_0}}-\Omega r_0.
+\label{eq:synodic_v2}
+\end{align}
+Thus the familiar \SI{30.05}{km} separation after one inertial circular period
+is a frame diagnostic, not proof that return is impossible. The ball meets the
+field slightly later, after one relative revolution.
+
+\subsection{Resonance}
+
+Synodic return is the direct one-circuit solution for an equatorial circular
+orbit. Integer resonance is relevant to the more restricted family in which
+the ball can meet the launch radius only at its original inertial apsis. After
+\(N\) orbital periods and \(m\) lunar rotations,
+\begin{equation}
+ NT=mP_M,\qquad m,N\in\mathbb Z^+.
+\label{eq:resonance_v2}
+\end{equation}
+For \(m=1\), the ideal mean-radius sequence has 363 revolutions per lunar
+rotation; the \(N=363\) member rises only \SI{1.64}{km} above the mean sphere
+and is buried in real relief. Resonance therefore organizes possible return
+families but does not guarantee terrain clearance or survival under irregular
+gravity. Figure~\ref{fig:resonance} should be read as a map of ideal
+commensurabilities, not as a list of ready-to-use lunar ballparks.
+
+\begin{figure}[tbp]
+\centering
+\includegraphics[width=0.43\textwidth]{fig08_rotation_resonances.png}
+\caption{Ideal apsidal resonances with the rotating Moon. Low-altitude
+commensurabilities organize candidate return families, but terrain and
+non-spherical gravity must still be tested}
+\label{fig:resonance}
+\end{figure}
+\FloatBarrier
+
+\subsection{Non-spherical gravity and selection of truncation degree}
+
+The GRAIL GRGM1200B model is expanded in real, 4\(\pi\)-normalized spherical
+harmonics:
+\begin{align}
+ U(r,\phi,\lambda)
+ &=\frac{GM}{r}\sum_{\ell=0}^{N}
+ \left(\frac{R_g}{r}\right)^\ell \notag\\
+ &\quad\times\sum_{m=0}^{\ell}\bar P_{\ell m}(\sin\phi)
+ \Bigl[\bar C_{\ell m}\cos m\lambda \notag\\
+ &\qquad\qquad+\bar S_{\ell m}\sin m\lambda\Bigr].
+\label{eq:harmonic}
+\end{align}
+The expansion follows the published GRAIL gravity-model methodology, while the specific coefficient file is GRGM1200B from the NASA archive \cite{Lemoine2014,Goossens2020,PGDAGRGM1200B}.
+The reference radius \(R_g=\SI{1738}{km}\) is retained exactly; coefficients
+are not rescaled to the topographic reference sphere. Accelerations are
+evaluated with PySHTOOLS \cite{Wieczorek2018}.
+
+Keeping more coefficients is not automatically more useful. Cost grows
+approximately as \(N^2\), high degrees are strongly attenuated with altitude,
+and truncation differences are not monotone because omitted terms can cancel.
+We therefore propagate the same initial state for one central-model synodic
+circuit at three reference altitudes and compare the terminal state with
+\(N=1200\). Table~\ref{tab:gravity_convergence} reports representative results.
+
+\begin{table*}[tbp]
+\caption{Final position difference from a degree-1200 propagation of the same
+initial state. The \SI{12}{km} case crosses below the conservative Brillouin
+sphere and is retained only as a warning; degree selection uses the formally
+valid \SI{15}{km} and \SI{30}{km} arcs}
+\label{tab:gravity_convergence}
+\begin{ruledtabular}
+\begin{tabular}{rrrrrr}
+\(N\) & \multicolumn{3}{c}{Position difference from \(N=1200\) (m)}
+& \multicolumn{2}{c}{Minimum Brillouin clearance (km)}\\
+& \SI{12}{km} & \SI{15}{km} & \SI{30}{km}
+& \SI{15}{km} & \SI{30}{km}\\
+\hline
+2   & 2101.0 & 2023.2 & 1726.2 & 2.762 & 17.455\\
+50  & 135.0  & 108.5  & 36.56  & 2.359 & 17.118\\
+100 & 131.1  & 110.1  & 47.29  & 2.326 & 17.091\\
+200 & 89.85  & 57.09  & 8.244  & 2.292 & 17.060\\
+300 & 44.38  & 22.34  & 0.879  & 2.276 & 17.052\\
+400 & 30.19  & 14.18  & 0.292  & 2.274 & 17.051\\
+600 & 0.995  & 0.0933 & 0.00530& 2.272 & 17.050\\
+900 & 0.432  & 0.0642 & \(2.8\times10^{-6}\) & 2.272 & 17.050
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+Among the tested degrees, \(N=600\) is the lowest satisfying a
+\SI{10}{m} terminal-position criterion at both valid altitudes; its
+\SI{15}{km} difference is only \SI{0.0933}{m}. We therefore use \(N=600\) in
+the principal Python calculation and in the web solver, while retaining
+\(N=1200\) as a convergence reference. Figure~\ref{fig:gravity_convergence}
+shows both the non-monotone convergence and its steep computational cost.
+
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=0.84\textwidth]{fig16_gravity_degree_convergence.png}
+\caption{Trajectory convergence and runtime against maximum harmonic degree.
+The selected \(N=600\) is a tested accuracy--cost compromise, not an assertion
+that degree 600 is universally sufficient}
+\label{fig:gravity_convergence}
+\end{figure*}
+
+There is an independent gravity-model domain restriction. An external
+spherical-harmonic expansion is formally guaranteed to converge only outside
+a sphere enclosing all gravitating mass. We adopt the conservative
+Brillouin radius
+\begin{equation}
+ R_B=\SI{1748.2}{km},
+\end{equation}
+slightly above the maximum radius in the LDEM64 raster. An arc can therefore
+be terrain-clear yet still fall below \(R_B\). In that region, evaluating
+additional harmonic degrees is a downward continuation of the external
+field, not a certified improvement in local gravity.
+
+The solver consequently treats terrain clearance and harmonic-domain
+validity as separate admissibility tests. A near-surface trajectory that
+enters \(r<R_B\) would require a mascon, polyhedral, or local density model;
+merely increasing the GRGM truncation degree cannot remove this limitation.
+
+\subsection{Earth and Sun}
+
+In a Moon-centerd frame, the essential third-body term is differential:
+\begin{equation}
+ \vect a_j=\mu_j\left[
+ \frac{\vect R_j-\vect r}{|\vect R_j-\vect r|^3}
+ -\frac{\vect R_j}{R_j^3}\right].
+\label{eq:thirdbody_v2}
+\end{equation}
+The indirect term removes the acceleration of the Moon itself. In the earlier
+\SI{20}{km} scale case, the degree-2 lunar correction is about
+\(5\times10^{-4}\) of central gravity, Earth tide about
+\(1.6\times10^{-5}\), and solar tide about \(4.4\times10^{-8}\).
+Figure~\ref{fig:perturb} therefore establishes the short-arc ordering:
+non-spherical lunar gravity first, Earth second, Sun third. This ordering can
+change near escape or over many resonant revolutions.
+
+\begin{figure*}[tbp]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{fig09_perturbation_altitude.png}\\[-0.5ex]
+\small (a) Radial residual from the central trajectory.
+\end{minipage}\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\linewidth]{fig10_perturbation_separation.png}\\[-0.5ex]
+\small (b) Increment introduced by each added force.
+\end{minipage}
+\caption{Controlled short-arc perturbation hierarchy. Irregular lunar gravity dominates the Earth tide, while the solar tide is smaller for one low orbit.}
+\label{fig:perturb}
+\end{figure*}
+
+The deterministic inertial equation used for the principal case is
+\begin{align}
+ \ddot{\vect r}_I={}&Q(t)^{T}\,
+ \vect a_{N}^{B}\!\left(Q(t)\vect r_I\right)
+ +\vect a_E(\vect r_I)+\vect a_S(\vect r_I),
+ \label{eq:full_model}\\
+ Q(t)={}&R_z(-\Omega t),
+\end{align}
+where the two differential accelerations are defined by Eq.~\eqref{eq:thirdbody_v2}, and \(\vect a_N^B\) is the body-frame GRGM1200B acceleration truncated at \(N=600\). Thus rotation enters through the gravity-frame transformation and through the moving-site boundary condition; no Coriolis or centrifugal terms are added because the reference propagator integrates in an inertial frame.
+
+The reproducible case below uses fixed distances and fixed inertial directions:
+Earth initially lies on \(+x\), and the Sun on \(+y\). These switches support
+only a controlled short-arc magnitude comparison; there is no direction
+control and no physically meaningful epoch in the present solver. We also use
+uniformly rotating, aligned PA/ME axes. A dated trajectory must evaluate
+the Earth and Sun ephemerides and the transformations between
+\texttt{MOON\_PA\_DE440}, \texttt{MOON\_ME\_DE440\_ME421}, and inertial axes
+\cite{Park2021,Acton1996,NAIFLunarFrames}. Solar radiation pressure and its
+shadowing would also enter any sub-meter physical error budget.
+
+\subsection{Reference and browser solvers}
+
+The Python reference solver accepts
+\[
+(\phi_0,\lambda_0,h_{\rm terrain},v_s,\gamma,A,t_f,
+\epsilon_r,B_{\rm assumed})
+\]
+and constructs the Cartesian initial state from the local north--east--up basis. By default it integrates Eq.~\eqref{eq:full_model} with SciPy's DOP853 implementation \cite{Virtanen2020}, transforms the dense solution to the body frame, queries LDEM64 bilinearly, and refines terrain impacts and post-launch closest approaches. The outcome classes are \emph{return}, \emph{return uncertain}, \emph{terrain impact}, \emph{escape}, \emph{no return within the selected window}, and \emph{numerical failure}. Impact time, location, and surface-relative speed are reported.
+
+The submitted bilingual static web solver implements the same user-level problem and is deployed at \url{https://kimonlu.github.io/PHYS1600J-Project-The-Orbital-Home-Run/}. It streams losslessly tiled LDEM64 data and uses an altitude-layered acceleration-correction atlas generated from GRGM1200B at \(N=600\), while evaluating the central term analytically. Rotating-frame integration includes the corresponding inertial terms and optional fixed-geometry Earth and solar tides. The browser reports impact or closest return and visualizes the 3-D path, ground track, and clearance. Direct one-circuit cross-checks give atlas--direct position differences of \SI{6.06}{m} at \SI{15}{km} and \SI{4.04}{m} at \SI{30}{km}; the browser is therefore an exploratory solver with an explicit numerical diagnostic, not a navigation or safety product \cite{ProjectRepository,WebSolver}.
+
+\subsection{A concrete degree-600 return}
+
+Finally we solve an explicit three-dimensional fixed-time boundary-value problem. The launch site is the maximum sample in the adopted LDEM64 file, at \(201.3671875^\circ\)E and \(5.4296875^\circ\)N. The ball center is placed \SI{30.000}{km} above the reference sphere, or \SI{19.243}{km} above the local bilinearly interpolated terrain. This deliberately high release keeps the complete nominal arc outside the conservative Brillouin sphere.
+
+Let \(\vect q=(v_N,v_E,v_U)\) be the surface-relative north--east--up velocity components and let
+\begin{equation}
+ \vect F(\vect q)=\vect r_I(t_f;\vect q)-R_z(\Omega t_f)\vect r_{\rm site}^{B}.
+ \label{eq:bvp_residual}
+\end{equation}
+At the central-model synodic time
+\(t_f=\SI{6686.339806}{s}\), a degree-300 least-squares correction
+provides the initial iterate. The final correction is recomputed directly
+with the degree-600 force model. For the \(j\)-th north--east--up velocity
+component, the central finite-difference column is
+\begin{equation}
+ J_{\rm NEU}^{(:,j)}
+ \simeq
+ \frac{\vect F(\vect q+\delta v\,\vect e_j)
+       -\vect F(\vect q-\delta v\,\vect e_j)}
+      {2\delta v},
+ \qquad
+ \delta v=\SI{0.02}{\metre\per\second},
+ \label{eq:direct_jacobian}
+\end{equation}
+where every perturbed trajectory is propagated with the full direct
+\(N=600\) harmonic model rather than the browser acceleration atlas or a
+lower-degree surrogate. Each correction solves
+\begin{equation}
+ J_{\rm NEU}\,\Delta\vect q=-\vect F(\vect q),
+ \qquad
+ \vect q_{\rm new}=\vect q+\Delta\vect q.
+ \label{eq:newton_correction}
+\end{equation}
+The residual norm decreases from \SI{1.3929}{m} to
+\SI{0.004690}{m}, below the \SI{0.01}{m} stopping criterion.
+
+The corrected components are \((46.879494,1660.722862,15.415371)\,\si{\metre\per\second}\), corresponding to
+\begin{align}
+ v_s&=\SI{1661.455911}{\metre\per\second},\\
+ \gamma&=\SI{0.531611}{deg},\\
+ A&=\SI{88.383063}{deg}.
+\end{align}
+The fixed-time residual \(\lVert\vect F\rVert=\SI{4.690}{mm}\) is an optimizer diagnostic within Eq.~\eqref{eq:full_model}, not a physical trajectory-error estimate. The minimum LDEM64 clearance is \SI{10.279}{km}; the minimum clearance from the adopted Brillouin sphere is \SI{3.318}{km}. Figure~\ref{fig:high_fidelity_return} shows the nominal trajectory, body-fixed ground track, and raster clearance.
+
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=0.92\textwidth]{fig17_high_fidelity_return.png}
+\caption{Concrete \(N=600\), LDEM64-tested scheduled return. The 3-D panel
+shows that the orbital plane is not exactly equatorial; the map makes the
+global path intuitive; the clearance panel performs the actual collision
+test rather than comparing against a mean-radius circle}
+\label{fig:high_fidelity_return}
+\end{figure*}
+
+Figure~\ref{fig:high_fidelity_corridor} resolves the same collision test in
+the more intuitive absolute-height form: the blue curve is the ball-center
+elevation and the grey profile is LDEM64 sampled along the actual,
+latitude-varying ground track. The highlighted vertical separation is the
+global minimum of \(C(t)\), not the height above a mean-radius circle. Thus
+the plot visualizes the \SI{10.279}{km} margin without replacing the
+continuous event search used for the numerical verdict.
+
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=0.92\textwidth]{fig19_high_fidelity_corridor.png}
+\caption{Terrain clearance along the concrete degree-600 return. Elevations
+are measured from the \SI{1737.4}{km} reference sphere. The terrain profile
+is bilinearly sampled from full-resolution LDEM64 at the instantaneous
+latitude and body-fixed longitude; it is therefore not an equatorial slice.
+The orange segment joins terrain to the ball center at the minimum-clearance
+sample; the labelled clearance additionally subtracts the ball radius}
+\label{fig:high_fidelity_corridor}
+\end{figure*}
+
+\section{Analysis of the realistic solution}
+
+\subsection{What the solver can and cannot claim}
+
+The realistic calculation now supports the full forward question posed in
+this project: given a launch site and a velocity vector, it returns a sampled
+3-D trajectory, finds the first LDEM64 intersection, and searches continuously
+between integration output points for the closest encounter with the rotating
+launch site. It therefore goes beyond ``propagate for one Kepler period and
+compare endpoints.''
+
+Three notions of success must nevertheless remain separate.
+
+\emph{Human hit.} Ruled out at the scale-analysis level. The measured exit speed is lower by a factor of about 30.6, and even an infinite-mass perfectly elastic bat would require a bat speed above \SI{840}{\metre\per\second}. No detailed biomechanics model is needed for this negative conclusion.
+
+\emph{Nominal model return.} Demonstrated within the specified deterministic
+model. The degree-600 case has a \SI{4.690}{mm} timed boundary-value solver
+residual and positive global DEM clearance.
+
+\emph{Physically certified return or capture.} Not demonstrated. The project does not derive a complete spatial error bound, resolve the local launch/capture terrain, or model launcher and capture hardware. The release point is \SI{30.000}{km} above the reference sphere and \SI{19.243}{km} above local LDEM64 terrain. Its \SI{1661.456}{\metre\per\second} terminal relative speed corresponds to \SI{2.001e5}{J}; the point-mass result therefore specifies an initial state, not a realizable capture design.
+
+\subsection{Position and velocity effects}
+
+The launch position and velocity variables do not act independently.
+Increasing height expands terrain clearance and weakly decreases circular
+speed, but it can also move the solution into a different gravity spectrum.
+Latitude changes the rotational boost and the geometry of a returning site.
+Longitude and azimuth select the mascon pattern. Elevation couples most
+strongly to radial clearance, while speed changes both encounter phase and
+orbital energy. These couplings explain why a scalar ``correct speed'' is
+insufficient in the realistic model.
+
+For local sensitivity, define \(\vect p=(v_s,\gamma,A)\), with angular components in radians, and let
+\begin{align}
+ J_p&=\frac{\partial\vect r_f}{\partial(v_s,\gamma,A)},\\
+ J_\perp&=\left(I-\hat{\vect v}_{\rm rel}\hat{\vect v}_{\rm rel}^{T}\right)J_p.
+\label{eq:projected_jacobian_v2}
+\end{align}
+The first matrix measures the fixed scheduled endpoint. The projection removes first-order displacement parallel to the terminal site-relative velocity and therefore approximates the closest spatial miss when encounter time may shift.
+
+Symmetric finite differences are evaluated directly at both \(N=300\) and \(N=600\), using speed steps \(0.01,0.02,0.04\,\si{\metre\per\second}\) and angular steps \(5\times10^{-6},10^{-5},2\times10^{-5}\,\si{rad}\). At \(N=600\), the middle-to-small-step changes are below \(10^{-4}\%\) for every projected gain. The projected-gain differences between degree 300 and degree 600 are \(0.487\%\), \(0.394\%\), and \(0.015\%\) for speed, elevation, and azimuth, respectively.
+
+\begin{table}[tbp]
+\caption{Direct degree-600 local sensitivities. The last column is the one-at-a-time perturbation giving a first-order \SI{1}{m} closest miss, not a simultaneous tolerance.}
+\label{tab:sensitivity}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+Parameter & Fixed-time gain & Free-time gain & \SI{1}{m} scale \\
+\hline
+$v_s$ & $2.0003\times10^4\,\si{\second}$ & $22.138\,\si{\second}$ & \SI{0.04517}{\metre\per\second} \\
+$\gamma$ & $3.1816\times10^4\,\si{\metre\per\radian}$ & $3.1683\times10^4\,\si{\metre\per\radian}$ & \SI{0.001808}{\degree} \\
+$A$ & $5.5599\times10^4\,\si{\metre\per\radian}$ & $4.1314\times10^4\,\si{\metre\per\radian}$ & \SI{0.001387}{\degree}
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+The corresponding closest-encounter-time derivatives are \(12.039\,\si{s^2\per\metre}\), \(-1.752\,\si{\second\per\radian}\), and \(22.395\,\si{\second\per\radian}\). At the \SI{1661.456}{\metre\per\second} terminal relative speed, the one-sided time from a \SI{1}{m} sphere boundary to its center is only \SI{0.602}{ms}. These derivatives therefore describe local geometry, not capture-gate timing requirements.
+
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=0.76\textwidth]{fig21_jacobian_validation.png}
+\caption{Step-size and gravity-order convergence of the local sensitivity.
+Fixed-time gains and free-time closest-approach gains are shown separately}
+\label{fig:high_fidelity_sensitivity}
+\end{figure*}
+
+\subsection{Model-fidelity and resolution ledger}
+
+Table~\ref{tab:error_budget_v2} is a ledger, not an uncertainty budget. Its
+entries have different units and meanings and cannot be summed or combined by
+root-sum-square. The \SI{4.690}{mm} optimizer residual is not a
+\SI{4.690}{mm} prediction of reality, and we do not derive
+\(B_{\rm assumed}\).
+
+\begin{table*}[tbp]
+\caption{Quantified diagnostics. The rows have different meanings and do not form a total position-error bound.}
+\label{tab:error_budget_v2}
+\footnotesize
+\begin{ruledtabular}
+\begin{tabular}{lll}
+Entry & Quantified scale & Interpretation \\
+\hline
+LDEM64 sampling & \parbox[t]{0.28\textwidth}{\SI{473.8}{\metre} equatorial spacing; \SI{0.5}{\metre} per DN} & \parbox[t]{0.39\textwidth}{raster resolution and quantization, not terrain uncertainty} \\
+Integrator cross-check & \SI{7.303}{\micro\metre} & numerical-method endpoint diagnostic \\
+Concrete state: $N=600$ vs $1200$ & \SI{0.2835}{m} & observed truncation-model discrepancy \\
+Concrete state: $N=900$ vs $1200$ & \SI{0.01740}{m} & observed truncation-model discrepancy \\
+Web atlas vs direct $N=600$ & \parbox[t]{0.28\textwidth}{\SI{6.06}{m} at \SI{15}{km}; \SI{4.04}{m} at \SI{30}{km}} & browser-model diagnostic \\
+Earth and solar tides & \parbox[t]{0.28\textwidth}{$\sim1.6\times10^{-5}g$ and $\sim4.4\times10^{-8}g$} & fixed-geometry acceleration scales
+\end{tabular}
+\end{ruledtabular}
+\end{table*}
+
+Unquantified omissions include exact PA--ME frame transformations and physical libration, epoch-dependent ephemerides, gravity covariance, launch-state covariance, local terrain hazards, solar radiation pressure, ball attitude and thermal effects, and terminal capture dynamics. These omissions prevent the optimizer residual or Table~\ref{tab:error_budget_v2} from being interpreted as a physical uncertainty budget.
+
+The gravity convergence study also shows that one need not mechanically use
+degree 1200 at every altitude and decision tolerance. At \SI{30}{km}, degree 300 is already within
+\SI{0.879}{m} of degree 1200, while degree 600 costs much more and changes the
+endpoint by only millimeters. At \SI{15}{km}, however, degree 400 still differs
+by \SI{14.18}{m}; the same truncation is not adequate for the stated
+\SI{10}{m} criterion. Model order should therefore be selected by convergence
+testing against the altitude and decision tolerance. Using degree 1200 is not
+itself poor methodology when its cost is acceptable.
+
+\subsection{Numerical verification}
+
+The verification chain is layered. DOP853 uses
+\(\mathrm{rtol}=2\times10^{-10}\), position
+\(\mathrm{atol}=2\times10^{-4}\,\si{m}\), velocity
+\(\mathrm{atol}=2\times10^{-7}\,\si{\metre\per\second}\), and maximum steps of
+\(10\), \(5\), and \(\SI{2.5}{s}\). We cross-check it against RK45 with
+\(\mathrm{rtol}=5\times10^{-11}\), four-times-smaller absolute tolerances,
+and a \SI{2.5}{s} maximum step. Across these \(N=600\) runs, the largest
+endpoint difference relative to the \SI{2.5}{s} DOP853 run is
+\(7.3\,\si{\micro m}\); closest-return time, closest-return distance,
+LDEM64 clearance, and Brillouin clearance are stable at the reported
+precision. This numerical diagnostic is kept separate from the
+\SI{4.690}{mm} boundary-value optimizer residual.
+
+For the same unmodified concrete initial state, the observed endpoint
+truncation-model discrepancies relative to \(N=1200\) are \SI{0.283}{m} for
+\(N=600\) and \SI{0.0174}{m} for \(N=900\). \(N=1200\) is a reference
+model, not truth; non-monotone truncation means proximity to it is not a
+physical error bound. The static site's acceleration atlas is separately
+tested against direct point accelerations and complete direct-\(N=600\)
+trajectories.
+
+The web integrator additionally uses RK4 step doubling and reports its
+accumulated local position diagnostic. Continuous Hermite interpolation is
+used for closest return and collision refinement, avoiding the false precision
+of declaring a return merely because one output sample lies nearby.
+
+\subsection{Strengths, limitations, and next  step}
+
+The principal strength is traceability. The ideal existence theorem is
+analytic; every realistic addition answers a separate physical question; raw
+NASA products are checksummed; the gravity order is selected by a published
+convergence table; collision is evaluated against all of LDEM64; and both the
+reference Python solver and web approximation are cross-checked quantitatively.
+The specific calculation demonstrates a three-dimensional return within the
+specified deterministic model after adding high-degree gravity and LDEM64
+terrain. It does not prove existence on the physical Moon.
+
+The remaining limitations are material. The \SI{474}{m} equatorial LDEM64
+pixel spacing is a horizontal sampling interval, not a terrain-error bound.
+Bilinear interpolation defines a continuous raster surface but cannot resolve
+individual rocks, steep crater rims, or sub-pixel peaks. The
+\SI{10.279}{km} nominal clearance supports the global no-impact verdict
+relative to that raster surface, but cannot certify the local launch/capture
+zone. The aligned uniform PA/ME treatment omits physical
+libration and the exact transformation between gravity and topographic frames.
+Earth and Sun directions are fixed rather than evaluated from a loaded SPICE
+kernel at every step. GRGM formal covariance and covariance clones,
+launch-state covariance, and local terrain uncertainty are not propagated.
+Solar radiation pressure, thermal
+effects, outgassing, spin-dependent radiation, and terminal capture dynamics
+are omitted. Finally, an external harmonic field below the Brillouin sphere is
+only a flagged extrapolation.
+
+The next defensible step is therefore not a still finer global DEM alone. It is
+a coupled uncertainty calculation: select an epoch; apply DE440/SPICE
+ephemerides and lunar PA--ME orientation; propagate GRGM coefficient
+covariance or compare independent gravity solutions; survey a local launch and
+capture region with finer topography; include radiation pressure; and solve a
+robust constrained boundary-value problem whose clearance and return
+inequalities hold across the resulting uncertainty ensemble.
+
+
+\section{Implications for baseball rules on the Moon}
+
+Earth baseball rules assume a local field bounded by foul lines and an outfield fence; they do not define a ball that leaves the local neighbourhood, travels behind the field, and returns from another direction \cite{MLBRules2026}. A lunar rule set should separate competitive scoring from orbital safety.
+
+\subsection{A three-dimensional fair region}
+
+Two painted lines on a curved surface are insufficient once the ball can travel globally. We propose extending the foul rays from home plate into two half-planes containing the lunar center. Their intersection defines a three-dimensional \emph{fair wedge}. A trajectory is fair at departure if its initial direction lies inside the wedge. After it crosses a certified stadium boundary, subsequent global longitude should not toggle the fair/foul decision repeatedly.
+
+\subsection{An operational orbital-home-run criterion}
+
+Waiting several hours or days for physical return would make play
+impossible. Instead, tracking radar or optical stations should estimate the
+state immediately after the hit. An \emph{orbital home run} is declared only
+if all of the following hold:
+\begin{enumerate}
+    \item the ball is fair at departure;
+    \item its estimated trajectory remains bound over the certified
+          prediction horizon;
+    \item the lower uncertainty-qualified terrain clearance exceeds the
+          prescribed safety margin;
+    \item it crosses the stadium's three-dimensional outfield boundary
+          without interception; and
+    \item an approved tracking, capture, or controlled-deorbit plan remains
+          active throughout the predicted return window.
+\end{enumerate}
+Once declared, the ball becomes dead and all runners score. It cannot later
+be caught for an out, because the scoring decision has already been made.
+A nominal trajectory without propagated launch, gravity, and terrain
+uncertainties would not satisfy item 3 and therefore could not be certified
+for competitive play. Any returning ball must be collected autonomously or
+directed into an unoccupied recovery zone.
+
+\subsection{Three candidate ballparks}
+
+\emph{Enclosed dome.} This is the safest and most Earth-like design. A roof prevents orbital debris, enables a breathable atmosphere, and restores familiar aerodynamic baseball. It also removes the orbital-home-run phenomenon.
+
+\emph{Open field with an active capture shell.} A net or electromagnetic capture system above the field permits long lunar ballistic arcs but intercepts any ball whose speed exceeds a safety threshold. This design preserves distinctive lunar play without allowing uncontrolled satellites.
+
+\emph{Instrumented equatorial corridor.} An elevated field above a certified equatorial terrain maximum admits the direct synodic return of Eq.~\eqref{eq:synodic_v2}. It is the most transparent geometry for intentional orbital baseball, but it requires high-degree gravity targeting, continuous tracking, a protected global corridor, and an automated terminal capture system. A polar research field remains an alternative because its position is fixed by rotation, although its orbital plane and terrain corridor still need targeting. Competitive fairness would require both teams to use the same launcher limits and field orientation because azimuth relative to gravity anomalies matters.
+
+A ball that genuinely circles the Moon should therefore count as a home run at the moment its safe orbital status is confirmed, not when it reappears. The rule makes scoring timely and prevents the returning ball from becoming a delayed weapon.
+
+\section{Conclusion}
+
+The ideal problem has a complete analytic answer. A point ball launched exactly from the smooth, nonrotating reference surface completes a bound, non-penetrating revolution only when
+\begin{equation*}
+ \gamma=0,\qquad
+ \SI{1.680}{\kilo\metre\per\second}\leq v<\SI{2.376}{\kilo\metre\per\second}.
+\end{equation*}
+The circular endpoint lies on the reference sphere, while \(1<v/v_c<\sqrt2\) is exterior only during the open interval between launch and return. The speed–angle set therefore has measure zero. Finite height opens a narrow feasible wedge, but the measured baseball speed scale and the ideal collision bound rule out an unaided human hit before launch precision becomes the dominant issue.
+
+Return must be defined relative to the rotating site. A circular equatorial prograde trajectory does not permanently miss the field by the distance accumulated during one inertial period; it meets the field at the slightly later synodic time. In the terrain-aware solver, return is a refined post-launch minimum of body-fixed separation, and impact is a refined zero of the LDEM64 clearance function.
+
+Within the stated deterministic model---GRGM1200B truncated at \(N=600\), uniform rotation, aligned terrain and gravity frames, fixed short-arc Earth and solar tides, and the LDEM64 raster---the boundary-value problem admits a scheduled solution from \SI{30.000}{km} reference altitude. Its surface-relative speed is \SI{1661.4559}{\metre\per\second}, elevation \SI{0.531611}{deg}, and azimuth \SI{88.383063}{deg}. The fixed-time residual is \SI{4.690}{mm}, the minimum LDEM64 clearance is \SI{10.279}{km}, and the complete nominal path remains outside the adopted Brillouin sphere. These statements establish a numerical initial state in a specified model; they do not establish millimeter physical accuracy, a normal-surface launch, or feasible capture hardware.
+
+The bilingual web solver is a core deliverable because it turns the model hierarchy into an arbitrary-input experiment: users can select a launch site and velocity, inspect terrain impact or closest return, and compare the 3-D path, ground track, and clearance. Its acceleration atlas and numerical error diagnostic are independently cross-checked against the Python reference model. A physically certified experiment would additionally require a dated SPICE frame and ephemeris chain, local topographic surveying, gravity and launch covariance, solar radiation pressure, and a robust constrained correction over the resulting uncertainty ensemble.
+
+\clearpage
+\appendix
+\begin{figure*}[tbp]
+\centering
+\includegraphics[width=0.94\textwidth]{fig20_ldem64_topography.png}
+\caption{Global LOLA LDEM64 elevation...}
+\label{fig:ldem64_global}
+\end{figure*}
+
+\section{Derivation of the arbitrary-height boundary}
+
+At launch,
+\begin{equation}
+ \mathcal E=\frac{v^2}{2}-\frac{\mu}{r_0},\qquad
+ H=r_0v\cos\gamma.
+\end{equation}
+At the limiting periapsis $R_t$, radial speed vanishes and tangential speed is $H/R_t$, giving
+\begin{equation}
+ \mathcal E=\frac{H^2}{2R_t^2}-\frac{\mu}{R_t}.
+\end{equation}
+Equating the two expressions and inserting $H$ yields Eq.~\eqref{eq:height_boundary}. The denominator in Eq.~\eqref{eq:vmin} requires $r_0|\cos\gamma|>R_t$; geometrically, the initial angular momentum must be large enough that a tangent from the launch point can clear the obstacle sphere.
+
+\section{Global LDEM64 topography}
+
+Figure~\ref{fig:ldem64_global} gives global context for the terrain term in
+Eq.~\eqref{eq:clearance_v2}. It is generated from the same \(64\)-pixel-per-degree
+LOLA product used by the collision test. Only the displayed raster is reduced
+by arithmetic \(16\times16\) block averaging, from
+\(11520\times23040\) to \(720\times1440\) pixels; all trajectory clearance
+queries retain the full LDEM64 grid and bilinear interpolation. The colour
+limits use the scanned source-grid extrema, \(-9.1255\) to
+\SI{10.7730}{km} above the \SI{1737.4}{km} reference sphere.
+
+
+
+\section{Coordinate construction}
+
+At body-fixed latitude $\phi$ and longitude $\lambda$, the local unit vectors are
+\begin{align}
+ \hat{\vect e}_r&=(\cos\phi\cos\lambda,\cos\phi\sin\lambda,\sin\phi),\\
+ \hat{\vect e}_E&=(-\sin\lambda,\cos\lambda,0),\\
+ \hat{\vect e}_N&=(-\sin\phi\cos\lambda,-\sin\phi\sin\lambda,\cos\phi).
+\end{align}
+For azimuth $A$ clockwise from north,
+\begin{equation}
+ \vect v_s=v_s\left[\cos\gamma(\cos A\,\hat{\vect e}_N+\sin A\,\hat{\vect e}_E)+\sin\gamma\,\hat{\vect e}_r\right].
+\end{equation}
+Equation~\eqref{eq:rotation_velocity_v2} then produces the Moon-centered inertial initial condition.
+
+\section{Reproducibility}
+\label{app:reproducibility}
+
+The complete Python reference model, manuscript source, versioned derived
+data, validation scripts, and bilingual browser implementation are available
+in the
+\href{https://github.com/KimonLu/PHYS1600J-Project-The-Orbital-Home-Run}
+{public project repository}. The deployed
+\href{https://kimonlu.github.io/PHYS1600J-Project-The-Orbital-Home-Run/}
+{browser solver} provides the interactive implementation
+\cite{ProjectRepository,WebSolver}.
+
+A complete reproduction begins by cloning the repository and retrieving its
+versioned Git LFS objects. In the following command,
+\texttt{<repository-url>} denotes the public repository URL linked above.
+
+\begingroup
+\footnotesize
+\begin{verbatim}
+git clone <repository-url>
+cd PHYS1600J-Project-The-Orbital-Home-Run
+git lfs install
+git lfs pull
+\end{verbatim}
+\endgroup
+
+From the \texttt{Project/} directory, install the Python dependencies and
+download the authoritative LOLA LDEM64 and GRGM1200B products. The downloader
+checks both the expected byte counts and SHA-256 digests before accepting the
+files.
+
+\begingroup
+\footnotesize
+\begin{verbatim}
+cd Project
+python -m pip install \
+  -r scripts/requirements.txt
+python scripts/download_science_data.py
+\end{verbatim}
+\endgroup
+
+The complete numerical workflow and its validation suite are executed with
+
+\begingroup
+\footnotesize
+\begin{verbatim}
+python scripts/generate_all.py \
+  --profile full
+python scripts/generate_all.py \
+  --profile validate
+\end{verbatim}
+\endgroup
+
+The \texttt{full} profile regenerates the analytic orbit family, sensitivity
+calculations, lunar-rotation and perturbation results, terrain products,
+gravity-degree convergence study, direct degree-600 return, bounded
+height-continuation study, publication figures, and browser-ready data. It
+can require substantial computation because the high-degree gravity and
+global-terrain stages use the downloaded NASA products. The
+\texttt{validate} profile checks the packaged machine-readable results
+without silently replacing the reported values.
+
+The principal scheduled-return result and its sampled trajectory are stored
+in
+
+\begin{center}
+\path{Project/data/output/high_fidelity_case_summary.json}
+
+\path{Project/data/output/high_fidelity_case_trajectory.csv}.
+\end{center}
+
+Gravity-order convergence, finite-difference Jacobian checks, integrator
+cross-checks, LDEM64 clearance calculations, and browser-versus-direct
+comparisons are retained as separate diagnostics. This separation prevents
+quantities with different meanings from being combined into an unsupported
+physical-accuracy estimate.
+
+After the numerical outputs and figures have been generated, the manuscript
+can be compiled from \texttt{Project/docs/} using
+
+\begingroup
+\footnotesize
+\begin{verbatim}
+cd docs
+latexmk -pdf main.tex
+\end{verbatim}
+\endgroup
+
+The submitted Overleaf build uses pdf\LaTeX{} with TeX Live 2025.
+\texttt{latexmk} performs the required bibliographic processing and repeated
+\LaTeX{} passes.
+
+The browser solver can be installed and compiled independently from the
+repository root:
+
+\begingroup
+\footnotesize
+\begin{verbatim}
+cd ../../Web
+npm install
+npm run build
+\end{verbatim}
+\endgroup
+
+For local interactive use, replace the final command with
+\texttt{npm run dev}. The production build is deployed through GitHub
+Actions. Its lossless LDEM64 tiles and degree-600 acceleration-correction
+atlas are generated by the scientific workflow rather than edited manually.
+
+The Python implementation remains the quantitative reference model. The
+browser is independently checked against direct degree-600 trajectories and
+is intended for reproducible exploration within its implemented terrain,
+altitude, and propagation domain; it is not a navigation, landing, or
+physical-certification product.
+
+\section{AI usage}
+
+During this project, we used publicly available large language models, including \href{https://chat.deepseek.com}{DeepSeek} and \href{https://chat.openai.com}{ChatGPT}, as computational assistants. Their usage was confined to the following roles:
+\begin{itemize}
+    \item clarifying concepts in orbital mechanics, numerical integration, and spherical-harmonic gravity models;
+    \item discussing the structure and optimization of the Python propagation pipeline;
+    \item suggesting improvements in code documentation and scientific English expression;
+    \item assisting with LaTeX typesetting and figure placement.
+\end{itemize}
+All scientific derivations, numerical implementations, data processing, and final conclusions were performed and verified by the authors. We take full responsibility for the correctness, originality, and integrity of the work. The use of AI did not replace critical thinking, physical reasoning, or our independent judgment.
+
+
+
+\FloatBarrier
+
+\bibliography{references}
+
+\end{document}
